@@ -1,0 +1,158 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\colorlet{LightGray}{White!90!Periwinkle}
+\colorlet{LightOrange}{Orange!15}
+\colorlet{LightGreen}{Green!15}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\declaretheoremstyle[name=Theorem,]{thmsty}
+\declaretheorem[style=thmsty,numberwithin=section]{theorem}
+\tcolorboxenvironment{theorem}{colback=LightGray}
+
+\declaretheoremstyle[name=Proposition,]{prosty}
+\declaretheorem[style=prosty,numberlike=theorem]{proposition}
+\tcolorboxenvironment{proposition}{colback=LightOrange}
+
+\declaretheoremstyle[name=Principle,]{prcpsty}
+\declaretheorem[style=prcpsty,numberlike=theorem]{principle}
+\tcolorboxenvironment{principle}{colback=LightGreen}
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+% ------------------------------------------------------------------------------
+
+\begin{document}
+% ------------------------------------------------------------------------------
+% Cover Page and ToC
+% ------------------------------------------------------------------------------
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{CSE 386D Notes}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Spring 2025} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Noah Reef \\
+	  UT Austin	\\
+		Spring 2025}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+% ------------------------------------------------------------------------------
+
+\section{The Fourier Transform}
+\subsection{The $L^1(\mathbb{R}^d)$ Theory}
+
+If $\xi \in \mathbb{R}^d$, the function
+\begin{equation*}
+  \varphi_\xi(x) = e^{-ix\cdot\xi} =  \cos(x \cdot \xi) - i \sin(x \cdot \xi)
+\end{equation*}
+for $x \in \mathbb{R}^d$ is a plane wave in the direction $\xi$. Its period in the $j$th direction is $1\pi/\xi_j$.
+
+\begin{proposition}
+  For such $\varphi$ we have the following:
+\begin{enumerate}
+  \item $|\varphi_\xi| = 1$ and $\bar{\varphi_\xi} = \varphi_{-\xi}$ for any $\xi \in \mathbb{R}^d$ 
+  \item $\varphi_\xi(x + y) = \varphi_\xi(x)\varphi_\xi(y)$ for any $x,y,\xi \in \mathbb{R}^d$ 
+  \item $-\Delta \varphi_\xi = |\xi|^2 \varphi_\xi$ for any $\xi \in \mathbb{R}^d$
+\end{enumerate}
+\end{proposition}
+\begin{principle}
+  If $f \in L^1(\mathbb{R}^d)$, the Fourier transform of $f$ is 
+  \begin{equation*}
+    \mathcal{F}f(\xi) = \hat{f}(\xi) = (2\pi)^{-d/2} \int_{\mathbb{R}^d} f(x)e^{-ix \cdot \xi} \, dx
+  \end{equation*}
+\end{principle}
+
+\begin{proposition}
+  The Fourier transform
+  \begin{equation*}
+    \mathcal{F}: L^1(\mathbb{R}^d) \to L^\infty (\mathcal{R}^d)
+  \end{equation*}
+  is a bounded linear operator, and 
+  \begin{equation*}
+    \norm{\hat{f}}_{L^\infty (\mathcal{R}^d)} \leq (2\pi)^{-d/2} \norm{f}_{L^1(\mathbb{R}^d)}
+      
+  \end{equation*}
+\end{proposition}
+
+\begin{proposition}
+  If $f \in L^1(\mathbb{R}^d)$ and $\tau_y$ is a translation by $y$, then
+  \begin{enumerate}
+  \item $\mathcal{F}(\tau_yf)(\xi) = e^{-iy \cdot \xi}\hat{f}(\xi)$ for all $y \in \mathbb{R}^d$. 
+\item $\mathcal{F}(e^{ix \cdot y}f)(\xi) = \tau_y \hat{f}(\xi)$ for all $y \in \mathbb{R}^d$ 
+    \item if $r > 0$ is given,
+      \begin{equation*}
+        \mathcal{F}(f(rx))(\xi) = r^{-d}\hat{f}(r^{-1}\xi)
+      \end{equation*}
+  
+    \item $\hat{\bar{f}}(\xi) = \overline{\hat{f}(-\xi)}$
+  \end{enumerate}
+\end{proposition}
+
+\begin{principle}
+  A continuous function $f$ on $\mathbb{R}^d$ is said to vanish at infinity if for any $\epsilon > 0$ there is $K \subset\subset \mathbb{R}^d$ such that
+  \begin{equation*}
+    |f(x)| < \epsilon
+  \end{equation*}
+  for $x \not\in K$, we define
+  \begin{equation*}
+    C_v(\mathbb{R}^d) = \{f \in C^0(\mathbb{R}^d): \text{$f$ vanishes at $\infty$}\}
+  \end{equation*}
+\end{principle}
+
+\begin{theorem}
+  The space $C_v(\mathbb{R}^d)$ is a closed linear subspace of $L^\infty(\mathbb{R}^d)$
+\end{theorem}
+
+\begin{theorem}[Riemann-Lebesgue Lemma]
+  The Fourier transform
+  \begin{equation*}
+    \mathcal{F}: L^1(\mathbb{R}^d) \to C_v(\mathbb{R}^d) \subset L^\infty(\mathbb{R}^d)$
+  \end{equation*}
+  The for $f \in L^1(\mathbb{R}^d)$
+  \begin{equation*}
+    \lim_{|\xi| \to \infty}|\lhat{f}(\xi)| = 0 \quad \text{ and } \quad \hat{f} \in C^0(\mathbb{R}^d)
+  \end{equation*}
+\end{theorem}
+\newpage
+
+% ------------------------------------------------------------------------------
+% Reference and Cited Works
+% ------------------------------------------------------------------------------
+
+\bibliographystyle{IEEEtran}
+\bibliography{References.bib}
+
+% ------------------------------------------------------------------------------
+
+\end{document}
