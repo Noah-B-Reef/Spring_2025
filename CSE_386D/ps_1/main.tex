@@ -27,18 +27,33 @@ To find the Fourier transform of $f(x) = e^{-|x|}$ for $x \in \mathbb{R}$, we co
                &= \frac{1}{\sqrt{2\pi}} \left( \frac{2}{1+\xi^2}\right)
 \end{align*}
 
+
 \section*{Problem 6.2}
-To find the Fourier transform of $f(x) = e^{-a|x|^2}$ with $a > 0$ and where $x \in \mathbb{R}$, we compute
+We will consider the parameteric curve defined as
 \begin{align*}
-  \hat{f}(\xi) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-a|x|^2} e^{-ix\xi} \, dx \\
-               &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-ax^2 - ix\xi} \, dx \\
-               &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-ax^2 - ix\xi} \, dx \\
-               &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-a(x + (i\xi)/2a)^2 - \xi^2/(4a)}\, dx\\
-               &= \frac{e^{-\xi^2/(4a)}}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-a(x + (i\xi)/2a)^2}\, dx \\
-               &= \frac{e^{-\xi^2/(4a)}}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-au^2}\, du \\
-               &= \frac{e^{-\xi^2/(4a)}}{\sqrt{2\pi}} \sqrt{\frac{\pi}{a}}
+  \gamma_1 &= t \quad &-R \leq t \leq R \\
+  \gamma_2 &= R - it \quad &0 \leq t \leq \frac{\xi}{2a} \\
+  \gamma_3 &= -t - i\frac{\xi}{2a} \quad &-R \leq t \leq R \\
+  \gamma_4 &= -R + it \quad & -\frac{\xi}{2a} \leq t \leq 0
 \end{align*}
 
+and by Cauchy's Integral theorem we have that 
+\begin{align*}
+  0 &= \int_{-R}^R e^{-at^2 -i\xi t} \, dt + i\int_{0}^{\xi/2a} e^{-a(R - it)^2 - i\xi(R - it)} \, dt \\
+                                   &- \int_{-R}^R e^{-a(-t - i\xi/2a)^2 - i(-t - i\xi/2a)} \, dt  - i\int_{-\xi/2a}^0 e^{-a(-R + it)^2 - i\xi(-R + it)} \, dt
+\end{align*}
+Then we see that the second and fourth terms go to zero since,
+\begin{align*}
+  \left\lvert i\int_{0}^{\xi/2a} e^{-a(R - it)^2 - i\xi(R - it)} \, dt \right\rvert + \left\lvert i\int_{-\xi/2a}^0 e^{-a(-R + it)^2 - i\xi(-R + it)} \, dt\right\rvert \leq 2\frac{\xi}{2a} e^{-aR^2} \to 0
+\end{align*}
+and we see for the third term that 
+\begin{equation*}
+  \lim_{R \to \infty} \int_{-R}^R e^{-a(-t - i\xi/2a)^2 - i(-t - i\xi/2a)} \, dt =\sqrt{\frac{\pi}{a}} e^{-\xi^2/(4a)}
+\end{equation*}
+and hence 
+\begin{equation*}
+  \hat{f}(\xi) = \frac{1}{\sqrt{2\pi}} \int_{\mathbb{R}} e^{-a|x|^2} e^{-ix\xi} \, dx = \sqrt{\frac{\pi}{a}} \frac{e^{-\xi^2/(4a)}}{\sqrt{2\pi}}
+\end{equation*}
 \section*{Problem 6.4}
 Suppose the $f \in L^1(\mathbb{R}^d)$ and $f(x) = g(|x|)$ for some $g$, then we see that
 \begin{align*}
