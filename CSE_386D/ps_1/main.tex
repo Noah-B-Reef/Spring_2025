@@ -63,4 +63,23 @@ Suppose the $f \in L^1(\mathbb{R}^d)$ and $f(x) = g(|x|)$ for some $g$, then we 
                &=(2\pi)^{-d/2} \int_0^\infty \int_{\omega_d} g(r)e^{-i r|\xi| \cos(\theta)} r^{d} \, dr\, d\theta \\
                &= h(|\xi|)
 \end{align*}
+
+\section*{Problem 6.11}
+Suppose that $\mathcal{F}: L^1(\mathbb{R}^d) \to C_v(\mathbb{R}^d)$ was onto. Then we have that $\mathcal{F}$ is an onto,injective, bounded, linear map and by the open mapping theorem has a bounded inverse. Let $f_n$ and $f_1$ be the characteristic functions on the intervals $[-n,n]$ and $[-1,1]$ respectively. Then we see that $f_n,f_1 \in L^1(\mathbb{R}^d)$ and that $f_n * f_1 \in C_v(\mathbb{R}^d)$ by Exercise $6$. By properties of the Fourier transform we have that
+\begin{align*}
+  \mathcal{F}(f_n * f_1) = (2\pi)^{d/2}\mathcal{F}(f_n)\mathcal{F}(f_1)
+\end{align*}
+where 
+\begin{align*}
+  \mathcal{F}(f_1) &= \prod_{j=1}^d \sqrt{\frac{2}{\pi}} \frac{\sin(\xi_j)}{\xi_j} \\
+  \mathcal{F}(f_n) &= \prod_{j=1}^d \sqrt{\frac{2}{\pi}} \frac{\sin(n\xi_j)}{n\xi_j}
+\end{align*}
+hence 
+\begin{equation*}
+g_n = \mathcal{F}(f_n * f_1) = (2\pi)^{d/2}\prod_{j=1}^d \frac{2}{\pi} \frac{\sin(\xi_j)\sin(n\xi_j)}{n\xi_j^2}
+\end{equation*}
+but we can clearly see that $\norm{g_n}_{L^\infty} \to \infty$ as $n \to \infty$. Additionally recall that
+\begin{equation*}
+  \norm{\mathcal{F}^{-1}}
+\end{equation*}
 \end{document}

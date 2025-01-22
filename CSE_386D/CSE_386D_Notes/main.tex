@@ -18,6 +18,13 @@
 \colorlet{LightOrange}{Orange!15}
 \colorlet{LightGreen}{Green!15}
 
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\FT}{\mathcal{F}}
+
 \newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
 
 \declaretheoremstyle[name=Theorem,]{thmsty}
@@ -124,7 +131,7 @@ for $x \in \mathbb{R}^d$ is a plane wave in the direction $\xi$. Its period in t
   \begin{equation*}
     |f(x)| < \epsilon
   \end{equation*}
-  for $x \not\in K$, we define
+  for $x \not\in K$, The subspace of all such continuous functions is denoted
   \begin{equation*}
     C_v(\mathbb{R}^d) = \{f \in C^0(\mathbb{R}^d): \text{$f$ vanishes at $\infty$}\}
   \end{equation*}
@@ -137,12 +144,40 @@ for $x \in \mathbb{R}^d$ is a plane wave in the direction $\xi$. Its period in t
 \begin{theorem}[Riemann-Lebesgue Lemma]
   The Fourier transform
   \begin{equation*}
-    \mathcal{F}: L^1(\mathbb{R}^d) \to C_v(\mathbb{R}^d) \subset L^\infty(\mathbb{R}^d)$
+    \mathcal{F}: L^1(\mathbb{R}^d) \to C_v(\mathbb{R}^d) \subset L^\infty(\mathbb{R}^d)
   \end{equation*}
-  The for $f \in L^1(\mathbb{R}^d)$
+  Then for $f \in L^1(\mathbb{R}^d)$
   \begin{equation*}
-    \lim_{|\xi| \to \infty}|\lhat{f}(\xi)| = 0 \quad \text{ and } \quad \hat{f} \in C^0(\mathbb{R}^d)
+    \lim_{|\xi| \to \infty}|\hat{f}(\xi)| = 0 \quad \text{ and } \quad \hat{f} \in C^0(\mathbb{R}^d)
   \end{equation*}
+\end{theorem}
+\begin{proposition}
+  If $f,g \in L^1(\mathbb{R}^d)$, then
+  \begin{enumerate}
+    \item $\int \mathcal{F}(f)g = \int f\mathcal{F}(g)$ 
+  \item $f * g \in L^1(\mathbb{R}^d)$ and $\mathcal{F}(f * g) = (2\pi)^{d/2}\mathcal{F}(f)\mathcal{F}(g)$
+  \end{enumerate}
+\end{proposition}
+\begin{theorem}[Generalized Young's Inequality]
+  Suppose $K(x,y)$ is measurable of $\RR^d \times \RR^d$ and there is some $C > 0$ such that
+  \begin{equation*}
+    \int |K(x,y)| \, dx \leq C \quad \text{ and } \quad \int |K(x,y)| \, dy \leq C
+  \end{equation*}
+  for almost every $x,y \in \RR^d$, respectively. Define the operator $T$ by
+  \begin{equation*}
+    Tf(x) = \int K(x,y) f(y) \, dy
+  \end{equation*}
+  If $1 \leq p \leq \infty$, then $T: L^p(\RR^d) \to L^p(\RR^d)$ is a bounded linear operator with operator norm $\norm{T} \leq C$.
+\end{theorem}
+\begin{proposition}[Young's Inequality]
+  If $1 \leq p \leq \infty$, $f \in L^p(\RR^d)$ and $g \in L^1(\RR^d)$, then $f * g \in L^p(\RR^d)$ and
+  \begin{equation*}
+    \norm{f * g}_p \leq \norm{f}_p \norm{g}_1
+  \end{equation*}
+\end{proposition}
+
+\begin{theorem}[Paley-Wiener Theorem]
+  If $f \in C_0^\infty(\RR^d)$, then $\FT(f)$ extend to an entire holomorphic function on $\CC^d$.
 \end{theorem}
 \newpage
 
