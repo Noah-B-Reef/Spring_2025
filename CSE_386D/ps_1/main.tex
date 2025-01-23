@@ -1,6 +1,8 @@
 \documentclass[12pt]{report}
 \usepackage{scribe,graphicx,graphics}
 
+\newcommand{\FT}{\mathcal{F}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 \course{CSE 386D} 	
 \coursetitle{MoAM II}	
@@ -65,21 +67,31 @@ Suppose the $f \in L^1(\mathbb{R}^d)$ and $f(x) = g(|x|)$ for some $g$, then we 
 \end{align*}
 
 \section*{Problem 6.11}
-Suppose that $\mathcal{F}: L^1(\mathbb{R}^d) \to C_v(\mathbb{R}^d)$ was onto. Then we have that $\mathcal{F}$ is an onto,injective, bounded, linear map and by the open mapping theorem has a bounded inverse. Let $f_n$ and $f_1$ be the characteristic functions on the intervals $[-n,n]$ and $[-1,1]$ respectively. Then we see that $f_n,f_1 \in L^1(\mathbb{R}^d)$ and that $f_n * f_1 \in C_v(\mathbb{R}^d)$ by Exercise $6$. By properties of the Fourier transform we have that
+Consider $\FT: L^1(\R^d) \ to C_v(\R^d)$. Recall that $\FT: L^1(\R^d) \to L^\infty(\R^d)$ is a bounded linear map by Proposition 6.2 and we know that $C_v(\R^d)$ is a closed linear subspace of $L^\infty(\R^d)$ by Proposition 6.4, hence $\FT: L^1(\R^d) \to C_v(\R^d)$ is a bounded linear map. Next we note that if $f,g \in L^1(\R^d)$ such that $\FT(f) = \FT(g)$ for all $\xi \in \R^d$, then we have that $\FT(f - g) = 0$ and hence $f - g = 0$ and so $f = g$, thus $\FT$ is injective. Now suppose that $\FT$ is surjective, then we have by the Open Mapping Theorem, that $\FT^{-1}$ is bounded. 
+
+Next suppose we have the characteristic functions $f_n,f_1 \in L^1(\R^d)$ and consider $f_n * f_1 \in L^1(\R^d)$, then we see that
 \begin{align*}
-  \mathcal{F}(f_n * f_1) = (2\pi)^{d/2}\mathcal{F}(f_n)\mathcal{F}(f_1)
+  f_n * f_1 &= \int_{R^d} f_n(x-y)f_1(y) \, dy \\
+            &= \int_{[-1,1]^d}f_n(x-y) \, dy \\
+            &= \int_{[x-1,x+1]^d} f_n(z) \. dz \\
+            &= \int_{[x-1,0]^d} f_n(z) \, dz + \int_{[0,x+1]^d} f_n(z) \, dz \tag{$\in C_v(\R^d)$ By Exercise $5$} \\
+            &= \begin{cases}
+              x + n + 1 & x \in [-n - 1,-n + 1] \\
+              2 & x \in [-n + 1,n - 1] \\
+              n + 1 - x & x \in [n - 1,n + 1] \\
+              0 & \text{otherwise}
+            \end{cases} 
 \end{align*}
-where 
+then we see that as $n \to \infty$ we have that $f_n * f_1 \to 2$. Note that
+\begin{equation*}
+  \FT^{-1}(f_n * f_1) = C\frac{\sin(nx)\sin(x)}{x^2}
+\end{equation*}
+where $C$ is some constant. However as $n \to \infty$ we see that 
 \begin{align*}
-  \mathcal{F}(f_1) &= \prod_{j=1}^d \sqrt{\frac{2}{\pi}} \frac{\sin(\xi_j)}{\xi_j} \\
-  \mathcal{F}(f_n) &= \prod_{j=1}^d \sqrt{\frac{2}{\pi}} \frac{\sin(n\xi_j)}{n\xi_j}
+  \norm{\FT^{-1}[f_n * f_1]}_{L^1} &= C\int_{\R^d} \frac{|\sin(nx)\sin(x)|}{|x^2|} \, dx \\
+                                   &\geq C\int_{[0,1]^d}\frac{|\sin(nx)\sin(x)|}{|x^2|} \, dx \\
+                                   &\geq \frac{2C}{\pi} \int_{[0,1]^d} \left|\frac{\sin(nx)}{x}\right| \, dx  \to \infty
 \end{align*}
-hence 
-\begin{equation*}
-g_n = \mathcal{F}(f_n * f_1) = (2\pi)^{d/2}\prod_{j=1}^d \frac{2}{\pi} \frac{\sin(\xi_j)\sin(n\xi_j)}{n\xi_j^2}
-\end{equation*}
-but we can clearly see that $\norm{g_n}_{L^\infty} \to \infty$ as $n \to \infty$. Additionally recall that
-\begin{equation*}
-  \norm{\mathcal{F}^{-1}}
-\end{equation*}
+which contradicts our assumption that $\FT^{-1}$ is bounded and hence $\FT$ is not surjective.
 \end{document}
+

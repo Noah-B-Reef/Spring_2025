@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1737564275.92607 "main.tex" "main.pdf" "main" 1737564276.47824 2
+["pdflatex"] 1737591800.36474 "main.tex" "main.pdf" "main" 1737591800.87049 2
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -32,7 +32,6 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb" 1248133631 34586 5a65dc15601f9c74fe3fb3f37b3b8b6f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1248133631 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -65,8 +64,8 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1733497330 8221424 a754dda7ad15242c69b4e04c27fbc341 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "commands.tex" 1736795771.63836 5401 e6ca3c713e68b95345b6e853a4b1b9d1 ""
-  "main.aux" 1737564276.39297 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "main.tex" 1737564274.8484 4069 81e5ca7ddcfd0887963c98067f0430e5 ""
+  "main.aux" 1737591800.79152 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
+  "main.tex" 1737591799.60781 4963 136d5ca995ceea2fbdef710fdda86531 ""
   "scribe.sty" 1736795990.86641 7351 7857a2a7e69554476fb5188e99c645d4 ""
   (generated)
   "main.aux"

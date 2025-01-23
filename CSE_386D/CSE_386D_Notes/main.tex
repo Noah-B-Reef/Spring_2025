@@ -24,6 +24,7 @@
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\FT}{\mathcal{F}}
+\newcommand{\Sch}{\mathcal{S}}
 
 \newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
 
@@ -108,7 +109,6 @@ for $x \in \mathbb{R}^d$ is a plane wave in the direction $\xi$. Its period in t
   is a bounded linear operator, and 
   \begin{equation*}
     \norm{\hat{f}}_{L^\infty (\mathcal{R}^d)} \leq (2\pi)^{-d/2} \norm{f}_{L^1(\mathbb{R}^d)}
-      
   \end{equation*}
 \end{proposition}
 
@@ -179,6 +179,37 @@ for $x \in \mathbb{R}^d$ is a plane wave in the direction $\xi$. Its period in t
 \begin{theorem}[Paley-Wiener Theorem]
   If $f \in C_0^\infty(\RR^d)$, then $\FT(f)$ extend to an entire holomorphic function on $\CC^d$.
 \end{theorem}
+
+\subsection{The Schwartz Space Theory}
+\begin{principle}
+  The Schwartz space or the space of functions of rapid decrease is defined as
+  \begin{equation*}
+    \Sch(\RR^d) = \{f \in C^\infty(\RR^d): \sup_{x \in \RR^d} |x^\alpha Dd^\beta f(x)| < \infty \text{ for all $\alpha, \beta$}\}
+  \end{equation*}
+\end{principle}
+
+\begin{proposition}
+  One has that
+  \begin{equation*}
+    C_0^\infty(\RR^d) \subsetneqq \Sch \subsetneqq L^1(\RR^d) \cap L^\infty(\RR^d)
+  \end{equation*}
+  thus also $\Sch \subset L^p(\RR^d)$ for all $1 \leq p \leq \infty$.
+\end{proposition}
+
+
+\begin{principle}
+  Given $n=0,1,2,\dots$ we define for $\phi \in \Sch$
+  \begin{equation*}
+    \rho_n(\phi) = \sup_{|\alpha| \leq n}\sup_x (1 + |x|^2)^{n/2} |D^\alpha \phi(x)|
+  \end{equation*}
+\end{principle}
+
+\begin{proposition}
+  The Schawartz class $\Sch$ is a complete metric space where the $\{\rho_n\}_{n=0}^\infty$ generate its topology through the metric
+  \begin{equation*}
+    d(\phi_1,\phi_2) = \sum_{n=0}^\infty 2^{-n} \frac{\rho_n(\phi_1 - \phi_2)}{1 + \rho_n(\phi_1 - \phi_2)}
+  \end{equation*}
+\end{proposition}
 \newpage
 
 % ------------------------------------------------------------------------------
