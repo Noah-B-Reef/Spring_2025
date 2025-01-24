@@ -1,0 +1,64 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+
+
+\course{CSE 389D} 	
+\coursetitle{Mathematical Modelling}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{1}   
+\lecturedate{}    
+\input{commands.tex}
+
+% Insert your name here!
+\scribe{Student Name: Noah Reef}
+\newcommand{\rb}{\bold{r}}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\section*{Problem 2}
+\subsection*{Part a}
+\begin{equation*}
+  L(x, \dot{x}, t) = T - V = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2
+\end{equation*}
+\subsection*{Part b}
+Using the Euler-lagrange equation, we have:
+\begin{equation*}
+  \frac{\partial L}{\partial x} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = -kx - m \ddot{x} = 0
+\end{equation*}
+solving the differential equation above gives the general solution,
+\begin{equation*}
+  x(t) = c_2 \sin\left(\omega t\right) + c_1 \cos\left(\omega t\right)
+\end{equation*}
+where $\omega = \sqrt{\frac{k}{m}}$. Then we see with boundary equations that
+\begin{align*}
+  x(0) &= c_1 = x_1 \\
+  x(\tau) &= c_2 \sin\left(\omega \tau\right) + x_1 \cos\left(\omega \tau\right) = x_2
+\end{align*}
+solving for $c_2$ gives
+\begin{equation*}
+  c_2 = \frac{x_2 - x_1 \cos\left(\omega \tau\right)}{\sin\left(\omega \tau\right)}
+\end{equation*}
+since $\tau \neq \frac{n\pi}{\omega}$, we have that $\sin(\omega \tau) \neq 0$. 
+
+\subsection*{Part c}
+To solve for the action $S$, we have that
+\begin{align*}
+  S &= \int_0^\tau L(x, \dot{x}, t) dt \\
+    &= \int_0^\tau \left(\frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2\right) dt \\
+    &= \frac{1}{2}m\int_0^\tau \dot{x}^2 - \omega^2 x^2 \, dt \\ 
+    &= \frac{1}{2}m\int_0^\tau (G\omega \cos(\omega t) - \omega x_1 \sin(\omega t))^2 - \omega^2 (x_1 \cos(\omega t) + G\sin(\omega t))^2 \, dt \\
+    &= \frac{1}{2}m \int_0^\tau (G^2\omega^2 - \omega^2x_1^2) \cos^2(\omega t) - 4G\omega^2x_1 \sin(\omega t) \cos(\omega t) + (\omega^2x_1^2 - G^2\omega^2) \sin^2(\omega t) \, dt \\
+    &= \frac{1}{2}m(G^2\omega^2 - \omega^2 x_1^2) \left[\frac{2\omega \tau + \sin(2\omega \tau)}{4\omega}\right] + \frac{1}{2}m(\omega^2x_1^2 - G^2\omega^2) \left[\frac{2\omega \tau - \sin(2\omega \tau)}{4\omega}\right] - 2Gm\omega^2x_1 \left[\frac{\sin^2(\omega \tau)}{2\omega}\right] \\ 
+    &= \frac{m}{4\omega} \left[G^2\omega^2 \sin(2\omega \tau) - \omega^2 x_1^2 \sin(2\omega \tau) - 4G\omega^2x_1 \sin^2(\omega \tau)\right]
+\end{align*}
+where $G = \frac{x_2 - x_1 \cos\left(\omega \tau\right)}{\sin\left(\omega \tau\right)}$. Now substituting $G$ into the equation above gives
+\begin{align*}
+  S &= \frac{m}{4\omega} \left[\frac{(x_2 - x_1 \cos(\omega \tau))^2}{\sin(\omega \tau)} - \omega^2 x_1^2 \sin(2\omega \tau) - 4(x_2 - x_1 \cos(\omega \tau))\omega^2x_1 \sin(\omega \tau)\right] \\
+    &= \frac{m}{4\omega} \left[\frac{x_2^2}{\sin(\omega \tau)} - \frac{2x_1x_2 (\cos^2(\omega\tau) + 2 \omega^2 \sin^2(\omega \tau))}{\sin(\omega \tau)} + \frac{x_1^2 (\cos^2(\omega \tau) + 2\omega^2 \sin^2(\omega \tau))}{\sin(\omega \tau)}\right] \\
+    &= \frac{m}{4\omega \sin(\omega \tau)} (x_2 - x_1(\cos^2(\omega \tau) + 2\omega^2 \sin^2(\omega \tau))x_2)^2
+\end{align*}
+\end{document}
