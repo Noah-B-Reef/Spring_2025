@@ -1,7 +1,7 @@
 \documentclass[12pt]{report}
 \usepackage{scribe,graphicx,graphics}
 
-
+\usepackage{siunitx}
 \course{CSE 389D} 	
 \coursetitle{Mathematical Modelling}	
 \semester{Spring 2025}
@@ -50,15 +50,43 @@ To solve for the action $S$, we have that
   S &= \int_0^\tau L(x, \dot{x}, t) dt \\
     &= \int_0^\tau \left(\frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2\right) dt \\
     &= \frac{1}{2}m\int_0^\tau \dot{x}^2 - \omega^2 x^2 \, dt \\ 
-    &= \frac{1}{2}m\int_0^\tau (G\omega \cos(\omega t) - \omega x_1 \sin(\omega t))^2 - \omega^2 (x_1 \cos(\omega t) + G\sin(\omega t))^2 \, dt \\
-    &= \frac{1}{2}m \int_0^\tau (G^2\omega^2 - \omega^2x_1^2) \cos^2(\omega t) - 4G\omega^2x_1 \sin(\omega t) \cos(\omega t) + (\omega^2x_1^2 - G^2\omega^2) \sin^2(\omega t) \, dt \\
-    &= \frac{1}{2}m(G^2\omega^2 - \omega^2 x_1^2) \left[\frac{2\omega \tau + \sin(2\omega \tau)}{4\omega}\right] + \frac{1}{2}m(\omega^2x_1^2 - G^2\omega^2) \left[\frac{2\omega \tau - \sin(2\omega \tau)}{4\omega}\right] - 2Gm\omega^2x_1 \left[\frac{\sin^2(\omega \tau)}{2\omega}\right] \\ 
-    &= \frac{m}{4\omega} \left[G^2\omega^2 \sin(2\omega \tau) - \omega^2 x_1^2 \sin(2\omega \tau) - 4G\omega^2x_1 \sin^2(\omega \tau)\right]
 \end{align*}
-where $G = \frac{x_2 - x_1 \cos\left(\omega \tau\right)}{\sin\left(\omega \tau\right)}$. Now substituting $G$ into the equation above gives
+Now notice that
 \begin{align*}
-  S &= \frac{m}{4\omega} \left[\frac{(x_2 - x_1 \cos(\omega \tau))^2}{\sin(\omega \tau)} - \omega^2 x_1^2 \sin(2\omega \tau) - 4(x_2 - x_1 \cos(\omega \tau))\omega^2x_1 \sin(\omega \tau)\right] \\
-    &= \frac{m}{4\omega} \left[\frac{x_2^2}{\sin(\omega \tau)} - \frac{2x_1x_2 (\cos^2(\omega\tau) + 2 \omega^2 \sin^2(\omega \tau))}{\sin(\omega \tau)} + \frac{x_1^2 (\cos^2(\omega \tau) + 2\omega^2 \sin^2(\omega \tau))}{\sin(\omega \tau)}\right] \\
-    &= \frac{m}{4\omega \sin(\omega \tau)} (x_2 - x_1(\cos^2(\omega \tau) + 2\omega^2 \sin^2(\omega \tau))x_2)^2
+  \int_0^\tau \dot{x}^2 \, dt &= x\dot{x}\Big|_0^\tau - \int_0^\tau x\ddot{x} \, dt 
 \end{align*}
+and since $\ddot{x} = -\omega^2 x$, we have that
+\begin{equation*}
+  \int_0^\tau \dot{x}^2 \, dt = x\dot{x}\Big|_0^\tau + \omega^2 \int_0^\tau x^2 \, dt
+\end{equation*}
+Thus, we have that
+\begin{equation*}
+  S = \frac{1}{2}m\left(x\dot{x}\Big|_0^\tau + \omega^2 \int_0^\tau x^2 \, dt - \omega^2 \int_0^\tau x^2 \, dt \right)
+\end{equation*}
+thus
+\begin{equation*}
+  S = \frac{1}{2}m\left(x\dot{x}\Big|_0^\tau\right)
+\end{equation*}
+to solve the inside term we have that
+\begin{align*}
+  x\dot{x} &= \left(c_2 \sin(\omega t) + x_1 \cos(\omega t)\right) (\omega c_2 \cos(\omega t) - x_1 \omega \sin(\omega t)) 
+\end{align*}
+now evaluating at $\tau$ and $0$ gives
+\begin{align*}
+  x\dot{x}\Big|_0^\tau &= \left(c_2 \sin(\omega \tau) + x_1 \cos(\omega \tau)\right) (\omega c_2 \cos(\omega \tau) - x_1 \omega \sin(\omega \tau))-  x_1\omega c_2 \\
+                       &= \left(\frac{x_2 - x_1\cos(\omega \tau)}{\sin(\omega \tau)} \sin(\omega \tau) + x_1\cos(\omega \tau)\right) \left(\frac{\omega x_2\cos(\omega \tau)-\omega x_1 \cos^2(\omega \tau)}{\sin(\omega \tau)} - x_1 \omega \sin(\omega \tau)\right) - \dots \\
+                       &= \frac{\omega x_2^2 \cos(\omega \tau) - \omega x_2x_1}{\sin(\omega \tau)} - \frac{\omega x_1x_2 - \omega x_1^2 \cos(\omega \tau)}{\sin(\omega \tau)} \\
+                       &= \frac{\omega}{\sin(\omega \tau)}(-2x_1x_2 + (x_1^2 + x_2^2)\cos(\omega \tau))
+\end{align*}
+thus 
+\begin{equation*}
+  S = \frac{m\omega}{2\sin(\omega \tau)}(-2x_1x_2 + (x_1^2 + x_2^2)\cos(\omega \tau))
+\end{equation*}
+
+\subsection*{Part d}
+To write the action $S(x,\tau)$, we set $x_2 = x$ and $x_1 = 0$ to get 
+\begin{equation*}
+  S(x,\tau) = \frac{m\omega}{2\sin(\omega \tau)}(-2x + x^2\cos(\omega \tau))
+\end{equation*}
+to solve for the action of a silicon atom, with mass $m_{\text{Si}} = 4.66 \times 10^{-26} \si{kg}$, vibrating at frequecy $\omega = 15\si{THz}$ and amplitude $x = a_0$ and a time $\tau = \pi/(4\omega)$
 \end{document}

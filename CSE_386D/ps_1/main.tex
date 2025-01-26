@@ -92,10 +92,10 @@ where $C$ is some constant. However as $n \to \infty$ we see that
                                    &\geq (2\pi)^{-d/2}\int_{[0,1]^d}\frac{|\sin(nx)\sin(x)|}{|x^2|} \, dx \\
                                    &\geq (2\pi)^{-d/2}\frac{2}{\pi} \int_{[0,1]^d} \left|\frac{\sin(nx)}{x}\right| \, dx  \to \infty
 \end{align*}
-which contradicts our assumption that $\FT^{-1}$ is bounded and hence $\FT$ is not surjective. Since $\FT: \mathcal{S} \to \mathcal{S}$ is a bounded linear map that is one-to-one and onto, such that $C_0^\infty(\R^d) \subsetneqq \mathcal{S} \subsetneqq L^1(\mathbb{R}^d)$ then we see that for $\phi \in C_0^\infty(\R^d)$ we have that $\FT^{-1}(\phi)$ exists and is in $L^1(\R^d)$. All there is left to show is that $C_0^\infty(\R^d)$ is dense in $C_v(\R^d)$. Consider $g \in C_v(\R^d)$,letting $\varphi_\epsilon$ be an approximation to the identity, defined as
+which contradicts our assumption that $\FT^{-1}$ is bounded and hence $\FT$ is not surjective. Since $\FT: \mathcal{S} \to \mathcal{S}$ is a bounded linear map that is one-to-one and onto, such that $C_0^\infty(\R^d) \subsetneqq \mathcal{S} \subsetneqq L^1(\mathbb{R}^d)$ then we see that for $\phi \in C_0^\infty(\R^d)$ we have that $\FT^{-1}(\phi)$ exists and is in $L^1(\R^d)$. All there is left to show is that $C_0^\infty(\R^d)$ is dense in $C_v(\R^d)$. Recall by the Stone-Wierstrauss theorem we have that $C_0^\infty$ is dense in $C_0$, and we can clearly see that $C_0 \subseteq C_v$. Next let $g \in C_v$ then we see that if $\varphi_\epsilon$ is an approximation to the identity, given by
 \begin{equation*}
   \varphi_\epsilon(x) = \epsilon^{-d}\varphi(x/\epsilon)
 \end{equation*}
-with $\epsilon = 1/n$ and $\varphi \in C_0^\infty(\R^d)$, then we have that $g * \varphi_\epsilon \in C_0^\infty(\R^d)$ and $g * \varphi_\epsilon \to g$ in $C_v(\R^d)$ as $n \to \infty$ and hence $C_0^\infty(\R^d)$ is dense in $C_v(\R^d)$. 
+for $\varphi \in \mathcal{D}$ with $\int_{\R^d} \varphi(x) \, dx = 1$. Then we see that $g * \varphi_\epsilon \in C_0$ and $g * \varphi_\epsilon \to g$ in $C_v$ as $\epsilon \to 0$. Hence $C_0$ is dense in $C_v$ and thus $C_0^\infty$ is dense in $C_v$.
 \end{document}
 
