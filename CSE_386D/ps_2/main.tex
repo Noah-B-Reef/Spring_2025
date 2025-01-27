@@ -1,19 +1,64 @@
 \documentclass[12pt]{report}
 \usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
 
-
-\course{Course Name} 	
-\coursetitle{Course Title}	
-\semester{Semester}
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
 \lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
 \lecturetitle{Problem Set}
-\lecturenumber{}   
+\lecturenumber{2}   
 \lecturedate{}    
 \input{commands.tex}
 
 % Insert your name here!
-\scribe{Student Name: Name}
+\scribe{Student Name: Noah Reef}
 
 \begin{document}
 \maketitle
+
+\section*{Problem 6.6}
+Consider the function $f(x) = \frac{\sin(|x|)}{|x|}$, then we see that
+\begin{equation*}
+    \int_{\R^d} \left|\frac{\sin(|x|)}{|x|}\right|^2 \, dx  = \pi < \infty
+\end{equation*}
+but 
+\begin{equation*}
+    \int_{\R^d} \left|\frac{\sin(|x|)}{|x|}\right| \, dx = \infty
+\end{equation*}
+thus $f \in L^2(\R^d)$ but $f \not\in L^1(\R^d)$, and we see that
+\begin{align*}
+    \int_{\R^d} \left|\hat{f}(\xi)\right| \, d\xi &= \int_{\R^d} |\mathbbm{1}_1| \,dx = 2 < \infty
+\end{align*}
+thus $\hat{f} \in L^1(\R^d)$. [INSERT THE "UNDER WHAT CIRCUMSTANCES THIS OCCURS"...]
+
+\section*{Problem 6.7}
+Let $f \in L^p(\R^d)$ for $1 \leq p \leq 2$.
+\subsection*{Part a}
+Let $A = \{|f| > 1\}$ and define $f_1 := f\chi_A$  and $f_2:= f - f_1$, then clearly $f = f_1 + f_2$, and we have that 
+\begin{equation*}
+    \norm{f_1}_1 = \int_{\R^d} |f(x) \cdot \chi_A(x)| \, dx = \int_A |f(x)| \, dx \leq \int_A |f(x)|^p \, dx = \norm{f}_p^p < \infty
+\end{equation*}
+and, noticing that $f_2 = f\chi_{\R^d \setminus A}$, we have 
+\begin{equation*}
+    \norm{f_2}_2^2 = \int_{\R^d} |f(x) \cdot \chi_{\R^d \setminus A}(x)|^2 \, dx = \int_{\R^d \setminus A} |f(x)|^2 \, dx \leq \int_{\R^d \setminus A} |f(x)|^p \, dx = \norm{f}_p^p < \infty
+\end{equation*}
+and thus we see that $f_1 \in L^1(\R^d)$ and $f_2 \in L^2(\R^d)$.
+\subsection*{Part b}
+Define $\hat{f} = \hat{f}_1 + \hat{f}_2$, then we see that
+\begin{align*}
+    \hat{f} &= \widehat{(f_1 + f_2)} \\
+            &= (2\pi)^{-d/2} \int_{\R^d} (f_1(x) + f_2(x)) e^{-ix \cdot \xi}\, dx \\
+\end{align*}
+which (JUSTIFY)
+\begin{align*}
+    (2\pi)^{-d/2} \int_{\R^d} (f_1(x) + f_2(x)) e^{-ix \cdot \xi}\, dx &= (2\pi)^{-d/2} \int_{\R^d} f_1(x) e^{-ix \cdot \xi}\, dx + (2\pi)^{-d/2} \int_{\R^d} f_2(x) e^{-ix \cdot \xi}\, dx \\
+    &= \hat{f}_1 + \hat{f}_2
+\end{align*}
+thus the definition above is independent of the choice of $f_1$ and $f_2$, thus is well-defined.
+
+\section*{Problem 6.8}
+
 \end{document}
