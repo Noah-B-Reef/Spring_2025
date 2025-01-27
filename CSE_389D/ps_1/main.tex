@@ -21,15 +21,70 @@
 \section*{Problem 1}
 \subsection*{Part a}
 \begin{equation*}
-    L(
+    L(\rb,\dot{\rb},t) = \frac{1}{2}m\dot{\rb}^2
 \end{equation*}
+\subsection*{Part b}
+Using Euler-Lagrange equation, we have:
+\begin{equation*}
+    \frac{\partial L}{\partial \rb} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{\rb}}\right) =  -m\ddot{\rb} = 0
+\end{equation*}
+this gives us the general solution
+\begin{equation*}
+    \rb(t) = c_2 t + c_1
+\end{equation*}
+using the boundary conditions, $\rb(t_1) = \rb_1$ and $\rb(t_2) = \rb_2$ with $t_2 < t_1$ we get that
+\begin{align*}
+    \rb(t_1) &= \bold{c}_2t_1 + \bold{c}_1 = \rb_1 &\implies \bold{c}_1 = \rb_1 - \bold{c}_2t_1 \\
+    \rb(t_2) &= \bold{c}_2 t_2 + (\rb_1 - \bold{c}_2t_1) = \rb_2 &\implies \bold{c_2} = \frac{\rb_2 - \rb_1}{(t_2 - t_1)}
+\end{align*}
+thus the particular solution is
+\begin{equation*}
+    \rb(t) = \left(\frac{\rb_2 - \rb_1}{t_2-t_1}\right)(t-t_1) + \rb_1
+\end{equation*}
+\subsection*{Part c}
+Recall that the action is given by
+\begin{align*}
+    S[\rb_1,\rb_2; \rb(t)] &= \int_{t_1}^{t_2} L \, dt \\
+                           &= \frac{m}{2}\left[\si{kg}\right]\int_{t_1}^{t_2} \dot{\rb}^2 \left[\si{m^2\per s^2}\right] \, dt \\
+                           &= \frac{m}{2}\left[\si{kg}\right] \int_{t_1}^{t_2} \left(\frac{\rb_2 - \rb_1}{t_2 - t_1}\right)^2 \left[\si{m^2\per s^2}\right] \, dt \\
+                           &= \frac{m}{2}\left[\si{kg}\right]  \left(\frac{\rb_2 - \rb_1}{t_2 - t_1}\right)^2 (t_2 - t_1) \left[\si{m^2\per s}\right]\\
+                           &= \frac{m}{2}\frac{(\rb_2 - \rb_1)^2}{t_2 - t_1}\left[\si{kg \cdot m^2\per s}\right]\\
+                           &= \frac{m}{2}\frac{(\rb_2 - \rb_1)^2}{t_2 - t_1}\left[\si{J \cdot s}\right]
+\end{align*}
+
+\subsection*{Part d}
+\begin{align*}
+    S_{\text{electron}} &= \frac{9.11 \times 10^{-31}}{2}\frac{(1 \times 10^{-9} \si{m})^2}{1 \times 10^{-9}\si{s}} = 4.55 \times 10^{-40} = 4.31\times 10^{-6} \hbar \\
+    S_{\text{Earth}} &= \frac{5.97 \times 10^{24} }{2}\frac{(1 \times 10^{-9} \si{m})^2}{1 \times 10^{-9}\si{s}} = 2.985 \times 10^{15} = 2.829 \times 10^{49} \hbar
+\end{align*}
+
+\subsection*{Part e}
+Considering the family of trajectories given by
+\begin{equation*}
+    \rb_\lambda(t) = \rb_0(t) + \lambda \bold{c} \sin\left[\pi \frac{t-t_1}{t_2 - t_1}\right]
+\end{equation*}
+we compute the actions as
+\begin{align*}
+    S &= \frac{m}{2} \int_{t_1}^{t_2} \dot{\rb_\lambda}^2 \, dt \\
+      &= \frac{m}{2} \int_{t_1}^{t_2} \dot{\rb}_0(t)^2 + 2 \left(\frac{\pi \lambda}{t_2 -t_1}\right)\bold{c} \cdot \dot{\rb}_0(t) \cos\left(\pi \frac{t - t_1}{t_2 - t_1}\right) + \left(\frac{\pi \lambda \bold{c}}{t_2 -t_1}\right)^2 \cos^2\left(\pi \frac{t - t_1}{t_2 - t_1}\right) \\
+      &=  \frac{m}{2}\frac{(\rb_2 - \rb_1)^2}{t_2 - t_1} + 0 + \frac{m(\pi \lambda \bold{c})^2}{4(t_2-t_1)} \\
+      &= \frac{2m(\rb_2 - \rb_1)^2 + m(\pi\lambda \bold{c})^2}{4(t_2-t_1)}
+\end{align*}
+
+\subsection*{Part f}
+We consider the slightly perturbed trajectory from $\rb_0(t)$ by $\delta \lambda$, then we can clearly see that as $\delta \lambda \to 0$, then we have that
+\begin{equation*}
+    \lim_{\delta \lambda \to 0} \frac{m}{2}\frac{(\rb_2 - \rb_1)^2}{t_2 - t_1} + \frac{m(\pi \delta\lambda \bold{c})^2}{4(t_2-t_1)} = \frac{m}{2}\frac{(\rb_2 - \rb_1)^2}{t_2 - t_1} = S
+\end{equation*}
+which implies that $\delta S = 0$.
+
 \section*{Problem 2}
 \subsection*{Part a}
 \begin{equation*}
   L(x, \dot{x}, t) = T - V = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2
 \end{equation*}
 \subsection*{Part b}
-Using the Euler-lagrange equation, we have:
+Using the Euler-Lagrange equation, we have:
 \begin{equation*}
   \frac{\partial L}{\partial x} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = -kx - m \ddot{x} = 0
 \end{equation*}
@@ -90,7 +145,14 @@ thus
 \subsection*{Part d}
 To write the action $S(x,\tau)$, we set $x_2 = x$ and $x_1 = 0$ to get 
 \begin{equation*}
-  S(x,\tau) = \frac{m\omega}{2\sin(\omega \tau)}(-2x + x^2\cos(\omega \tau))
+  S(x,\tau) = \frac{m\omega}{2\sin(\omega \tau)}( x^2\cos(\omega \tau))
 \end{equation*}
 to solve for the action of a silicon atom, with mass $m_{\text{Si}} = 4.66 \times 10^{-26} \si{kg}$, vibrating at frequecy $\omega = 15\si{THz}$ and amplitude $x = a_0$ and a time $\tau = \pi/(4\omega)$
+\begin{align*}
+    S(x,\tau) &= \frac{(4.66 \times 10^{-26})(15\times 10^{12})}{2\sin(\pi/4)} ((5.29 \times 10^{-11})^2 \cos(\pi/4)) \\
+    &= 9.78 \times 10^{-34} \\
+    &= 9.27 \hbar
+\end{align*}
+
+
 \end{document}
