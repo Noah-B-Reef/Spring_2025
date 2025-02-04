@@ -3,6 +3,7 @@
 \usepackage{bbm}
 \usepackage{yhmath}
 \newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
 
 \course{CSE 386D} 	
 \coursetitle{Methods of Applied Mathematics II}	
@@ -32,7 +33,7 @@ thus $f \in L^2(\R^d)$ but $f \not\in L^1(\R^d)$, and we see that
 \begin{align*}
     \int_{\R^d} \left|\hat{f}(\xi)\right| \, d\xi &= \int_{\R^d} |\mathbbm{1}_1| \,dx = 2 < \infty
 \end{align*}
-thus $\hat{f} \in L^1(\R^d)$. [INSERT THE "UNDER WHAT CIRCUMSTANCES THIS OCCURS"...]
+thus $\hat{f} \in L^1(\R^d)$. This can happen for $L^2(\R^d)$ functions who are small but do not vanish, be in $L^1(\R^d)$, so that once under fourier transform do vanish towards infinity.
 
 \section*{Problem 6.7}
 Let $f \in L^p(\R^d)$ for $1 \leq p \leq 2$.
@@ -47,18 +48,84 @@ and, noticing that $f_2 = f\chi_{\R^d \setminus A}$, we have
 \end{equation*}
 and thus we see that $f_1 \in L^1(\R^d)$ and $f_2 \in L^2(\R^d)$.
 \subsection*{Part b}
-Define $\hat{f} = \hat{f}_1 + \hat{f}_2$, then we see that
+Define $\hat{f} = \hat{f}_1 + \hat{f}_2$, and suppose there exists $f_1,g_1 \in L^1(\R^d)$ and $f_2,g_2 \in L^2(\R^d)$ such that
+\begin{equation*}
+    \hat{f} = \hat{f}_1 + \hat{f}_2 = \hat{g}_1 + \hat{g}_2
+\end{equation*}
+then we have that
 \begin{align*}
-    \hat{f} &= \widehat{(f_1 + f_2)} \\
-            &= (2\pi)^{-d/2} \int_{\R^d} (f_1(x) + f_2(x)) e^{-ix \cdot \xi}\, dx \\
+    \widehat{f_1 - g_1} - \widehat{g_2 - f_2} = 0
 \end{align*}
-which (JUSTIFY)
-\begin{align*}
-    (2\pi)^{-d/2} \int_{\R^d} (f_1(x) + f_2(x)) e^{-ix \cdot \xi}\, dx &= (2\pi)^{-d/2} \int_{\R^d} f_1(x) e^{-ix \cdot \xi}\, dx + (2\pi)^{-d/2} \int_{\R^d} f_2(x) e^{-ix \cdot \xi}\, dx \\
-    &= \hat{f}_1 + \hat{f}_2
-\end{align*}
-thus the definition above is independent of the choice of $f_1$ and $f_2$, thus is well-defined.
+and since the fourier transform is injective we have that
+\begin{equation*}
+    f_1 - g_1 = g_2 - f_2
+\end{equation*}
+which implies that $f_1 = g_1$ and $f_2 = g_2$
 
 \section*{Problem 6.8}
+Let the field be complex and define $T: L^2(\R^d) \to L^2(\R^d)$ by
+\begin{equation*}
+    Tf(x) = \int e^{-|x-y|^2/2}f(y) \, dy 
+\end{equation*}
+We can see that by Plancherel's Theorem that
+\begin{equation*}
+    \inner{Tf}{f}_{L^2} = \int Tf(x) \overline{f(x)}\, dx = \int \widehat{Tf}(\xi) \overline{\hat{f}(\xi)} \, d\xi
+\end{equation*}
+let $h(x) = e^{-|x|^2/2}$ then we see that $Tf(x) = (f*h)(x)$ and hence
+\begin{equation*}
+    \widehat{Tf} = (2\pi)^{d/2} \hat{f}\hat{h}
+\end{equation*}
+and from exercise $6.2$, we have that
+\begin{equation*}
+    \hat{h}(\xi) = e^{-|\xi|^2/2}
+\end{equation*}
+thus 
+\begin{equation*}
+    \int \widehat{Tf}(\xi) \overline{\hat{f}(\xi)} \, d\xi = (2\pi)^{d/2} \int e^{-|\xi|^2/2} |\hat{f}(\xi)|^2 \, dx \geq 0
+\end{equation*}
+and we note that equality occurs only when $f = 0$. Thus $T$ is a positive operator. Next suppose there exists $f,g \in L^2(\R^d)$ such that $Tf = Tg$ but $g \neq f$. Then we see that 
+\begin{align*}
+    \widehat{(f * h)} &= \widehat{(f*g)} \\
+    (2\pi)^{d/2}\hat{h} \hat{f} &=(2\pi)^{d/2}\hat{h} \hat{g} \\
+    \hat{f} &= \hat{g}
+\end{align*}
+and since $\mathcal{F}: L^2(\R^d) \to L^2(\R^d)$ is one-to-one and onto that we have $f = g$, which contradicts our original assumption that $f \neq g$ and hence $T$ is injective. Additionally notice that if we have $g(x) = (2\pi)^{d/2} h$ then $\hat{g}(\xi) = (2\pi)^{d/2} h$ and hence for $T$ to be onto we need there to exist $f$ such that
+\begin{equation*}
+    (2\pi)^{d/2}h \hat{f} = (2\pi)^{d/2}h \implies f = 1
+\end{equation*}
+however $1 \not\in L^2(\R^d)$, thus $T$ is not surjective.
 
+\section*{Problem 6.14}
+Let $\varphi \in \mathcal{S}(\R^d)$, $\hat{\varphi}(0) = (2\pi)^{-d/2}$ and $\varphi_\epsilon = (1/\epsilon^d)\varphi\left(\frac{x}{\epsilon}\right)$. Notice that since $\hat{\varphi}(0) = (2\pi)^{-d/2}$, we have that
+\begin{equation*}
+    \hat{\varphi}(0) = (2\pi)^{-d/2}\int \varphi(x) \, dx = (2\pi)^{-d/2}
+\end{equation*}
+which implies that
+\begin{equation*}
+    \int \varphi(x) \, dx = 1
+\end{equation*}
+then for any $\phi \in \mathcal{S}$, we have that
+\begin{equation*}
+    \inner{\varphi_\epsilon}{\phi} = \int \varphi_\epsilon(x) \phi(x) \, dx = \int \phi(x) \frac{1}{\epsilon^d} \varphi(x/\epsilon) \, dx = \int \phi(\epsilon y) \varphi(y)\, dy
+\end{equation*}
+then by the Dominated Convergence Theorem, we have that as $\epsilon \to 0$ that
+\begin{equation*}
+    \int \phi(\epsilon y) \varphi(y)\, dy \to \phi(0) \int \varphi(y) \, dy = \phi(0) = \inner{\delta_0}{\phi}
+\end{equation*}
+thus 
+\begin{equation*}
+    \varphi_\epsilon \xrightarrow{\mathcal{S}'} \delta_0
+\end{equation*}
+and since the $\mathcal{F}: \mathcal{S}' \to \mathcal{S}'$ is continuous we have that
+\begin{equation*}
+    \hat{\varphi}_\epsilon \to \hat{\delta}_0 = (2\pi)^{-d/2}
+\end{equation*}
+Note that these converge in the sense of tempered distributions.
+
+\section*{Problem 6.15}
+If we consider the function with height $f(x) = e^{x^2}$ centered at $x = 1,2,3,\dots$ with width $1/x!$, and $0$ otherwise. We clearly see that there exists $x \in \R^d$ such that $|f(x)| > P(x)$ for any polynomial $P$ and $f \in L^1(\R^d)$. Then we have that for any $\phi \in \mathcal{S}$, we have that
+\begin{equation*}
+    \left| \int \phi(x)f(x) \, dx\right| \leq \norm{f}_{L^1}\norm{\phi}_{L^\infty} \leq C
+\end{equation*}
+thus by Theorem 6.31, we have that $f$ is a distribution.
 \end{document}
