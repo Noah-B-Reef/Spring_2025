@@ -10,7 +10,7 @@
 \semester{Spring 2025}
 \lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
 \lecturetitle{Problem Set}
-\lecturenumber{2}   
+\lecturenumber{3}   
 \lecturedate{}    
 \input{commands.tex}
 
@@ -20,112 +20,263 @@
 \begin{document}
 \maketitle
 
-\section*{Problem 6.6}
-Consider the function $f(x) = \frac{\sin(|x|)}{|x|}$, then we see that
+\section*{Problem 6.16}
+Consider 
 \begin{equation*}
-    \int_{\R^d} \left|\frac{\sin(|x|)}{|x|}\right|^2 \, dx  = \pi < \infty
-\end{equation*}
-but 
-\begin{equation*}
-    \int_{\R^d} \left|\frac{\sin(|x|)}{|x|}\right| \, dx = \infty
-\end{equation*}
-thus $f \in L^2(\R^d)$ but $f \not\in L^1(\R^d)$, and we see that
-\begin{align*}
-    \int_{\R^d} \left|\hat{f}(\xi)\right| \, d\xi &= \int_{\R^d} |\mathbbm{1}_1| \,dx = 2 < \infty
-\end{align*}
-thus $\hat{f} \in L^1(\R^d)$. This can happen for $L^2(\R^d)$ functions who are small but do not vanish, be in $L^1(\R^d)$, so that once under fourier transform do vanish towards infinity.
-
-\section*{Problem 6.7}
-Let $f \in L^p(\R^d)$ for $1 \leq p \leq 2$.
-\subsection*{Part a}
-Let $A = \{|f| > 1\}$ and define $f_1 := f\chi_A$  and $f_2:= f - f_1$, then clearly $f = f_1 + f_2$, and we have that 
-\begin{equation*}
-    \norm{f_1}_1 = \int_{\R^d} |f(x) \cdot \chi_A(x)| \, dx = \int_A |f(x)| \, dx \leq \int_A |f(x)|^p \, dx = \norm{f}_p^p < \infty
-\end{equation*}
-and, noticing that $f_2 = f\chi_{\R^d \setminus A}$, we have 
-\begin{equation*}
-    \norm{f_2}_2^2 = \int_{\R^d} |f(x) \cdot \chi_{\R^d \setminus A}(x)|^2 \, dx = \int_{\R^d \setminus A} |f(x)|^2 \, dx \leq \int_{\R^d \setminus A} |f(x)|^p \, dx = \norm{f}_p^p < \infty
-\end{equation*}
-and thus we see that $f_1 \in L^1(\R^d)$ and $f_2 \in L^2(\R^d)$.
-\subsection*{Part b}
-Define $\hat{f} = \hat{f}_1 + \hat{f}_2$, and suppose there exists $f_1,g_1 \in L^1(\R^d)$ and $f_2,g_2 \in L^2(\R^d)$ such that
-\begin{equation*}
-    \hat{f} = \hat{f}_1 + \hat{f}_2 = \hat{g}_1 + \hat{g}_2
-\end{equation*}
-then we have that
-\begin{align*}
-    \widehat{f_1 - g_1} - \widehat{g_2 - f_2} = 0
-\end{align*}
-and since the fourier transform is injective we have that
-\begin{equation*}
-    f_1 - g_1 = g_2 - f_2
-\end{equation*}
-which implies that $f_1 = g_1$ and $f_2 = g_2$
-
-\section*{Problem 6.8}
-Let the field be complex and define $T: L^2(\R^d) \to L^2(\R^d)$ by
-\begin{equation*}
-    Tf(x) = \int e^{-|x-y|^2/2}f(y) \, dy 
-\end{equation*}
-We can see that by Plancherel's Theorem that
-\begin{equation*}
-    \inner{Tf}{f}_{L^2} = \int Tf(x) \overline{f(x)}\, dx = \int \widehat{Tf}(\xi) \overline{\hat{f}(\xi)} \, d\xi
-\end{equation*}
-let $h(x) = e^{-|x|^2/2}$ then we see that $Tf(x) = (f*h)(x)$ and hence
-\begin{equation*}
-    \widehat{Tf} = (2\pi)^{d/2} \hat{f}\hat{h}
-\end{equation*}
-and from exercise $6.2$, we have that
-\begin{equation*}
-    \hat{h}(\xi) = e^{-|\xi|^2/2}
-\end{equation*}
-thus 
-\begin{equation*}
-    \int \widehat{Tf}(\xi) \overline{\hat{f}(\xi)} \, d\xi = (2\pi)^{d/2} \int e^{-|\xi|^2/2} |\hat{f}(\xi)|^2 \, dx \geq 0
-\end{equation*}
-and we note that equality occurs only when $f = 0$. Thus $T$ is a positive operator. Next suppose there exists $f,g \in L^2(\R^d)$ such that $Tf = Tg$ but $g \neq f$. Then we see that 
-\begin{align*}
-    \widehat{(f * h)} &= \widehat{(f*g)} \\
-    (2\pi)^{d/2}\hat{h} \hat{f} &=(2\pi)^{d/2}\hat{h} \hat{g} \\
-    \hat{f} &= \hat{g}
-\end{align*}
-and since $\mathcal{F}: L^2(\R^d) \to L^2(\R^d)$ is one-to-one and onto that we have $f = g$, which contradicts our original assumption that $f \neq g$ and hence $T$ is injective. Additionally notice that if we have $g(x) = (2\pi)^{d/2} h$ then $\hat{g}(\xi) = (2\pi)^{d/2} h$ and hence for $T$ to be onto we need there to exist $f$ such that
-\begin{equation*}
-    (2\pi)^{d/2}h \hat{f} = (2\pi)^{d/2}h \implies f = 1
-\end{equation*}
-however $1 \not\in L^2(\R^d)$, thus $T$ is not surjective.
-
-\section*{Problem 6.14}
-Let $\varphi \in \mathcal{S}(\R^d)$, $\hat{\varphi}(0) = (2\pi)^{-d/2}$ and $\varphi_\epsilon = (1/\epsilon^d)\varphi\left(\frac{x}{\epsilon}\right)$. Notice that since $\hat{\varphi}(0) = (2\pi)^{-d/2}$, we have that
-\begin{equation*}
-    \hat{\varphi}(0) = (2\pi)^{-d/2}\int \varphi(x) \, dx = (2\pi)^{-d/2}
-\end{equation*}
-which implies that
-\begin{equation*}
-    \int \varphi(x) \, dx = 1
+    u = \sum_{k=1}^\infty a_k \delta_k
 \end{equation*}
 then for any $\phi \in \mathcal{S}$, we have that
+\begin{align*}
+    \inner{u}{\phi} = \int \left(\sum_{k=1}^\infty a_k \delta_k(x) \right) \phi(x) \, dx &= \sum_{k=1}^\infty a_k \int \delta_k(x) \phi(x) \, dx \\
+    &= \sum_{k=1}^\infty a_k \inner{\delta_k}{\phi} \\
+    &= \sum_{k=1}^\infty a_k \phi(k)
+\end{align*}
+Note that since $\phi \in \mathcal{S}$, we have that 
 \begin{equation*}
-    \inner{\varphi_\epsilon}{\phi} = \int \varphi_\epsilon(x) \phi(x) \, dx = \int \phi(x) \frac{1}{\epsilon^d} \varphi(x/\epsilon) \, dx = \int \phi(\epsilon y) \varphi(y)\, dy
+    |u(\phi)| \leq \sum_{k=1}^\infty |a_k \phi(k)| \leq \norm{\phi}_\infty \sum_{k=1}^\infty |a_k|
 \end{equation*}
-then by the Dominated Convergence Theorem, we have that as $\epsilon \to 0$ that
-\begin{equation*}
-    \int \phi(\epsilon y) \varphi(y)\, dy \to \phi(0) \int \varphi(y) \, dy = \phi(0) = \inner{\delta_0}{\phi}
-\end{equation*}
-thus 
-\begin{equation*}
-    \varphi_\epsilon \xrightarrow{\mathcal{S}'} \delta_0
-\end{equation*}
-and since the $\mathcal{F}: \mathcal{S}' \to \mathcal{S}'$ is continuous we have that
-\begin{equation*}
-    \hat{\varphi}_\epsilon \to \hat{\delta}_0 = (2\pi)^{-d/2}
-\end{equation*}
-Note that these converge in the sense of tempered distributions.
+and hence require that series of $a_k$ to converge absolutely for $u$ to be in $\mathcal{S}'$.
 
-\section*{Problem 6.15}
-If we consider the function with height $f(x) = e^{x^2}$ centered at $x = 1,2,3,\dots$ with width $1/x!$, and $0$ otherwise. We clearly see that there exists $x \in \R^d$ such that $|f(x)| > P(x)$ for any polynomial $P$ and $f \in L^1(\R^d)$. Then we have that for any $\phi \in \mathcal{S}$, we have that
+\section*{Problem 6.17}
+Let $f \in L^2(\R)$ and define the Hilbert transform of $f$ by
 \begin{equation*}
-    \left| \int \phi(x)f(x) \, dx\right| \leq \norm{f}_{L^1}\norm{\phi}_{L^\infty} \leq C
+    Hf = \text{PV}\left(\frac{1}{\pi x}\right)  f(x)
 \end{equation*}
-thus by Theorem 6.31, we have that $f$ is a distribution.
+\subsection*{Part a}
+Recall that 
+\begin{equation*}
+    D \hat{f}(\xi) = -i \mathcal{F}(xf(x))
+\end{equation*}
+and hence we have that
+\begin{equation*}
+    \mathcal{F}(x \text{PV}(1/x)) = i D \mathcal{F}(\text{PV}(1/x))
+\end{equation*}
+note that $x\text{PV}(1/x) = 1$ and $\mathcal{F}(1) = \sqrt{2\pi} \delta_0$ and therefore
+\begin{equation*}
+     D \mathcal{F}(\text{PV}(1/x)) = -i\sqrt{2\pi} \delta_0
+\end{equation*}
+Thus we have that $\mathcal{F}(\text{PV}(1/x))$ is a constant away from $\xi = 0$, since $\delta_0(\xi) = 0$, and since $\text{PV}(1/x)$ is an odd function, we have that 
+\begin{equation*}
+    \mathcal{F}(\text{PV}(1/x)) = C\text{sgn}(\xi)
+\end{equation*}
+and hence
+\begin{equation*}
+    D( C\text{sgn}(\xi)) = 2C\delta_0(\xi) = -i\sqrt{2\pi} \delta_0
+\end{equation*}
+thus $C = -i\sqrt{\pi/2}$ and hence $\mathcal{F}(\text{PV}(1/x)) = -i\sqrt{\pi/2} \text{ sgn}(\xi)$
+\subsection*{Part b}
+Here we see that
+\begin{align*}
+    \mathcal{F}(Hf) = \mathcal{F}(\text{PV}(1/\pi x) * f) &= \sqrt{2\pi} \frac{1}{\pi}\mathcal{F}(\text{PV}(1/x))\mathcal{F}(f) \\
+    &= \frac{\sqrt{2\pi}}{\pi}\left(-i \sqrt{\frac{\pi}{2}} \text{sgn}(x)\right) \mathcal{F}(f) \\
+    &= -i \text{sgn}(x) \mathcal{F}(f)
+\end{align*}
+and then we have that
+\begin{equation*}
+    \norm{\mathcal{F}(Hf)}_2 = \norm{Hf}_2 = \norm{\mathcal{F}(f)}_2 = \norm{f}_2
+\end{equation*}
+and we have that
+\begin{align*}
+    \mathcal{F}(H(Hf)) &= \frac{1}{\pi^2} \mathcal{F}(\text{PV}(1/x) * \text{PV}(1/x) * f) \\
+    &= \frac{2\pi}{\pi^2}\left[-i \sqrt{\frac{\pi}{2}} \text{sgn}(\xi)\right]^2 \mathcal{F}(f) \\
+    &= -\mathcal{F}(f)
+\end{align*}
+then by taking the inverse fourier transform to both sides yields
+\begin{equation*}
+    H(Hf) = -f
+\end{equation*}
+
+\section*{Problem 6.23}
+Consider the Telegrapher's equation
+\begin{equation*}
+    u_{tt} + u_t + u = c^2u_{xx} \quad \text{ for $x \in \R$ and $t > 0$}
+\end{equation*}
+where also
+\begin{equation*}
+    u(x,0) = f(x) \quad \text{and} \quad u_t(x,0) = g(x)
+\end{equation*}
+are given in $L^2(\R)$
+\subsection*{Part a}
+We can solve the above by applying the Fourier Transform (w.r.t x) to both sides yielding
+\begin{equation*}
+    \frac{\partial^2}{\partial t^2} \hat{u}(\xi,t) + \frac{\partial }{\partial t} \hat{u}(\xi,t) + \hat{u}(\xi,t) = -c^2\xi^2 \hat{u}(\xi,t)
+\end{equation*}
+which is a second-order ordinary differential equation, in which solving yields
+\begin{equation*}
+    \hat{u}(\xi,t) = e^{-t/2}\left(A(\xi) e^{i\lambda t} + B(\xi) e^{-i\lambda t}\right)
+\end{equation*}
+where 
+\begin{equation*}
+    \lambda = \frac{\sqrt{4c^2\xi^2 + 3}}{2}
+\end{equation*}
+we then solve for the particular solution using the initial conditions above,
+\begin{align*}
+    A(\xi) + B(\xi) &= \hat{f}(\xi) \\
+    -\frac{1}{2}(A(\xi) + B(\xi)) + i\lambda (A(\xi) - B(\xi)) &= \hat{g}(\xi)
+\end{align*} 
+and solving we get
+\begin{align*}
+    A(\xi) = \frac{1}{2}\left(\hat{f} + \frac{\hat{g} + \frac{1}{2}\hat{f}}{i\lambda}\right) \quad \text{and} \quad B(\xi) = \frac{1}{2}\left(\hat{f} - \frac{\hat{g} + \frac{1}{2}\hat{f}}{i\lambda}\right)
+\end{align*}
+and by taking the inverse fourier transform we get that,
+\begin{align*}
+    u(x,t) &= \frac{e^{-t/2}}{\sqrt{2\pi}} \int_{-\infty}^\infty \left[A(\xi)e^{i\lambda t} + B(\xi)e^{-i\lambda t}\right] e^{i\xi x} d\xi \\
+    &= \frac{e^{-t/2}}{\sqrt{2\pi}} \int_{-\infty}^\infty \left[\frac{1}{2}\left(\hat{f} + \frac{\hat{g} + \frac{1}{2}\hat{f}}{i\lambda}\right)e^{i\lambda t} + \frac{1}{2}\left(\hat{f} - \frac{\hat{g} + \frac{1}{2}\hat{f}}{i\lambda}\right)e^{-i\lambda t}\right]e^{i\xi x} d\xi \\
+    &= \frac{e^{-t/2}}{\sqrt{2\pi}} \int_{-\infty}^\infty \left[\frac{\hat{f}}{2}(e^{i\lambda t} + e^{-i\lambda t}) + \left( \frac{\hat{g} + \frac{1}{2}\hat{f}}{2i\lambda}\right)(e^{i\lambda t} - e^{-i\lambda t})\right]e^{i\xi x} d\xi \\
+    &= \frac{e^{-t/2}}{\sqrt{2\pi}} \int_{-\infty}^\infty \left[\hat{f}\cos(\lambda t) + \left( \frac{\hat{g} + \frac{1}{2}\hat{f}}{\lambda}\right)\sin(\lambda t)\right]e^{i\xi x} d\xi 
+\end{align*} 
+\subsection*{Part b}
+We'll define
+\begin{align*}
+    A(\xi,t) &= \hat{f}\cos(\lambda t) \\
+    B(\xi,t) &=  \left( \frac{\hat{g} + \frac{1}{2}\hat{f}}{\lambda}\right)\sin(\lambda t)
+\end{align*}
+then we see that
+\begin{equation*}
+    u_t = -\frac{e^{-t/2}}{2\sqrt{2\pi}} \int_{\infty}^\infty \left[A(\xi,t) + B(\xi,t)\right]e^{ix\xi} \, d\xi + \frac{e^{-t/2}}{\sqrt{2\pi}} \frac{\partial}{\partial t}\int_{\infty}^\infty \left[A(\xi,t) + B(\xi,t)\right]e^{ix\xi} \, d\xi
+\end{equation*}
+and 
+\begin{align*}
+    u_{tt} &= \frac{e^{-t/2}}{4\sqrt{2\pi}} \int_{\infty}^\infty \left[A(\xi,t) + B(\xi,t)\right]e^{ix\xi} \, d\xi + -\frac{e^{-t/2}}{2\sqrt{2\pi}} \frac{\partial }{\partial t}\int_{\infty}^\infty \left[A(\xi,t) + B(\xi,t)\right]e^{ix\xi} \, d\xi \\
+    &+ -\frac{e^{-t/2}}{2\sqrt{2\pi}} \frac{\partial}{\partial t}\int_{\infty}^\infty \left[A(\xi,t) + B(\xi,t)\right]e^{ix\xi} \, d\xi + \frac{e^{-t/2}}{\sqrt{2\pi}} \frac{\partial^2}{\partial t^2}\int_{\infty}^\infty \left[A(\xi,t) + B(\xi,t)\right]e^{ix\xi} \, d\xi
+\end{align*}
+then we see that
+\begin{equation*}
+    u_{tt} + u_t + u =  \frac{3}{4}\frac{e^{-t/2}}{\sqrt{2\pi}} \int_{\infty}^\infty \left[A(\xi,t) + B(\xi,t)\right]e^{ix\xi} \, d\xi + \frac{e^{-t/2}}{\sqrt{2\pi}} \frac{\partial^2}{\partial t^2}\int_{\infty}^\infty \left[A(\xi,t) + B(\xi,t)\right]e^{ix\xi} \, d\xi
+\end{equation*}
+notice that
+\begin{align*}
+    \frac{\partial^2}{\partial t^2} A(\xi,t) &= -\lambda^2 \hat{f} \cos(\lambda t) = -\left(c^2\xi^2 + \frac{3}{4}\right)A(\xi,t) \\
+    \frac{\partial^2}{\partial t^2} B(\xi,t) &= -\lambda^2 B(\xi,t) = -\left(c^2\xi^2 + \frac{3}{4}\right)B(\xi,t)
+\end{align*}
+and hence we get that
+\begin{equation*}
+    u_{tt} + u_{t} + u = -c^2\xi^2 u(x,t) = c^2u_{xx}
+\end{equation*}
+and clearly
+\begin{equation*}
+    u(x,0) = \frac{e^{-t/2}}{\sqrt{2\pi}} \int_{-\infty}^\infty \hat{f} e^{i\xi x} d\xi = f(x) 
+\end{equation*}
+and
+\begin{equation*}
+    u_t(x,0) = -\frac{f}{2} + \hat{g} + \frac{1}{2}\hat{f} = g(x)
+\end{equation*}
+thus our $u(x,t)$ is a solution to problem.
+
+\section*{Problem 6.24}
+Suppose we have the Klein-Gordon equation
+\begin{equation*}
+    u_{tt} - \Delta u + u = 0
+\end{equation*}
+for $x \in \R^d$ and $t > 0$ where also $u(x,0) = f(x)$ and $u_t(x,0) = g(x)$. Taking the fourier transform of both sides yields
+\begin{equation*}
+    \frac{\partial^2}{\partial t^2} \hat{u} + (|\xi|^2 +1)\hat{u} = 0
+\end{equation*}
+solving the above ODE yields
+\begin{equation*}
+    \hat{u}(x,t) = c_2 \sin\left(\sqrt{|\xi|^2 + 1}t\right) + c_1 \cos\left(\sqrt{|\xi|^2 + 1}t\right)
+\end{equation*}
+using the initial conditions gives us the particular solution
+\begin{equation*}
+    \hat{u}(x,t) = \hat{f}(x) \sin\left(\sqrt{|\xi|^2 + 1}t\right) + \frac{\hat{g}(x)}{\sqrt{|\xi|^2 + 1}}\cos\left(\sqrt{|\xi|^2 + 1}t\right)
+\end{equation*}
+then taking the fourier inverse yields
+\begin{equation*}
+    u(x,t) = \frac{1}{\sqrt{2\pi}} \int_{\infty}^\infty\left[\hat{f}(x) \sin\left(\sqrt{|\xi|^2 + 1}t\right) + \frac{\hat{g}(x)}{\sqrt{|\xi|^2 + 1}}\cos\left(\sqrt{|\xi|^2 + 1}t\right)\right]e^{ix\xi} \, d\xi 
+\end{equation*}
+
+\section*{Problem 6.26}
+Consider $L^2((0,\infty))$ as a real Hilbert space. Let $A: L^2((0,\infty)) \to L^2((-\infty,\infty))$ be defined by
+\begin{equation*}
+    Au(x) = u(x) + \int_0^\infty \omega(x-y)u(y) \, dy
+\end{equation*}
+where $\omega \in L^1((0,\infty)) \cap L^2((0,\infty)) \cap C^2((0,\infty))$ is nonnegative, decreasing, convex, and even.
+
+\subsection*{Part a}
+We can extend $u \in L^2(0,\infty)$ to $\Tilde{u} \in L^2(-\infty,\infty)$ by defining $\Tilde{u}$ as
+\begin{equation*}
+    \Tilde{u}(x) = \begin{cases}
+        u(x), & x \in (0,\infty) \\
+        0, & x \not\in (0,\infty)
+    \end{cases}
+\end{equation*}
+then we get that
+\begin{equation*}
+    Au(x) = \Tilde{u}(x) + \int_{-\infty}^\infty \omega(x-y) \title{u}(y) \, dy
+\end{equation*}
+additionally notice that
+\begin{equation*}
+    \int_{-\infty}^\infty \omega(x-y) \title{u}(y) \, dy = \omega * \Tilde{u}
+\end{equation*}
+and by Young's Generalized Inequality we have that $\omega * \Tilde{u} \in L^2(-\infty, \infty)$, and hence $Au \in L^2(-\infty,\infty)$.
+
+\subsection*{Part b}
+Let $u \in L^2(0,\infty)$ and $v \in L^2(-\infty,\infty)$, then we see that
+\begin{align*} 
+    \inner{Au}{v}_{L^2(0,\infty)} &= \int_{0}^\infty Au(x) v(x) \, dx \\
+    &=\int_0^\infty \Tilde{u}(x)v(x) + \int_{-\infty}^\infty \omega(x-y)v(x) \Tilde{u}(y) \, dy \, dx \\
+    &= \int_{-\infty}^\infty \Tilde{u}(x)v(x) + \int_{-\infty}^\infty \omega(x-y)v(x) \Tilde{u}(y) \, dy \, dx 
+\end{align*}
+and since $\omega(x-y) = \omega(y-x)$, we get that
+\begin{align*}
+\int_{-\infty}^\infty \Tilde{u}(x)v(x) + \int_{-\infty}^\infty \omega(x-y)v(x) \Tilde{u}(y) \, dy \, dx &= \int_{0}^\infty \Tilde{u}(y)v(y) + \Tilde{u(x)} \int_{0}^\infty \omega(y-x) v(x) \, dx \,dy \\
+&= \int_{0}^\infty \left[v(y) + \int_{0}^\infty \omega(y-x) v(x) \, dx\right] \Tilde{u}(y) \, dy \\
+&= \int_{0}^\infty Av(y) u(y) \, dy \\
+&= \inner{u}{Av}_{L^2(0,\infty)}
+\end{align*}
+Thus $A$ is symmetric.
+
+\subsection*{Part c}
+Note that
+\begin{equation*}
+    \hat{\omega} = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \omega(x) e^{-ix\xi} \, dx = \frac{2}{\sqrt{2\pi}} \int_{0}^\infty \omega(x) e^{-ix\xi} \, dx 
+\end{equation*}
+and since $\omega(x) e^{-ix\xi} \geq 0$ for all $x \in \R$, we get that
+\begin{equation*}
+     \hat{\omega} =  \frac{2}{\sqrt{2\pi}} \int_{0}^\infty \omega(x) e^{-ix\xi} \, dx \geq 0
+\end{equation*}
+thus $\hat{\omega} \geq 0$.
+
+\subsection*{Part d}
+Since the fourier transform preserves inner products we have that
+\begin{equation*}
+    \inner{Au}{u}_{L^2(0,\infty)} = \inner{\mathcal{F}(Au)}{\mathcal{F}(u)}_{L^2(0,\infty)}
+\end{equation*}
+and notice that
+\begin{align*}
+    \mathcal{F}(Au) = \hat{u} + \sqrt{2\pi} \hat{u} \hat{\omega}
+\end{align*}
+and thus
+\begin{equation*}
+    \inner{\mathcal{F}(Au)}{\mathcal{F}(u)}_{L^2(0,\infty)} = \int_{0}^\infty \left(\hat{u} + \sqrt{2\pi} \hat{u} \hat{\omega}\right) \overline{\hat{u}(x)} \, dx = \int_0^\infty |\hat{u}|^2 (1 + \sqrt{2\pi} \hat{\omega})\, dx \geq \norm{\hat{u}}_{L^2(0,\infty)}
+\end{equation*}
+which we see is only $0$, if $u \equiv 0$ and is strictly greater than otherwise.
+
+\subsection*{Part e}
+Notice that if for $f \in L^2(-\infty, \infty)$ we have 
+\begin{equation*}
+    Au = \Tilde{u}(x) + \omega * \Tilde{u} = f
+\end{equation*}
+then by taking the fourier transform to both sides, we get
+\begin{align*}
+    \hat{\Tilde{u}} + \sqrt{2\pi} \hat{w}\hat{\Tilde{u}} = \hat{f} \implies \hat{\Tilde{u}} = \frac{\hat{f}}{1 + \sqrt{2\pi} \hat{\omega}}
+\end{align*}
+taking the inverse fourier transform we get
+\begin{equation*}
+    \Tilde{u}(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty \frac{\hat{f}}{1 + \sqrt{2\pi} \hat{\omega}}\, d\xi
+\end{equation*}
+\subsection*{Part f}
+Suppose that there exists $u_1$ and $u_2$ such that
+\begin{equation*}
+    Au_1 = Au_2 = f
+\end{equation*}
+and $u_1 \neq u_2$, then we have 
+\begin{equation*}
+    A(u_1 - u_2) = 0 \implies \mathcal{F}(A(u_1 - u_2)) = 0
+\end{equation*}
+which gives us
+\begin{equation*}
+    \hat{u_1} - \hat{u_2} + \sqrt{2\pi}\hat{\omega}(\hat{u_1} - \hat{u_2}) = 0 \implies (\hat{u_1} - \hat{u_2})(1 + \sqrt{2\pi}\hat{\omega}) = 0
+\end{equation*}
+but since $1 + \sqrt{2\pi}\hat{\omega} \neq 0$ and thus $\hat{u}_1 - \hat{u}_2 = 0$ and since the fourier transform is unique we get that $u_1 = u_2$. Thus the solution is unique.
 \end{document}
