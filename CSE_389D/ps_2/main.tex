@@ -25,7 +25,7 @@
 \subsection*{Part a}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{CSE_389D/ps_2/Figure_1.png}
+    \includegraphics[scale=0.7]{Figure_1.png}
     \caption{Sketch of $V(x)$ for $a=1$,$b=3$, and $V_0 = 10$}
     \label{fig:enter-label}
 \end{figure}
@@ -123,4 +123,54 @@ yields
        \frac{E}{V_0} &= -1 + \frac{(3.46525)^2}{S^2} \approx -0.8799
 \end{align*}
 as the eigenvalues of the even bounded state problem.
+
+
+\subsection*{Part d}
+\subsection*{Part e}
+To show the odd parity of the wave function we will get a similar result as in part b. However we notice that since the wave is odd we we get that in the case $|x| < a$ the wave function is given by
+\begin{equation*}
+  \phi(x) = Ae^{\kappa x} - Ae^{-\kappa x} = 2A\sinh(\kappa x)
+\end{equation*}
+and in the case $a < x < b$ we have that
+\begin{equation*}
+    \phi(x) = D \sin(\xi (b-x))
+\end{equation*}
+as before. Then we have that
+\begin{align*}
+  2A\sinh(\kappa a) &= D \sin(\xi(b-a)) \\
+  2A\kappa \cosh(\kappa a) &= -D\xi\cos(\xi(b-a))
+\end{align*}
+then dividing the two equations yields
+\begin{equation*}
+    \frac{\kappa \cosh(\kappa a)}{\sinh(\kappa a)} = -\frac{\xi \cos(\xi(b-a))}{\sin(\xi(b-a))} \implies \kappa \coth(\kappa a) = -\xi \cot(\xi(b-a))
+\end{equation*}
+then by doing similar algebra and subsitutions as in part b we get that
+\begin{equation*}
+  \frac{\sqrt{S^2 - v^2}}{\tanh(\gamma \sqrt{S^2 - v^2})} - v \frac{\tan(\gamma v)\tan(v) + 1}{\tan(\gamma v) - \tan(v)} = 0
+\end{equation*}
+and hence the eigenvalues are given by 
+\begin{equation*}
+  \frac{E}{V_0} = -1 + \frac{v^2}{S^2}
+\end{equation*}
+as desired.
+
+\subsection*{Part f}
+Solving for $v$ from the equation below, using $S = 10$ and $\gamma = 0.2$ we get that
+\begin{align*}
+  v_1 &=   6.96192 \\
+  v_2 &= 3.49913 \\
+\end{align*}
+plugging these values into the equation gives the following eigenvalues
+\begin{align*}
+  \frac{E}{V_0} &= -1 + \frac{(6.96192)^2}{S^2} \approx -0.5153\\
+  \frac{E}{V_0} &= -1 + \frac{(3.49913)^2}{S^2} \approx -0.8775
+\end{align*}
+
+\subsection*{Part g}
+The parity of the ground-state wavefunction is even.
+
+\subsection*{Part h}
+
+\section*{Problem 2.2}
+
 \end{document}
