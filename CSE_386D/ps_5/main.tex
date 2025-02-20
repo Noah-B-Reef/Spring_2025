@@ -1,0 +1,191 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{4}   
+\lecturedate{}    
+\input{commands.tex}
+\newcommand{\supp}[]{\text{supp}}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+\section*{Problem 7.1}
+Suppose that $f \in H^1(\R^d)$. Then we see that
+\begin{equation*}
+  \norm{f}_{H^1} = \norm{f}_{W^{1,2}} = \left\{ \norm{f}^2_{L^2} + \norm{Df}^2_{L^2}\right\}^{1/2}
+\end{equation*}
+recall that 
+\begin{equation*}
+  \norm{f}_{L^2} = \norm{\hat{f}}_{L^2} 
+\end{equation*}
+and
+\begin{equation*}
+  \norm{Df}_{L^2} = \norm{\widehat{Df}}_{L^2} = \norm{i\xi \hat{f}}_{L^2} = |\xi| \norm{\hat{f}}_{L^2}
+\end{equation*}
+Thus we see that
+\begin{equation*}
+ \left\{ \norm{f}^2_{L^2} + \norm{Df}^2_{L^2}\right\}^{1/2}= \left\{ \norm{\hat{f}}^2_{L^2} + |\xi|^2 \norm{\hat{f}}^2_{L^2}\right\}^{1/2} = \int_{\R^d} (1 + |\xi|^2) |\hat{f}(\xi)|^2 d\xi 
+\end{equation*}
+and in general for $f \in H^k(\R^d)$ we have that
+\begin{equation*}
+  \norm{f}^2_{H^k} = \left\{ \norm{f}^2_{L^2} + \sum_{j=1}^{k}\norm{D^jf}^2_{L^2}\right\}^{1/2} = \int_{\R^d} \sum_{|\alpha| \leq k} |\xi^{\alpha}|^2 |\hat{f}(\xi)|^2 d\xi = \int_{\R^d} (1 + |\xi|^2)^k |\hat{f}(\xi)|^2 d\xi
+\end{equation*}
+
+\section*{Problem 7.3}
+Let $f \in H^1(\R^d)$ and we define 
+\begin{equation*}
+  \delta_0(f) = f(0)
+\end{equation*}
+note that for $d = 1$ we have that $H^1(\R)$ is continously embedded in $C^0(\R)$ and hence there exists a $C$ such that
+\begin{equation*}
+  \norm{f}_{C^0} \leq C \norm{f}_{H^1}
+\end{equation*}
+and from the fundemental theorem of calculus, we get that
+\begin{equation*}
+f(x) - f(0) = \int_0^x f'(t) dt
+\end{equation*}
+which then, by using Cauchy-Schwartz, gives us 
+\begin{equation*}
+  |f(0)| \leq \norm{f}_{C^0} \leq C \norm{f}_{H^1}
+\end{equation*}
+that is $\delta_0$ is a bounded linear functional on $H^1(\R)$ and hence in $(H^1(\R))^*$. However for $d \geq 2$ we consider the sequence $f_n(x) = \phi(nx)$ where $\phi \in C_0^\infty(\R^d)$ and $\phi(0) = 1$. Then we see that 
+\begin{align*}
+  \norm{f_n}^2_{H^1} = \norm{f_n}_{W^{1,2}} = \left\{ \norm{f_n}^2_{L^2} + \norm{Df_n}^2_{L^2}\right\} &= \frac{1}{n^d} \norm{\phi}^2_{L^2} + \frac{n^2}{n^d} \norm{\nabla \phi}^2_{L^2} \leq C n^{1 - \frac{d}{2}}\\ 
+\end{align*}
+then we see that as $n \to \infty$ we have that $\norm{f_n}_{H^1} \to 0$ but $\delta_0(f_n) = 1$ and hence $\delta_0$ is not a bounded linear functional on $H^1(\R^d)$ for $d \geq 2$.
+
+\section*{Problem 7.7}
+Let $u \in \mathcal{D}'(\R^d)$ and $\phi \in \mathcal{D}(\R^d)$. 
+
+\subsection*{Part a}
+Note that by the fundamental theorem of calculus we have that
+\begin{equation*}
+  u(\tau_{y}\phi) - u(\tau_0 \phi) = \int_0^1 \frac{d}{dt} u(\tau_{ty}\phi) dt 
+\end{equation*}
+and we see that by applying the usual chain rule we get
+\begin{equation*}
+  \frac{d}{dt} \tau_{ty}\phi = \sum_{j=1}^d y_j \partial_j \phi(\tau_{ty}x) 
+\end{equation*}
+and hence we see that
+\begin{equation*}
+  \frac{d}{dt} u(\tau_{ty}\phi) = \sum_{j=1}^d y_j \partial_j u(\tau_{ty}\phi)
+\end{equation*}
+and finally we get that
+\begin{equation*}
+  u(\tau_{y}\phi) - u(\tau_0 \phi) = \int_0^1 \sum_{j=1}^d y_j \partial_j u(\tau_{ty}\phi) dt = \sum_{j=1}^d y_j \int_0^1 \partial_j u(\tau_{ty}\phi) dt
+\end{equation*}
+
+\subsection*{Part b}
+Let $f \in W_{\text{loc}}^{1,1}(\R^d)$ and hence $f \in L^1_{\text{loc}}(\R^d)$ and hence $f \in \mathcal{D}'(\R^d)$. Then we see that
+\begin{equation*}
+  \inner{\tau_{-y}f}{\phi} - \inner{f}{\phi} =\sum_{j=1}^d y_j \int_0^1 \partial_j f(\tau_{ty}\phi) dt
+\end{equation*} 
+which is equivalent to
+\begin{equation*}
+  \sum_{j=1}^d y_j \int_0^1 \int_{\R^d} \partial_j f(\tau_{ty}x) \phi(x) dx dt = \int_0^1  y \cdot \nabla f(x + ty) \,dt \phi(x) dx
+\end{equation*}
+which implies that
+\begin{equation*}
+  f(x + y) - f(x) = \int_0^1 y \cdot \nabla f(x + ty) \, dt 
+\end{equation*}
+
+\subsection*{Part c}
+From b we have that
+\begin{equation*}
+  |f(x+y) - f(x)| \left|\int_0^1 y \cdot \nabla f(x+ty) \, dt\right| \leq |y| \int_0^1 |\nabla f(x+ty)| \, dt
+\end{equation*}
+then for any fixed ball $B_R(0)$ if $f \in W^{1,1}_{\text{loc}}(\R^d)$ then by taking $L_{R,f} = \sup_{x \in B_R(0)} |\nabla f(x)|$ we see that
+\begin{equation*}
+  |f(x+y) - f(x)| \leq |y| L_{R,f}
+\end{equation*}
+and hence $f$ is locally Lipschitz continuous and hence $W^{1,1}_{\text{loc}}(\R^d) \subseteq C^{0,1}_{\text{loc}}(\R^d)$.
+
+
+
+\section*{Problem 7.8}
+\subsection*{Part a}
+Let $\Omega \subseteq \R^d$ be bounded and contains $0$. Let $f(x) = |x|^\alpha$ and $1 \leq p < d$ and $q > dp/(d-p). Then if we consider
+\begin{equation*}
+  1-\frac{d}{p} < \alpha \leq -\frac{d}{q} 
+\end{equation*}
+since we have that for $f \in W^{1,p}(\Omega)$ we have that
+\begin{equation*}
+  \norm{f}_{W^{1,p}} = \norm{f}^p_{L^p} + \norm{Df}^p_{L^p} = \int_0^R r^{\alpha p} r^{d-1} dr + \alpha \int_0^R r^{(\alpha-1) p} r^{d-1} dr
+\end{equation*}
+which we see that both integrals converge for $\alpha > 1 - (d/p)$ and hence $f \in W^{1,p}(\Omega)$. Additionally we have that 
+\begin{equation*}
+  \norm{f}_{L^q(\Omega)}^q = \int_0^R r^{q\alpha} r^{d-1} dr 
+\end{equation*}
+which only converges for $q\alpha + d > 0$, however since $\alpha \leq -d/q$ we see that $q\alpha + d \leq 0$ and hence $f \notin L^q(\Omega)$.
+
+\subsection*{Part b}
+Since we see that our function $f$ in part a is such that $f \not\in L^q(\Omega)$ for $\alpha \leq -d/q$
+and hence the Dirac mass is in $W^{-s,p}(\Omega)$ for $s > d/p$ and $1 \leq p < d$.
+
+\subsection*{Part c}
+Let $\Omega \subseteq \R^d = B_R(0)$ and let $f(x) = \log(\log(4R/|x|))$. Then we see that
+\begin{equation*}
+  \norm{f}_{W^{1,p}_{}(B_R(0))}^p = \norm{f}^p_L^p_{(B_R(0))} + \norm{Df}^p_L^p_{(B_R(0))}
+\end{equation*}
+Note that 
+\begin{align*}
+  \norm{f}^p_L^p(B_R(0)) &= \int_{B_R(0)} \left|\log(\log(4R/|x|))\right|^d \dx = \int_0^R \left|\log(\log(4R/r))\right|^d r^{d-1} dr  \\ 
+  \norm{Df}^p_L^p(B_R(0)) &= \int_{B_R(0)} \left|\frac{1}{|x| \log(4R/|x|)}\right|^d \dx = \int_0^R \left|\frac{1}{r \log(4R/r)}\right|^d r^{d-1} dr 
+\end{align*}
+note that
+\begin{equation*}
+  \int_0^R \left|\log(4R/r)\right|^d r^{d-1} dr \leq \int_0^R r^{2d - 1} \, dr < \infty
+\end{equation*}
+and similarly
+\begin{equation*}
+  \int_0^R \left|\frac{1}{r \log(4R/r)}\right|^d r^{d-1} dr = \int_0^R \frac{1}{r |\log(4R/r)|^d} \, dr
+\end{equation*}
+and making the subsitution $r = 4Re^{-u}$ and $dr = -4Re^{-u} du$ we see that
+\begin{equation*}
+  \int_0^R \frac{1}{r |\log(4R/r)|^d} \, dr = \int_{u_0}^\infty \frac{1}{4Re^{-u} |u|^d} 4Re^{-u} \, du = \int_{u_0}^\infty \frac{1}{|u|^d} \, du < \infty
+\end{equation*}
+thus $f \in W^{1,p}(B_R(0))$ for $1 \leq p = d$, but $f \notin L^\infty(\Omega)$.
+
+\subsection*{Part d}
+Let $\Omega = (-1,1)$ and $u(x) = |x|$, then we see that
+\begin{equation*}
+  \norm{u}_{W^{1,\infty}} = \max\{\norm{u}_{L^\infty}, \norm{Du}_{L^\infty}\} 
+\end{equation*}
+where
+\begin{equation*}
+  \norm{u}_{L^\infty} = \max_{x \in \Omega} |u(x)| = 1
+\end{equation*}
+and
+\begin{equation*}
+  \norm{Du}_{L^\infty} = \max_{x \in \Omega} |Du(x)| = 1
+\end{equation*}
+and hence
+\begin{equation*}
+  \norm{u}_{W^{1,\infty}} = 1
+\end{equation*}
+and thus $u \in W^{1,\infty}(\Omega)$. However we see that if $\{u_k\}_{k=1}^\infty \subseteq C^\infty$ are such that $u_k \to u$ in $C^\infty(\Omega)$, but we see that
+\begin{equation*}
+  \norm{u_k - u}_{W^{1,\infty}} = \max\{\norm{u_k - u}_{L^\infty}, \norm{Du_k - Du}_{L^\infty}\} 
+\end{equation*}
+and we see that
+\begin{equation*}
+  \norm{u_k - u}_{L^\infty} = \max_{x \in \Omega} |u_k(x) - u(x)| = 0
+\end{equation*}
+however since $u_k \in C^\infty$ we see that $\lim_{x \to 0^+} Du_k(x) = 1$ and $\lim_{x \to 0^-} Du_k(x) = -1$ and hence there must exist an $N$ such that for all $k \geq N$ we have that 
+\begin{equation*}
+  \lim_{x \to 0^+} |Du_k(x) - 1| < \epsilon \quad \text{and} \quad \lim_{x \to 0^-} |Du_k(x) + 1| < \epsilon
+\end{equation*}
+however this is a contradiction since $Du(x)$ is not continuous at $x = 0$ and hence $u_k$ does not converge to $u$ in $W^{1,\infty}(\Omega)$.
+
+\end{document}
