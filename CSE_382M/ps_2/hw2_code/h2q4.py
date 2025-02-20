@@ -1,7 +1,7 @@
 from numpy import *
 from numpy.linalg import *
 from numpy.random import randn
-
+import builtins
 
 def getAb(m,n):
     a = -1.0
@@ -44,29 +44,16 @@ def rand_truncated_SVD(A, b, k, p=10):
     x_k = Vt.T @ inv(diag(s_B)) @ U.T @ b
     return A_k, x_k
 
-def rand_sketch_JLT(A, b, k, m_sketch=200):
-    m, n = A.shape
-    # Construct a Gaussian JL sketching matrix S of size m_sketch x m.
-    S = randn(m_sketch, m) / sqrt(m_sketch)
-    
-    # Compute the sketched matrix.
-    SA = S @ A  # size: (m_sketch x n)
-    
-    # Compute the SVD of the sketched matrix.
-    U_y, s_y, Vt_y = svd(SA, full_matrices=False)
-    
-    # Extract the top k right singular vectors.
-    V_y_k = Vt_y[:k, :].T  # shape: (n x k)
-    
-    # Compute the rank-k approximation of A via projection:
-    A_k = A @ (V_y_k @ V_y_k.T)
-    
-    # Solve the sketched least-squares problem:
-    # Instead of solving the full LS problem, we solve S A x ≈ S b.
-    # (The sketching preserves distances approximately.)
-    x_k, residuals, rank, s = lstsq(S @ A, S @ b, rcond=None)
-    
-    return x_k, A_k 
+def rand_sketch_JLT(A, b, k,):
+    m,n = A.shape
+    # Create a Gaussian sketching matrix (with appropriate scaling)
+    S = random.randn(n,m) / sqrt(k)
+    A_k = S @ A
+    b_sketch = S @ b
+    x_k = lstsq(A_k, b_sketch)[0]  
+    A_k = pinv(S) @ A_k
+    return A_k,x_k
+
 def main():
     m=1024
     n=512
@@ -86,7 +73,10 @@ def main():
 
         # Compute relative matrix error of truncated SVD
         trunc_svd_mat_err = norm(A - A_m)/norm(A)
-
+        
+        # true truncated SVD solution
+        _,S,_ = svd(A,full_matrices=False)
+        print(S[rank]/S[0])
         # Approximate A by A_m and get LS solution x_m by random truncated SVD
         A_m,x_m = rand_truncated_SVD(A,b,rank)
 
@@ -101,9 +91,8 @@ def main():
 
         # Approximate A by A_m and get LS solution x_m by random sketching JLT
         A_m,x_m = rand_sketch_JLT(A,b,rank)
-
         # Compute residual error of random sketching JLT
-        rand_sketching_JLT_res_err = norm(b - A_m@x_m)/norm(b)
+        rand_sketching_JLT_res_err = norm(b - A.dot(x_m))/norm(b)
 
         # Compute relative solution error of random sketching JLT
         rand_sketching_JLT_sol_err = norm(x_m - x)/norm(x)
