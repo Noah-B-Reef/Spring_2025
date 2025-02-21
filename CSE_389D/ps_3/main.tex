@@ -1,0 +1,65 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{braket}
+\usepackage{listings}
+\course{CSE 389D} 	
+\coursetitle{Mathematical Modeling}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{3}   
+\lecturedate{}    
+\input{commands.tex}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\theoremheaderfont{\itshape}
+\theorembodyfont{\upshape}
+\newtheorem{case}{Case}
+
+% Insert your name here!
+\scribe{Student Name: Noah Reef}
+\newcommand{\rb}{\bold{r}}
+
+\begin{document}
+\maketitle
+\section*{Problem 3.1}
+\subsection*{Part a}
+Recall that the angular momentum operator of a particle is given by
+\begin{align*}
+  \hat{L} = \hat{r} \times \hat{p} = (\hat{r}_y \hat{p}_z - \hat{r}_z \hat{p}_y) u_x + (\hat{r}_z \hat{p}_x - \hat{r}_x \hat{p}_z) u_y + (\hat{r}_x \hat{p}_y - \hat{r}_y \hat{p}_x) u_z
+\end{align*}
+then we have that 
+\begin{align*}
+  [\hat{L}_x, \hat{L}_y] &= [\hat{r}_y \hat{p}_z - \hat{r}_z \hat{p}_y, \hat{r}_z \hat{p}_x - \hat{r}_x \hat{p}_z] \\ 
+                         &= [\hat{r}_y\hat{p}_z, \hat{r}_z\hat{p}_x] - [\hat{r}_y\hat{p}_z, \hat{r}_x\hat{p}_z] - [\hat{r}_z\hat{p}_y, \hat{r}_z\hat{p}_x] + [\hat{r}_z\hat{p}_y, \hat{r}_x\hat{p}_z] \\
+                         &= [\hat{r}_y\hat{p}_z,\hat{r_z}] \hat{p}_x + \hat{r}_z[\hat{r}_y\hat{p}_z,\hat{p}_x] - [\hat{r}_y\hat{p}_z,\hat{r}_x]\hat{p}_z \\
+                         &- \hat{r}_x[\hat{r}_y\hat{p}_z,\hat{p}_z] - [\hat{r}_z\hat{p}_y,\hat{r}_z]\hat{p}_x + \hat{r}_z[\hat{r}_z\hat{p}_y,\hat{p}_x] + [\hat{r}_z\hat{p}_y,\hat{r}_x]\hat{p}_z - \hat{r}_x[\hat{r}_z\hat{p}_y,\hat{p}_z] \\
+\end{align*}
+\end{document}
