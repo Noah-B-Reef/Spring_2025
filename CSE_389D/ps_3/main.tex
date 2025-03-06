@@ -60,6 +60,198 @@ then we have that
   [\hat{L}_x, \hat{L}_y] &= [\hat{r}_y \hat{p}_z - \hat{r}_z \hat{p}_y, \hat{r}_z \hat{p}_x - \hat{r}_x \hat{p}_z] \\ 
                          &= [\hat{r}_y\hat{p}_z, \hat{r}_z\hat{p}_x] - [\hat{r}_y\hat{p}_z, \hat{r}_x\hat{p}_z] - [\hat{r}_z\hat{p}_y, \hat{r}_z\hat{p}_x] + [\hat{r}_z\hat{p}_y, \hat{r}_x\hat{p}_z] \\
                          &= [\hat{r}_y\hat{p}_z,\hat{r_z}] \hat{p}_x + \hat{r}_z[\hat{r}_y\hat{p}_z,\hat{p}_x] - [\hat{r}_y\hat{p}_z,\hat{r}_x]\hat{p}_z \\
-                         &- \hat{r}_x[\hat{r}_y\hat{p}_z,\hat{p}_z] - [\hat{r}_z\hat{p}_y,\hat{r}_z]\hat{p}_x + \hat{r}_z[\hat{r}_z\hat{p}_y,\hat{p}_x] + [\hat{r}_z\hat{p}_y,\hat{r}_x]\hat{p}_z - \hat{r}_x[\hat{r}_z\hat{p}_y,\hat{p}_z] \\
+                         &- \hat{r}_x[\hat{r}_y\hat{p}_z,\hat{p}_z] - [\hat{r}_z\hat{p}_y,\hat{r}_z]\hat{p}_x - \hat{r}_z[\hat{r}_z\hat{p}_y,\hat{p}_x] + [\hat{r}_z\hat{p}_y,\hat{r}_x]\hat{p}_z + \hat{r}_x[\hat{r}_z\hat{p}_y,\hat{p}_z] \\
 \end{align*}
+then we see that
+\begin{align*}
+  [\hat{r}_y\hat{p}_z, \hat{r}_z] &= \hat{r}_y[\hat{p}_z,\hat{r}_z] + [\hat{r}_y,\hat{r}_z]\hat{p}_z = -i\hbar \hat{r}_y \\
+  [\hat{r}_y\hat{p}_z, \hat{p}_x] &= \hat{r}_y[\hat{p}_z, \hat{p}_x] + [\at{r}_y, \hat{p}_x] \hat{p}_y = 0 \\
+  [\hat{r}_y\hat{p}_z, \hat{r}_x] &= 0 \\
+  [\hat{r}_y\hat{p}_z, \hat{p}_z] &= 0 \\
+  [\hat{r}_z \hat{p}_y, \hat{r}_z] &= 0 \\
+  [\hat{r}_z \hat{p}_y, \hat{p}_x] &= 0 \\
+  [\hat{r}_z \hat{p}_y, \hat{r}_x] &= 0 \\
+  [\hat{r}_z \hat{p}_y, \hat{p}_z] &= i\hbar \hat{p}_y
+  \end{align*}
+  and hence 
+  \begin{equation*}
+    [\hat{L}_x, \hat{L}_y] = -i\hbar \hat{r}_y \hat{p}_x + i\hbar \hat{r}_x \hat{p}_y = i\hbar \hat{L}_z
+  \end{equation*}
+  as desired.
+
+  \subsection*{Part b}
+  We have that 
+  \begin{align*}
+    [\hat{L}_z, \hat{L}^2] &= [\hat{L}_z, \hat{L}_x^2 + \hat{L}_y^2 + \hat{L}_z^2] = [\hat{L}_z, \hat{L}_x^2] + [\hat{L}_z, \hat{L}_y^2] + [\hat{L}_z, \hat{L}_z^2] \\
+    &= [\hat{L}_z, \hat{L}_x]\hat{L}_x + \hat{L}_x[\hat{L}_z, \hat{L}_x] + [\hat{L}_z, \hat{L}_y]\hat{L}_y + \hat{L}_y[\hat{L}_z, \hat{L}_y] + [\hat{L}_z, \hat{L}_z]\hat{L}_z + \hat{L}_z[\hat{L}_z, \hat{L}_z]\\
+    &= 2i\hbar \hat{L}_x\hat{L}_y- 2i\hbar \hat{L}_y \hat{L}_x = 0
+  \end{align*}
+
+  \subsection*{Part c}
+  Suppose that $\ket{\epsilon}$ is an eigenstate of $\hat{L}_z$, then we have that 
+  \begin{equation*}
+    \hat{L}_z\ket{\epsilon} = \epsilon\ket{\epsilon}
+  \end{equation*}
+  and notice that from part b, we showed that $[\hat{L}_z, \hat{L}^2] = 0$ and hence we have that
+  \begin{equation*}
+    \hat{L}^2 \hat{L}_z \ket{\epsilon} = \epsilon \hat{L}^2 \ket{\epsilon} =  \hat{L}_z \hat{L}^2 \ket{\epsilon}
+  \end{equation*}
+  an hence $\hat{L}^2 \ket{\epsilon} = K \ket{\epsilon}$ and hence $\ket{\epsilon}$ is also an eigenstate of $\hat{L}^2$.
+
+
+\section*{Problem 3.2}
+\subsection*{Part a}
+Suppose we have the Hamilton operator of a certain quantum system in Dirac's notation
+\begin{equation*}
+  \hat{H} = E_0 = \sum_{n=1}^\infty n^2 \ket{n}\bra{n}
+\end{equation*}
+then we see that
+\begin{align*}
+  \hat{H} \ket{m} &= E_0 \sum_{n=1}^\infty n^2 \ket{n}\bra{n}\ket{m} \\
+    &= E_0 \sum_{n=1}^\infty n^2 \ket{n}\delta_{nm} \\
+    &= E_0 m^2 \ket{m}
+\end{align*}
+thus $\ket{m}$ is an eigenstate of $\hat{H}$ with eigenvalue $E_0 m^2$, where $m$ is a positive integer.
+
+\subsection*{Part b}
+We can define a square root operator of $\hat{H}$ as 
+\begin{equation*}
+  \hat{H}^{1/2} = \sqrt{E_0} \sum_{n=1}^\infty n \ket{n}\bra{n}
+\end{equation*}
+since each of the $\ket{n}$ are orthogonal, we have that each of the off-diagonal terms are zero and hence we are left with the diagonal terms and hence get the form above. 
+
+\subsection*{Part c}
+Note that using the form of $\hat{H}^{1/2}$ above, we can see that
+\begin{equation*}
+  \hat{H}^{1/2} = \sqrt{E_0} \sum_{n=1}^\infty (-1)^{mn}n \ket{n}\bra{n}
+\end{equation*}
+for any choice $m \in \mathbb{Z}$, are also square-root operators of $\hat{H}$, and thus there are infinitely many square-root operators of $\hat{H}$.
+
+\subsection*{Part d}
+Looking at the eigenvalue spectrum of the Hamiltonian in part a, we see that this system describes a particle in the one-dimensional infinite square well potential
+\begin{equation*}
+  V(x) = \begin{cases}
+    -V_0 & |x| < a \\
+    \infty & |x| > a
+  \end{cases}
+\end{equation*}
+the square-root operator, $\hat{H}$, is associated with the magnitude of the momentum of the particle.
+
+\section*{Problem 3.3}
+\subsection*{Part a}
+Suppose that we have the one-dimensional quartic anharmonic oscillator
+\begin{equation*}
+  \hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2}m\omega^2 \hat{x}^2 + \kappa \frac{m^2 \omega^3}{\hbar} \hat{x}^4
+\end{equation*}
+recall that 
+\begin{align*}
+  \hat{a} &= \sqrt{\frac{m\omega}{2\hbar}}\left(\hat{x} + i \frac{\hat{p}}{m\omega}\right) \\
+  \hat{a}^\dagger &= \sqrt{\frac{m\omega}{2\hbar}}\left(\hat{x} - i \frac{\hat{p}}{m\omega}\right)
+\end{align*}
+and we compute that
+\begin{align*}
+\hat{a}^\dagger \hat{a} &= \frac{m \omega}{2\hbar}\left(\hat{x} - i \frac{\hat{p}}{m\omega}\right)\left(\hat{x} + i \frac{\hat{p}}{m\omega}\right) \\
+                        &= \frac{m \omega}{2\hbar}\left(\hat{x}^2 + i\frac{\hat{x} \hat{p}}{m\omega} - i \frac{\hat{p}{\hat{x}}}{m \omega} + \frac{\hat{p}^2}{m^2 \omega^2}\right) \\
+                        &= \frac{m\omega}{2\hbar} \left(\hat{x}^2 + i \frac{[\hat{x},\hat{p}]}{m\omega} + \frac{\hat{p}^2}{m^2 \omega^2}\right) \\
+                        &= \frac{m\omega}{2\hbar} \left(\hat{x}^2 - \frac{\hbar}{m\omega} + \frac{\hat{p}^2}{m^2 \omega^2}\right) \\
+                        &= -\frac{1}{2} + \frac{m \omega}{2\hbar} \hat{x}^2 + \frac{\hat{p}^2}{2\hbar m\omega}
+\end{align*}
+and
+\begin{align*}
+  \hat{a} + \hat{a}^\dagger = \sqrt{\frac{m \omega}{2\hbar}} 2\hat{x}
+\end{align*}
+then we see that
+\begin{align*}
+  \frac{1}{2} + \hat{a}^\dagger \hat{a} + \frac{\kappa}{4}(\hat{a} + \hat{a}^\dagger)^4 &=  \frac{1}{2} + \left(-\frac{1}{2} + \frac{m \omega}{2\hbar} \hat{x}^2 + \frac{\hat{p}^2}{2\hbar m\omega}\right) + \frac{\kappa}{4}\left( \frac{4 m^2 \omega^2}{\hbar^2} \hat{x}^4 \right) \\
+                                                                                        &= \left(\frac{m\omega}{2\hbar} \hat{x}^2 + \frac{\hat{p}}{2\hbar m \omega} + \frac{\kappa m^2 \omega^2}{\hbar^2} \hat{x}^4\right) \\
+                                                                                        &= \frac{1}{\hbar \omega} \left(\frac{m\omega^2}{2} \hat{x}^2 + \frac{\hat{p}}{2m} + \kappa \frac{m^2 \omega^3}{\hbar} \hat{x}^4\right) \\
+                                                                                        &= \frac{\hat{H}}{\hbar \omega} 
+\end{align*}
+
+\subsection*{Part b}
+Consider 
+\begin{align*}
+  (\hat{a} + \hat{a}^\dagger)^4 &=(\hat{a} + \hat{a}^\dagger)^2(\hat{a} + \hat{a}^\dagger)^2 
+\end{align*}
+Then for
+\begin{align*}
+  (\hat{a} + \hat{a}^\dagger)^2 &= (\hat{a}^2 + \hat{a}\hat{a}^\dagger + \hat{a}^\dagger \hat{a} + \hat{a}^{\dagger^2}) \\
+                                &= (\hat{a}^2 + 1 + 2\hat{a}^\dagger \hat{a} + \hat{a}^{\dagger^2}) \\
+                                &= (\hat{a}^2 + 1 + 2 \hat{N}+ \hat{a}^{\dagger^2}) 
+\end{align*}
+thus
+\begin{equation*}
+  (\hat{a} + \hat{a}^\dagger)^4 = (\hat{a}^2 + \hat{a}^{\dagger^2})^2 + (\hat{a}^2 + \hat{a}^{\dagger^2})(1 + 2\hat{N}) + (1 + 2\hat{N})(\hat{a}^2 + \hat{a}^{\dagger^2}) + (1 + 2\hat{N})^2
+\end{equation*}
+and we have that
+\begin{align*}
+  (\hat{a}^2 + \hat{a}^{\dagger^2}) &= \hat{a}^4 + \hat{a}^2 \hat{a}^{\dagger^2} + \hat{a}^{\dagger^2}\hat{a}^2 + \hat{a}^{\dagger^2} \\
+  (\hat{a}^2 + \hat{a}^{\dagger^2})(1 + 2\hat{N}) &= \hat{a}^2 + 2\hat{a}^2\hat{N} + \hat{a}^{\dagger^2} + 2\hat{a}^{\dagger^2}\hat{N}\\
+  (1 + 2\hat{N})(\hat{a}^2 + \hat{a}^{\dagger^2}) &= \hat{a}^2 + 2\hat{N}\hat{a}^2 + \hat{a}^{\dagger^2} + 2\hat{N}\hat{a}^{\dagger^2}\\
+  (1 + 2\hat{N})^2 &= 1 + 4\hat{N} + 4\hat{N}^2
+\end{align*}
+and hence
+\begin{equation*}
+  (\hat{a} + \hat{a}^\dagger)^4 = \hat{a}^4 + \hat{a}^{\dagger^2} + 2 (\hat{a}^2 + \hat{a}^{\dagger^2}) + 2\left[\hat{N}(\hat{a}^2 + \hat{a}^{\dagger^2}) + (\hat{a}^2 + \hat{a}^{\dagger^2})\hat{N}\right] + \hat{a}^2\hat{a}^{\dagger^2} + \hat{a}^{\dagger^2}\hat{a}^2 + 4\hat{N} + 4\hat{N}^2 + 1
+\end{equation*}
+then we have
+\begin{align*}
+  \hat{a}^2 \hat{a}^{\dagger^2} &= 2 + 3\hat{N} + \hat{N}^2 \\
+  \hat{a}^{\dagger^2} \hat{a}^2 &= \hat{N}^2 - \hat{N} \\
+\end{align*}
+and so we have that
+\begin{equation*}
+  (\hat{a} + \hat{a}^\dagger)^4 =\hat{a}^4 + \hat{a}^{\dagger^4} + 2 (\hat{a}^2 + \hat{a}^{\dagger^2}) + 2\left[\hat{N}(\hat{a}^2 + \hat{a}^{\dagger^2}) + (\hat{a}^2 + \hat{a}^{\dagger^2})\hat{N}\right] + 3 + 6\hat{N} + 6\hat{N}^2
+\end{equation*}
+
+\subsection*{Part c}
+Let $\kappa = 0$, and let $\ket{n}$ be an eigenstate of $\hat{H}$, then we have that
+\begin{equation*}
+  \hat{a} \ket{n} = \sqrt{n} \ket{n-1} \implies \hat{a}^2 \ket{n} = \sqrt{n(n-1)} \ket{n-2}
+\end{equation*}
+and thus
+\begin{equation*}
+  \bra{n}\hat{a}^2\ket{n} = \sqrt{n(n-1)} \braket{n|n-2} = 0
+\end{equation*}
+since $\ket{n}$ and $\ket{n-2}$ are orthogonal. Now we consider,
+\begin{equation*}
+  \hat{a}^\dagger \ket{n} = \sqrt{n+1} \ket{n+1} \implies \hat{a}^{\dagger^2} \ket{n} = \sqrt{(n+1)(n+2)} \ket{n+2}
+\end{equation*}
+then we have that
+\begin{equation*}
+  \bra{n}\hat{a}^{\dagger^2}\ket{n} = \sqrt{(n+1)(n+2)} \braket{n|n+2} = 0
+\end{equation*}
+since $\ket{n}$ and $\ket{n+2}$ are orthogonal. Lastly we have that
+\begin{align*}
+  \bra{n}\hat{a}^4\ket{n} &= \sqrt{n(n-1)(n-2)(n-3)} \braket{n|n-4} = 0 \\
+  \bra{n}\hat{a}^{\dagger^4}\ket{n} &= \sqrt{(n+1)(n+2)(n+3)(n+4)} \braket{n|n+4} = 0
+\end{align*}
+
+\subsection*{Part d}
+\begin{align*}
+  \bra{n}\hat{N}\hat{a}^2 \ket{n} &= \sqrt{n(n-1)} \bra{n}\hat{N}\ket{n-2} = (n-2)\sqrt{n(n-1)} \braket{n|n-2} = 0\\
+\bra{n}\hat{N}\hat{a}^{\dagger^2} \ket{n} &= \sqrt{(n+1)(n+2)} \bra{n}\hat{N}\ket{n+2} = (n+2)\sqrt{(n+1)(n+2)}\braket{n|n+2} = 0 \\
+\bra{n} \hat{a}^2 \hat{N} \ket{a} &= n \bra{n}\hat{a}^2 \ket{n} = n\sqrt{n(n-1)} \braket{n|n-2} = 0 \\
+\bra{n} \hat{a}^{\dagger^2} \hat{N} \ket{a} &= n \bra{n}\hat{a}^{\dagger^2} \ket{n} = n\sqrt{(n+1)(n+2)} \braket{n|n+2} = 0
+\end{align*}
+
+\subsection*{Part e}
+\begin{equation*}
+  \bra{n}\hat{H} \ket{n} = \hbar \omega \left(\frac{1}{2} \braket{n|n} + \bra{n}\hat{N}\ket{n} + \frac{\kappa}{4} \bra{n}(\hat{a} + \hat{a}^\dagger)^4 \ket{n}\right)
+\end{equation*}
+note that
+\begin{align*}
+  \braket{n|n} &= 1 \\
+  \bra{n} \hat{N} \ket{n} &= n \braket{n|n} = n \\
+  \bra{n} (\hat{a} + \hat{a}^\dagger) \ket{n} &= \bra{n}\hat{a}^4 + \hat{a}^{\dagger^4} + 2 (\hat{a}^2 + \hat{a}^{\dagger^2}) + 2\left[\hat{N}(\hat{a}^2 + \hat{a}^{\dagger^2}) + (\hat{a}^2 + \hat{a}^{\dagger^2})\hat{N}\right] + 3 + 6\hat{N} + 6\hat{N}^2 \ket{n} 
+\end{align*}
+and we have that the above reduces to
+\begin{equation*}
+  \bra{n} (\hat{a} + \hat{a}^\dagger) \ket{n} = 3 \braket{n|n} + 6\bra{n}\hat{N}\ket{n} + 6\bra{n}\hat{N}^2\ket{n} = 3 + 6n + 6n^2
+\end{equation*}
+and hence
+\begin{equation*}
+  \bra{n} \hat{H} \ket{n} = \hbar\omega \left(\frac{1}{2} + n\right) + \frac{\kappa \hbar \omega}{4} \left(2 + 6n + 6n^2\right)
+\end{equation*}
 \end{document}
+
