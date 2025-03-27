@@ -44,6 +44,23 @@ Suppose that $\Omega \subset \R^d$ is a smooth, bounded, connected domain. Addit
 \begin{equation*}
   H := \left\{ u \in H^2(\Omega) : \int_{\Omega} u(x) \,dx = 0 \text{ and } \nabla u \cdot v = 0 \text{ on } \partial \Omega \right\}
 \end{equation*}
+Here we can see that see that $H$ is a closed linear subspace of $H^2(\Omega)$ since for $u,v \in H$ and $\alpha \in \R$ we have that
+\begin{equation*}
+  \int_{\Omega} (u + \alpha v) \,dx = \int_{\Omega} u \,dx + \alpha \int_{\Omega} v \,dx = 0
+\end{equation*}
+and
+\begin{equation*}
+  \nabla (u + \alpha v) \cdot v = \nabla u \cdot v + \alpha \nabla v \cdot v = 0
+\end{equation*}
+additionally for any converging sequence $u_n \to u$ for $u_n \in H$ we have that
+\begin{equation*}
+  0 = \int_{\Omega} u_n(x) \,dx \to \int_{\Omega} u(x) \,dx
+\end{equation*}
+and
+\begin{equation*}
+  0 = \nabla u_n \cdot v \to \nabla u \cdot v
+\end{equation*}
+thus $H$ is closed in $H^2(\Omega)$ and hence a hilbert space with inner product $\inner{\cdot}{\cdot}_{H^2(\Omega)}$. 
 Note that
 \begin{equation*}
 \norm{u}_{H^1(\Omega)}^2 = \norm{u}_{L^2}^2 + \norm{\nabla u}_{L^2}^2 \leq (1 + C_p^2) \norm{\nabla u}_{L^2}^2  
@@ -106,28 +123,120 @@ for all $v \in H^1(\R^d)$.
 \section*{Problem 8.9}
 Consider the following boundary value problem for $u(x,y): \R^2 \to \R$ such that
 \begin{align*}
-  -u_{xx} + e^yu = f, \quad &\text{for} (x,y) \in (0,1)^2 \\
-  u(0,y) = 0, u(1,y) = \cos(y), \quad &\text{for} y\in(0,1)
+  -u_{xx} + e^yu = f, \quad &\text{for } (x,y) \in (0,1)^2 \\
+  u(0,y) = 0, u(1,y) = \cos(y), \quad &\text{for } y\in(0,1)
 \end{align*}
-First we will define $g \in H^1((0,1)^2)$ such that
-\begin{equation*}
-  g(x,y) = x\cos(y)
-\end{equation*}
-then we have that there exists $\Tilde{u} \in V_0 := \{u \in H^1((0,1)^2): u(0,y)= u(1,y) = 0\}$ such that $u = \Tilde{u} + g$ and hence we can rewrite the above PDE as
-\begin{equation*}
-  -(\Tilde{u}_{xx} + g_{xx}) + e^y(\Tilde{u} + g) = f
-\end{equation*}
-note that $g_{xx} = 0$ and hence we have that the above reduces to,
-\begin{equation*}
-  -\Tilde{u}_{xx} + e^y\Tilde{u} = f-e^yg
-\end{equation*}
-multiplying by $v \in \mathcal{D}((0,1)^2)$ and integrating we have that
-\begin{equation*}
-  \int_{(0,1)^2} (-\Tilde{u}_{xx} + e^y\Tilde{u})v \, dx = \int_{(0,1)^2} (f-e^yg)v \, dx
-\end{equation*}
-which we can expand as
-\begin{equation*}
-  -\int_{(0,1)^2} \Tilde{u}_{xx}v \,dx + \int_{(0,1)^2} e^y\Tilde{u}v \, dx = \int_{(0,1)^2} fv \,dx - \int_{(0,1)^2} e^ygv \, dx
-\end{equation*}
+Let,
 
+\begin{equation*}
+V = \{u \in H^1((0,1)^2): u(0,y) = 0 \text{ and } u(1,y) = \cos(y) \text{ a.e. } y \in (0,1)\}
+\end{equation*}
+and
+\begin{equation*}
+  V_o = \{v \in H^1((0,1)^2): v(0,y) = 0 \text{ and } v(1,y) = 0 \text{ a.e. } y \in (0,1)\}
+\end{equation*}
+then we have that for $v \in V_o$ we get
+\begin{equation*}
+  \int_{(0,1)} u_{xx}v \, dx + \int_{(0,1)}e^y uv \, dx = \int_{(0,1)} f v \, dx
+\end{equation*}
+then by integration by parts we have
+\begin{equation*}
+-\int_{(0,1)} u_{xx} v \, dx = \int_{(0,1)} u_x v_x \, dx
+\end{equation*}
+thus we have that
+\begin{equation*}
+  \int_{(0,1)^2} u_x v_x \, dx + \int_{(0,1)^2} e^y uv \, dx = \int_{(0,1)^2} f v \, dx
+\end{equation*}
+Now setting,
+\begin{equation*}
+  B(x,y) = \int_{(0,1)^2} u_x v_x \, dx + \int_{(0,1)^2} e^y uv \, dx
+\end{equation*}
+we get that
+\begin{equation*}
+  |B(u,v)| \leq \norm{u_x}_{L^2} \norm{v_x}_{L^2} + \norm{e^y}_{L^\infty} \norm{u}_{L^2} \norm{v}_{L^2} \leq C \norm{u}_{H^1} \norm{v}_{H^1}
+\end{equation*}
+and
+\begin{equation*}
+  B(u,u) = \int_{(0,1)^2} |u_x|^2 \, dx + \int_{(0,1)^2} e^y |u|^2 \, dx \geq \int_{(0,1)^2} |u_x|^2 \, dx = \norm{u_x}_{L^2}^2 \geq (1/C^2) \norm{u}_{H^1}^2
+\end{equation*}
+then by the Lax-Milgram Theorem we have that there exists a unique solution $u \in H^1((0,1)^2)$ such that
+\begin{equation*}
+  B(u,v) = \int_{(0,1)^2} f v \, dx
+\end{equation*}
+for all $v \in V_o$.
+
+\section*{Problem 8.11}
+Let $\Omega = [0,1]^d$ and define
+\begin{equation*}
+H_{\#}^1(\Omega) = \{ u \in H^1_{\text{loc}}(\R^d) : \text{$u$ is periodic of period $1$ in each direction and $\int_{\Omega} u \, dx = 0$} \}
+\end{equation*}
+and consider the problem of finding a periodic solution $u \in H^1_{\#}(\Omega)$ such that
+\begin{equation*}
+  -\Delta u = f \quad \text{for } x \in \Omega
+\end{equation*}
+where $f \in L^2(\Omega)$.
+
+\subsection*{Part a}
+If $v \in H^1(\R^d)$ is periodic with period $1$ in each direction, we then expect that
+\begin{equation*}
+v(x + ke_i) = v(x) \quad \text{for } k \in \Z, i = 1,\ldots,d
+\end{equation*}
+where $e_i$ is the $i^{th}$ standard basis vector in $\R^d$. 
+
+\subsection*{Part b}
+We can show that $H_{\#}^1(\Omega)$ is a closed subspace of $H^1(\Omega)$ by showing that it is closed under addition and scalar multiplication. Let $u,v \in H_{\#}^1(\Omega)$ and $\alpha \in \R$, then we have that 
+\begin{equation*}
+  \int_{\Omega} (u + \alpha v) \, dx = \int_{\Omega} u \, dx + \alpha \int_{\Omega} v \, dx = 0
+\end{equation*}
+and
+\begin{equation*}
+  u(x + ke_i) = u(x) \quad \text{and} \quad v(x + ke_i) = v(x) \quad \text{for } k \in \Z, i = 1,\ldots,d
+\end{equation*}
+lastly if we consider a converging sequence $u_n \to u$ for $u_n \in H_{\#}^1(\Omega)$ then we have that
+\begin{equation*}
+  0 = \int_{\Omega} u_n(x) \, dx \to \int_{\Omega} u(x) \, dx
+\end{equation*}
+and
+\begin{equation*}
+  u_n(x + ke_i) = u_n(x) \to u(x + ke_i) \quad \text{for } k \in \Z, i = 1,\ldots,d
+\end{equation*}
+thus we have that $H_{\#}^1(\Omega)$ is a closed subspace of $H^1(\Omega)$, and hence a Hilbert space under the same inner product.
+\subsection*{Part c}
+Let $v \in H^1_{\#}(\Omega)$, then we have that
+\begin{equation*}
+  \int_{\Omega} -\Delta u v \, dx = \int_{\Omega} fv \, dx
+\end{equation*}
+then by IBP we have that
+\begin{equation*}
+-\int_{\Omega} (\Delta u)v \, dx =\int_{\Omega} \nabla u \cdot \nabla v \, dx - \int_{\partial \Omega} v (\nabla u \cdot \nu) \, dx
+\end{equation*}
+note that for the boundary term we have that
+\begin{equation*}
+  \int_{\partial \Omega} v (\nabla u \cdot \nu) \, dx = \sum_{i=1}^d \int_{\partial \Omega^+} v(\nabla u \cdot e_i) \, dx + \int_{\partial \Omega^{-}} v(\nabla u \cdot -e_i) \, dx 
+\end{equation*}
+which cancel out since $v$ is periodic with period $1$ in each direction, thus we have that
+\begin{equation*}
+  -\int_{\Omega} (\Delta u)v \, dx = \int_{\Omega} \nabla u \cdot \nabla v \, dx
+\end{equation*}
+and hence 
+\begin{equation*}
+  \int_{\Omega} \nabla u \cdot \nabla v \, dx  = \int_{\Omega} fv \, dx
+\end{equation*}
+then by setting
+\begin{equation*}
+  B(u,v) = \int_{\Omega} \nabla u \cdot \nabla v \, dx
+\end{equation*}
+we get that
+\begin{equation*}
+  |B(u,v)| \leq \norm{\nabla u}_{L^2} \norm{\nabla v}_{L^2} \leq C \norm{u}_{H^1} \norm{v}_{H^1}
+\end{equation*}
+and
+\begin{equation*}
+  B(u,u) = \int_{\Omega} |\nabla u|^2 \, dx \geq (1/C^2) \norm{u}_{H^1}^2
+\end{equation*}
+then by the Lax-Milgram Theorem we have that there exists a unique solution $u \in H_{\#}^1(\Omega)$ such that
+\begin{equation*}
+  B(u,v) = \int_{\Omega} fv \, dx
+\end{equation*}
+for all $v \in H_{\#}^1(\Omega)$.
 \end{document}
