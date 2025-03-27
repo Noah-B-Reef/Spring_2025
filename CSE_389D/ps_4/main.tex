@@ -1,0 +1,155 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{braket}
+\usepackage{listings}
+\usepackage[bbgreekl]{mathbbol}
+\course{CSE 389D} 	
+\coursetitle{Mathematical Modeling}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{4}   
+\lecturedate{}    
+\input{commands.tex}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\theoremheaderfont{\itshape}
+\theorembodyfont{\upshape}
+\newtheorem{case}{Case}
+
+% Insert your name here!
+\scribe{Student Name: Noah Reef}
+\newcommand{\rb}{\bold{r}}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 4.1}
+\subsection*{Part a}
+Recall that the spin operator is given by $\hat{S} = \frac{1}{2} \hbar \sigma$ where $\sigma = \bbsigma_x u_x + \bbsigma_y u_y + \bbsigma_z u_z$. Then we have that the expectation of the spin operator is
+\begin{align*}
+  \bra{\Psi}\hat{S} \ket{\Psi} = \frac{\hbar}{2}\left[\bra{\Psi}\bbsigma_x\ket{\Psi} u_x +\bra{\Psi}\bbsigma_y\ket{\Psi}u_y + \bra{\Psi}\bbsigma_z\ket{\Psi} u_z  \right]
+\end{align*}
+and we have that
+\begin{align*}
+  \bra{\Psi} \bbsigma_x \ket{\Psi} = \begin{bmatrix}u^*(r) &  d^*(r)\end{bmatrix} \begin{pmatrix}0 & 1 \\ 1 & 0 \end{pmatrix} \begin{bmatrix} u(r) \\ d(r) \end{bmatrix} &= u^*(r)d(r) + d^*(r)u(r) \\
+                                                           &= \Re(u^*d) + i\Im(u^*d) + \Re(u^*d) - i\Im(u^*d) \\
+                                                                      &= 2 \Re(u^*d)
+\end{align*}
+and
+\begin{align*}
+  \bra{\Psi} \bbsigma_y \ket{\Psi} = \begin{bmatrix}u^*(r) &  d^*(r)\end{bmatrix}\begin{pmatrix}0 & -i \\ i & 0 \end{pmatrix} \begin{bmatrix} u(r) \\ d(r) \end{bmatrix} &= -iu^*(r)d(r) + i d^*(r)u(r) \\ 
+                                                           &= -i\Re(u^*d) + \Im(u^*d) + i \Re(u^*d) + \Im(u^*d) \\
+                                                           &= 2 \Im(u^*d) 
+\end{align*}
+lastly,
+\begin{align*}
+  \bra{\Psi} \bbsigma_z \ket{\Psi} = \begin{bmatrix}u^*(r) &  d^*(r)\end{bmatrix}\begin{pmatrix}1 & 0 \\ 0 & -1 \end{pmatrix} \begin{bmatrix} u(r) \\ d(r) \end{bmatrix} &= u^*(r)u(r) - d^*(r)d(r) \\
+                                                                     &= |u|^2 - |d|^2
+\end{align*}
+and hence then expectation value of the spin operator on this spinsor is given by
+\begin{equation*}
+  \bra{\Psi} \hat{S} \ket{\Psi} = \frac{\hbar}{2} \left[2\Re(u^*d) u_x + 2\Im(u^*d)u_y + (|u|^2 - |d|^2)u_z\right]
+\end{equation*}
+
+\subsection*{Part b}
+We compute the norm of $\bra{\Psi}\hat{S}\ket{\Psi}$ as 
+\begin{align*}
+  |\bra{\Psi}\hat{S}\ket{\Psi}| &= \frac{\hbar}{2}\sqrt{4\Re(u^*d)^2 + 4 \Im(u^*d)^2 + |u|^4 - 2|u|^2|d|^2 + |d|^4} \\
+                                &=\frac{\hbar}{2}\sqrt{4|u^*d|^2 + |u|^4 - 2|u|^2|d|^2 + |d|^4} \\
+                                &=\frac{\hbar}{2}\sqrt{4|u|^2|d|^2 + |u|^4 - 2|u|^2|d|^2 + |d|^4}  \\
+                                &=\frac{\hbar}{2}\sqrt{|u|^4 + 2|u|^2|d|^2 + |d|^4}  \\
+                                &=\frac{\hbar}{2}\sqrt{(|u|^2 + |d|^2)^2} \\
+                                &= \frac{\hbar}{2} \sqrt{|\Psi|^2} = \frac{\hbar}{2}   
+\end{align*}
+
+\subsection*{Part c}
+Consider
+\begin{equation*}
+  \exp\left(i \varphi \frac{\hat{S}_z}{\hbar}\right) = \sum_{n=0}^\infty \frac{\left (i \varphi \frac{\hat{S}_z}{\hbar}\right)^n}{n!} = \sum_{n=0}^\infty \frac{1}{n!}\left(\frac{i\varphi}{2}\right)^n \begin{pmatrix}1 & 0 \\ 0 & -1 \end{pmatrix}^n
+\end{equation*}
+note that for $n$ even we have that
+\begin{equation*}
+  \begin{pmatrix} 1 & 0 \\ 0 & -1\end{pmatrix}^n = \begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}
+\end{equation*}
+and remains unchanged for $n$ odd, thus we can write the above as
+\begin{equation*}
+  \exp\left(i \varphi \frac{\hat{S}_z}{\hbar}\right) = \begin{pmatrix}\sum_{n=0}^\infty \frac{1}{n!}\left(\frac{i\varphi}{2}\right)^n & 0 \\
+    0 & \sum_{n=0}^\infty \frac{1}{n!}\left(-\frac{i\varphi}{2}\right)^n \end{pmatrix} = \begin{pmatrix} \exp\left(\frac{i\varphi}{2}\right) & 0 \\ 0 & \exp\left(-\frac{i\varphi}{2}\right)\right)\end{pmatrix}
+\end{equation*}
+
+\subsection*{Part d}
+Note that
+\begin{equation*}
+\Psi' =\exp\left(i \varphi \frac{\hat{S}_z}{\hbar}\right) \Psi =  \begin{pmatrix} \exp\left(\frac{i\varphi}{2}\right) & 0 \\ 0 & \exp\left(-\frac{i\varphi}{2}\right)\right)\end{pmatrix} \begin{bmatrix} u \\ d\end{bmatrix} = \begin{bmatrix} e^{i\varphi/2} u \\ e^{-i\varphi/2}d \end{bmatrix} 
+\end{equation*}
+then we get that
+\begin{align*}
+  \bra{\Psi} \bbsigma_x \ket{\Psi} &= \begin{bmatrix}e^{-i\varphi/2}u^*(r) &  e^{i\varphi/2}d^*(r)\end{bmatrix} \begin{pmatrix}0 & 1 \\ 1 & 0 \end{pmatrix} \begin{bmatrix} e^{i\varphi/2}u(r) \\ e^{-i\varphi/2}d(r) \end{bmatrix} = e^{-i\varphi}u^*(r)d(r) + e^{i\varphi}d^*(r)u(r) \\
+                                                                          &= \Re(e^{-i\varphi}u^*d) + i\Im(e^{-i\varphi}u^*d) + \Re(e^{-i\varphi}u^*d) - i\Im(e^{-i\varphi}u^*d) \\
+                                                                      &= 2 \Re(e^{-i\varphi}u^*d)
+\end{align*}
+and
+\begin{align*}
+  \bra{\Psi} \bbsigma_y \ket{\Psi} &= \begin{bmatrix}e^{-i\varphi/2}u^*(r) &  e^{i\varphi/2}d^*(r)\end{bmatrix}\begin{pmatrix}0 & -i \\ i & 0 \end{pmatrix} \begin{bmatrix} e^{i\varphi/2}u(r) \\ e^{-i\varphi/2}d(r) \end{bmatrix} = -ie^{i\varphi}u^*(r)d(r) + i e^{i\varphi}d^*(r)u(r) \\ 
+                                   &= -i\Re(e^{-i\varphi}u^*d) + \Im(e^{-i\varphi}u^*d) + i \Re(e^{-i\varphi}u^*d) + \Im(e^{-i\varphi}u^*d) \\
+                                                           &= 2 \Im(e^{-i\varphi}u^*d) 
+\end{align*}
+lastly,
+\begin{align*}
+  \bra{\Psi} \bbsigma_z \ket{\Psi} = \begin{bmatrix}e^{-i\varphi/2}u^*(r) &  e^{i\varphi/2}d^*(r)\end{bmatrix}\begin{pmatrix}1 & 0 \\ 0 & -1 \end{pmatrix} \begin{bmatrix} e^{i\varphi/2}u(r) \\ e^{-i\varphi/2}d(r) \end{bmatrix} &= u^*(r)u(r) - d^*(r)d(r) \\
+                                                                     &= |u|^2 - |d|^2
+\end{align*}
+and hence then expectation value of the spin operator on this spinsor is given by
+\begin{equation*}
+  \bra{\Psi'} \hat{S} \ket{\Psi'} = \frac{\hbar}{2} \left[2\Re(e^{-i\varphi}u^*d) u_x + 2\Im(e^{-i\varphi}u^*d)u_y + (|u|^2 - |d|^2)u_z\right]
+\end{equation*}
+
+\subsection*{Part e}
+Suppose that $u^*d = a + bi$ then $a = \frac{1}{2}S_x$ and $b = \frac{1}{2}S_y$ and we have that 
+\begin{equation*}
+  e^{-i\varphi} u^*d = (a + bi)(\cos(i\varphi) - i\sin(\varphi)) = a\cos(\varphi) + b\sin(\varphi) + i \left(b\cos(\varphi) - a\sin(\varphi)\right)
+\end{equation*}
+thus
+\begin{equation*}
+  S'_x = 2\Re(e^{-i\varphi}u^*d) = S_x \cos(\varphi) + S_y \sin(\varphi)
+\end{equation*}
+and
+\begin{equation*}
+  S'_y = 2\Im(e^{-i\varphi}u^*d) = S_y\cos(\varphi) - S_x\sin(\varphi)
+\end{equation*}
+and clearly
+\begin{equation*}
+  S'_z = S_z
+\end{equation*}
+
+\subsection*{Part f}
+From the change of coordinates in Part e, we have that $ \exp\left(i \varphi \frac{\hat{S}_z}{\hbar}\right)$ is a clockwise rotation about the $z$-axis by angle $\varphi$.  
+\end{document}

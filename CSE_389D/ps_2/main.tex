@@ -3,6 +3,7 @@
 \usepackage{float}
 \usepackage{siunitx}
 \usepackage{braket}
+\usepackage{listings}
 \course{CSE 389D} 	
 \coursetitle{Mathematical Modeling}	
 \semester{Spring 2025}
@@ -11,7 +12,33 @@
 \lecturenumber{2}   
 \lecturedate{}    
 \input{commands.tex}
+\usepackage{xcolor}
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 \theoremheaderfont{\itshape}
 \theorembodyfont{\upshape}
 \newtheorem{case}{Case}
@@ -124,9 +151,21 @@ yields
        \frac{E}{V_0} &= -1 + \frac{(3.46525)^2}{S^2} \approx -0.8799
 \end{align*}
 as the eigenvalues of the even bounded state problem.
-
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{Secular_1.png}
+    \caption{Sketch of the Secular Equation for $S=10$ and $\gamma = 0.2$}
+    \label{fig:enter-label}
+  \end{figure}
 \subsection*{Part d}
+%\lstinputlisting[language=Python]{../HW2_Q1_Pd.py}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.6]{even.png}
+  \caption{Even Bounded State Wavefunction}
+  \label{fig:enter-label}
+\end{figure}
+
 \subsection*{Part e}
 To show the odd parity of the wave function we will get a similar result as in part b. However we notice that since the wave is odd we we get that in the case $|x| < a$ the wave function is given by
 \begin{equation*}
@@ -167,11 +206,22 @@ plugging these values into the equation gives the following eigenvalues
   \frac{E}{V_0} &= -1 + \frac{(3.49913)^2}{S^2} \approx -0.8775
 \end{align*}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{Secular_2.png}
+    \caption{Sketch of the Secular Equation for $S=10$ and $\gamma = 0.2$}
+    \label{fig:enter-label}
+  \end{figure}
 \subsection*{Part g}
 The parity of the ground-state wavefunction is even.
 
 \subsection*{Part h}
-
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.6]{odd.png}
+  \caption{Odd Bounded State Wavefunction}
+  \label{fig:enter-label}
+\end{figure}
 \subsection*{Part i}
 Here we assume that the wavefunction is given in the form
 \begin{equation*}
@@ -180,7 +230,7 @@ Here we assume that the wavefunction is given in the form
 then we get that from the time-dependent Schrodinger's equation, that
 \begin{align*}
   i\hbar \frac{d\psi}{dt} &= \hat{H}\psi \\
-  i\hbar \frac{d}{dt} (c_1(t) \psi_1(x) + c_2(t)\psi_2(x)) = \hat{H}(c_1(t) \psi_1(x) + c_2(t)\psi_2(x)) \\
+  i\hbar \frac{d}{dt} (c_1(t) \psi_1(x) + c_2(t)\psi_2(x)) &= \hat{H}(c_1(t) \psi_1(x) + c_2(t)\psi_2(x)) \\
 \end{align*}
 which gives us
 \begin{equation*}
@@ -239,7 +289,25 @@ and hence has a period
 \end{equation*}
 
 \subsection*{Part l}
-
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.6]{qual.png}
+  \label{fig:enter-label}
+\end{figure}
+\subsection*{Part m}
+Let $S = 10$, $\gamma = 0.2$, and $V_0 = 0.05 \si{eV}$. Then we have that the two lowest eigenvalues are given by
+\begin{align*}
+  E_1 &= -0.8775 V_0 = 0.043875 \si{eV}\\
+  E_2 &= -0.8799 V_0 = 0.043995 \si{eV}
+\end{align*}
+and hence the period is given by
+\begin{equation*}
+  T = \frac{2\pi\hbar}{E_2 - E_1} = \frac{2\pi(6.5821 \times 10^{-16}\si{eV \cdot s})}{0.00012\si{eV}} = 3.44638 \times 10^{-11} \si{s}
+\end{equation*}
+and hence the frequency is
+\begin{equation*}
+  f = \frac{1}{T} = 2.9 \times 10^{10} \si{Hz}
+\end{equation*}
 
 \section*{Problem 2.2}
 \subsection*{Part a}
@@ -400,7 +468,7 @@ We compute the eigenvalues of the matrix above by
 \end{equation*}
 solving the above equation gives us the eigenvalues of the matrix as
 \begin{equation*}
-  E = \frac{h_{11} + h_{22}}{2} \pm \sqrt{\left(\frac{h_{11} + h_{22}}{2}\right)^2} - (h_{11}h_{22} - |h_{12}|^2)
+  E = \frac{h_{11} + h_{22}}{2} \pm \sqrt{\left(\frac{h_{11} + h_{22}}{2}\right)^2 - (h_{11}h_{22} - |h_{12}|^2)}
 \end{equation*}
 we take the $(-)$ term to get the lower energy eigenvalue. Then we get that
 \begin{align*}
@@ -421,6 +489,26 @@ then normalizing the wavefunction gives us that
 \end{equation*}
 
 \subsection*{Part d}
+Let $\Delta = h_{11} - h_{22}$ then we have that
+\begin{equation*}
+  E = h_{11} + \frac{\Delta}{2} - \sqrt{\frac{\Delta^2}{4} - |h_{12}|^2}
+\end{equation*}
+usign the taylor expansion about $\varepsilon$ which is equivalent to treating $|h_{12}|^2 \approx \varepsilon$ to get
+\begin{equation*}
+\sqrt{\frac{\Delta^2}{4} - |h_{12}|^2} \approx \frac{\Delta}{2} - \frac{|h_{12}|^2}{\Delta} 
+\end{equation*}
+and hence
+\begin{equation*}
+  E \approx h_{11} - \frac{|h_{12}|^2}{\Delta}
+\end{equation*}
+subsituting into the normalized wavefunction we get that
+\begin{equation*}
+  \psi \approx \frac{1}{\sqrt{1 + \frac{|h_{12}|^2}{\Delta^2}}}\left(\psi_{1s} + \frac{|h_{12}|}{\Delta}\psi_{2p_x}\right)
+\end{equation*}
+and since $|h_{12}|^2/\Delta^2 << 1$ we have that 
+\begin{equation*}
+  \psi \approx \psi_{1s} + \frac{h_{12}}{h_{11}-h_{22}}\psi_{2p_x}
+\end{equation*}
 
 \subsection*{Part e}
 Computing the dipole moment $\mu$ we get that

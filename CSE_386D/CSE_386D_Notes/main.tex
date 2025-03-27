@@ -17,20 +17,29 @@
 \colorlet{LightGray}{White!90!Periwinkle}
 \colorlet{LightOrange}{Orange!15}
 \colorlet{LightGreen}{Green!15}
+\colorlet{LightBlue}{Blue!15}
+\colorlet{LightPink}{Red!15}
 
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\FF}{\mathbb{F}}
 \newcommand{\FT}{\mathcal{F}}
 \newcommand{\Sch}{\mathcal{S}}
 
 \newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\supp}{\text{supp}}
 
 \declaretheoremstyle[name=Theorem,]{thmsty}
 \declaretheorem[style=thmsty,numberwithin=section]{theorem}
 \tcolorboxenvironment{theorem}{colback=LightGray}
+
+\declaretheoremstyle[name=Definition,]{defsty}
+\declaretheorem[style=defsty,numberwithin=section]{definition}
+\tcolorboxenvironment{definition}{colback=LightBlue}
 
 \declaretheoremstyle[name=Proposition,]{prosty}
 \declaretheorem[style=prosty,numberlike=theorem]{proposition}
@@ -39,6 +48,11 @@
 \declaretheoremstyle[name=Principle,]{prcpsty}
 \declaretheorem[style=prcpsty,numberlike=theorem]{principle}
 \tcolorboxenvironment{principle}{colback=LightGreen}
+
+\declaretheoremstyle[name=Lemma,]{lemmasty}
+\declaretheorem[style=lemmasty,numberlike=theorem]{lemma}
+\tcolorboxenvironment{lemma}{colback=LightPink}
+
 
 \setstretch{1.2}
 \geometry{
@@ -77,6 +91,46 @@
 
 % ------------------------------------------------------------------------------
 
+\section{Normed Linear Spaces and Banach Spaces}
+\subsection{Basic Concepts and Definitions}
+\begin{definition}
+  Let $X$ be a V.S. over $\FF$. $X$ is a NLS if $X$ has a norm, a map $
+  \norm{\cdot}: X \to \RR^{+}$ such that for $x,y \in X$ and $\lambda \in \F$ such that
+  \begin{enumerate}
+    \item $\norm{\lambda x} = |\lambda| \norm{x}$ 
+    \item $\norm{x} = 0 \iff x = 0$ 
+    \item $\norm{x + y} \leq \norm{x} + \norm{y}$
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  Let $(X, \norm{\cdot})$ be a NLS. Then $X$ is a metric space if we define a metric $d$ on $X$ by
+  \begin{equation*}
+    d(x,y) = \norm{x - y}
+  \end{equation*}
+\end{proposition}
+
+\begin{proposition}
+  In a NLS $X$, the operations addition $+: X \times X \to X$, scalar multiplication, $\cdot: \FF \times X \to X$, and the norm, $\norm{\cdot}: X \to \RR$ are continuous 
+\end{proposition}
+
+\begin{definition}
+  Let $(X, d)$ be a metric space, then $\{x_n\}_{n=1}^\infty \subseteq X$ is called \textit{Cauchy}, if for $\epsilon > 0$ there exists $N \in \NN$ such that for $m,n \geq N$ we have that
+  \begin{equation*}
+    d(x_n,x_m) \leq \epsilon
+  \end{equation*}
+\end{definition}
+\begin{definition}
+  A metric space is called \textit{complete}, if every cauchy sequence in the space converges to a point in the space. A complete NLS is called a \textit{Banach Space}
+\end{definition}
+
+\begin{proposition}
+  If $X$ and $Y$ are NLS's and $T: X \to Y$ is linear, then $T$ is bounded iff there is $C > 0$ such that
+  \begin{equation*}
+    \norm{Tx}_Y \leq C \norm{x}_X
+  \end{equation*}
+  for all $x \in X$.
+\end{proposition}
 \section{The Fourier Transform}
 \subsection{The $L^1(\mathbb{R}^d)$ Theory}
 
@@ -210,6 +264,72 @@ for $x \in \mathbb{R}^d$ is a plane wave in the direction $\xi$. Its period in t
     d(\phi_1,\phi_2) = \sum_{n=0}^\infty 2^{-n} \frac{\rho_n(\phi_1 - \phi_2)}{1 + \rho_n(\phi_1 - \phi_2)}
   \end{equation*}
 \end{proposition}
+
+\section{Sobolev Spaces}
+\begin{definition}[Sobolev Spaces]
+  Let $\Omega \subset \R^d$ be a domain, $1 \leq p \leq \infty$, and $m \geq 0$ be an integer. The \textit{Sobolev space} of $m$ derivatives in $L^p(\Omega)$ is 
+  \begin{equation*}
+    W^{m,p}(\Omega) = \{f \in L^p(\Omega): D^\alpha f \in L^p(\Omega) \text{ for all $|\alpha| \leq m$}\}
+  \end{equation*}
+  with the norm, for $f \in W^{m,p}(\Omega)$, given by
+  \begin{equation*}
+    \norm{f}_{W^{m,p}(\Omega)} = \left(\sum_{|\alpha| \leq m} \norm{D^\alpha f}_{L^p(\Omega)}^p\right)^{1/p}
+  \end{equation*}
+  and,
+  \begin{equation*}
+    \norm{f}_{W^{m,\infty}(\Omega)} = \sup_{|\alpha| \leq m} \norm{D^\alpha f}_{L^\infty(\Omega)}
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  We have the following properties of Sobolev spaces:
+  \begin{enumerate}
+    \item $\norm{\cdot}_{W^{m,p}(\Omega)}$ is a norm on $W^{m,p}(\Omega)$
+    \item $W^{0,p}(\Omega) = L^p(\Omega)$
+    \item $W^{m,p}(\Omega) \hookrightarrow W^{k,p}(\Omega)$ for all $m \geq k \geq 0$
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}
+  The space $W^{m,p}(\Omega)$ is a Banach space for $1 \leq p \leq \infty$.
+\end{proposition}
+
+\begin{proposition}
+  The space $W^{m,p}(\Omega)$ is separable if $1 \leq p < \infty$ and reflexive if $1 < p < \infty$.
+\end{proposition}
+
+\begin{definition}
+  We denote the $m$th order Sobolev space in $L^2(\Omega)$ by 
+  \begin{equation*}
+    H^m(\Omega) = W^{m,2}(\Omega)
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  The space $H^m(\Omega) = W^{m,2}(\Omega)$ is a separable Hilber space with the inner product
+
+  \begin{equation*}
+    \inner{u}{v}_{H^m(\Omega)} = \sum_{|\alpha| \leq m} \inner{D^\alpha u}{D^\alpha v}_{L^2(\Omega)}
+  \end{equation*}
+  where 
+  \begin{equation*}
+    \inner{f}{g}_{L^2(\Omega)} = \int_\Omega f(x)g(x) \, dx
+  \end{equation*}
+\end{proposition}
+
+\begin{theorem}
+  If $1 \leq p < \infty$ then
+  \begin{equation*}
+    \{f \in C^{\infty}(\Omega): \norm{f}_{W^{m,p}(\Omega)} < \infty\} = C^{\infty}(\Omega) \cap W^{m,p}(\Omega)
+  \end{equation*}
+  is dense in $W^{m,p}(\Omega)$.
+\end{theorem}
+
+\begin{lemma}
+  Suppose that $1 \leq p < \infty$ and $\varphi \in C_0^\infty(\R^d)$ is an approximate identity supported in the unit ball about the origin (i.e. $\varphi \geq 0, \int \varphi(x) \, dx = 1, \supp(\varphi) \subset B_1(0)$, and $\varphi_\epsilon(x) = \epsilon^{-d} \varphi(\epsilon^{-1}x)$ for $\epsilon > 0 ).
+
+\end{lemma}
 \newpage
 
 % ------------------------------------------------------------------------------

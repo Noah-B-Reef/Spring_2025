@@ -1,0 +1,127 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{4}   
+\lecturedate{}    
+\input{commands.tex}
+\newcommand{\supp}[]{\text{supp}}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+\section*{Problem 7.2}
+Suppose that $f \in H_0^1(0,1)$ then we have that, there exists $f_k \in C_0^\infty(0,1)$ such that $f_k \to f$ and $f'_k \to f'$. Then we have that $f_k(0) = f_k(1) = 0$ and
+by the fundamental theorem of calculus we have that
+\begin{equation*}
+  f_k(x) = f_k(x) - f_k(0) = \int_0^x f_k'(t) \, dt
+\end{equation*} 
+and so
+\begin{align*}
+  \norm{f}^2_{L^2(0,1)} \leftarrow \norm{f_k}^2_{L^2(0,1)} = \int_0^1 |f_k(x)|^2 \, dx &= \int_0^1 \left| \int_0^x f_k'(t) \, dt \right|^2 \, dx \\
+                                                                                       &\leq \int_0^1\left(\int_0^x 1^2 \, dt\right)  \left(\int_0^x |f_k'(t)|^2 \, dt \right) \, dx \\
+                                                                                       &\leq \frac{1}{2}\norm{f_k'}^2_{L^2(0,1)} \int_0^1 \int_0^x 1\, dt \, dx \\ 
+                                                                                       &= \norm{f_k'}^2_{L^2(0,1)} \to \frac{1}{2} \norm{f'}^2_{L^2(0,1)}  \\
+\end{align*}
+thus we get that
+\begin{equation*}
+  \norm{f}_{L^2(0,1)} \leq \frac{1}{\sqrt{2}} \norm{f'}_{L^2(0,1)}
+\end{equation*}
+Note that similarly that if $f \in \{g \in H^1(0,1) : \int_0^1 g(x)\,dx = 0\}$, then we have that
+\begin{equation*}
+  \int_0^1f(x) \, dx = 0
+\end{equation*}
+and hence by the Intermediate Value Theorem we have that there exists a $f(c)$ such that $f(c) = 0$. Then we get that
+\begin{equation*}
+  f(x) = f(x) - f(c) = \int_c^x f'(t) \, dt
+\end{equation*}
+and so we have that
+\begin{equation*}
+  \norm{f}^2_{L^2(0,1)} = \int_0^1 |f(x)|^2 \, dx = \int_0^1 \left| \int_c^x f'(t) \, dt \right|^2 \, dx \leq \norm{f'}^2_{L^2(0,1)}\int_0^1 (x-c) \, dx = \frac{1 - 2c}{2} \norm{f'}^2_{L^2(0,1)}
+\end{equation*}
+and get that
+\begin{equation*}
+  \norm{f}_{L^2(0,1)} \leq \sqrt{\frac{1-2c}{2}} \norm{f'}_{L^2(0,1)}
+\end{equation*}
+
+\pagebreak 
+\section*{Problem 7.4}
+Recall that $C^\infty(0,1) \cap H^1(0,1)$ is dense in $H^1(0,1)$ that is for $f \in H^1(0,1)$, there exists $f_k \in C^\infty(0,1) \cap H^1(0,1)$ such that $f_k \to f$ and $f_k' \to f'$. Then we have that
+\begin{equation*}
+  f_k(x) = f_k(x_0) + \int_{x_0}^x f_k'(t) \, dt
+\end{equation*}
+and choose $x_0$ such that is satisfies the mean value theorem, that is
+\begin{equation*}
+  f_k(x_0) = \int_0^1 f_k(t) \, dt
+\end{equation*}
+then we have that
+\begin{align*}
+  |f_k(x)| \leq |f_k(x_0)| + \int_{x_0}^x |f_k'(t)| \, dt &\leq \int_0^1 |f_k(t)| \, dt + \int_{0}^1 |f_k'(t)| \, dt \\
+                                                          &\leq C( \norm{f_k}_{L^2(0,1)} + \norm{f_k'}_{L^2(0,1)}) \to C(\norm{f}_{L^2(0,1)} + \norm{f'}_{L^2(0,1)})
+\end{align*}
+where the last inequality follows from Cauchy-Schwartz. Then we have that
+\begin{equation*}
+  \norm{f}_{L^\infty(0,1)} \leq C(\norm{f}_{L^2(0,1)} + \norm{f'}_{L^2(0,1)}) = C \norm{f}_{H^1(0,1)}
+\end{equation*}
+thus $H^1(0,1)$ is continously imbedded in $C_B(0,1)$.
+\pagebreak
+\section*{Problem 7.5}
+Let $\Omega \subseteq \R^d$ be bounded, and hence $\bar{\Omega}$ compact. Suppose that $\{U_j}_{j=1}^N$ is a finite collection of open sets such that
+\begin{equation*}
+  \bar{\Omega} \subseteq \bigcup_{j=1}^N U_j
+\end{equation*}
+since $\bar{\Omega}$ is compact we have that there exists a finite subcover $\{V_k\}_{k=1}^M$ such that 
+\begin{equation*}
+  \bar{\Omega} \subseteq \bigcup_{k=1}^M V_k \subseteq \bigcup_{j=1}^N U_j
+\end{equation*}
+now let $\psi_k \in C_0^\infty(\Omega)$ such that $0 \leq \psi_k \leq 1$, $\psi_k \equiv 1$ on $V_k$ and $\supp(\psi_k) \subseteq U_{j_k}$, where
+\begin{equation*}
+  V_k \subseteq \bigcup_{k} U_{j_k}
+\end{equation*}
+now let $u \in C_0^\infty(\Omega)$ be such that $u$ maps one-to-one and onto $\Omega$, then we get that 
+\begin{equation*}
+  \phi_k = \frac{\psi_k}{\sum_{k=1}^M \psi_k u} u \in C_0^\infty(\Omega)
+\end{equation*}
+then we have that $\supp(\phi_k) \subseteq U_{j_k}$, $\phi_k \subseteq U_{j_k}$, and $\sum_{k=1}^M \phi_k = 1$ and hence we have that $\{\phi_k\}_{k=1}^M$ is a partition of unity subordinate to $\{U_j\}_{j=1}^N$.
+
+\section*{Problem 7.6}
+Let $\Omega \subseteq \R^d$ be a domain and $\{U_\alpha\}_{\alpha \in \mathcal{I}}$ be a collection of open sets in $\R^d$ that cover $\Omega$, that is
+\begin{equation*}
+  \Omega \subseteq \bigcup_{\alpha \in \mathcal{I}} U_\alpha
+\end{equation*}
+Let $S$ be the set of rational coordinates of $\Omega$ and let
+\begin{equation*}
+  \mathcal{B} = \{B_r(x) \subseteq \R^d: \text{$r$ is rational, $x \in S$ and $B_r(x) \subseteq U_{\alpha}$ for some $\alpha \in\mathcal{I}$}\}.
+\end{equation*}
+Then by assigning an ordering to $B_j = B_{r_j}(x_j)$ we define $\phi_j \in C_0^\infty(\Omega)$ such that $0 \leq \phi_j \leq 1$ and $\phi_j \equiv 1$ on $B_{r_j/2}(x_j)$ and we let $\psi_1 = \phi_1$ and $\psi_j = (1-\phi_1)(1-\phi_2)\dots(1-\phi_{j-1})\phi_j$. Clearly we see that $\psi_j \geq 0$ and by letting $A_k = \prod_{j=1}^k (1-\phi_j)$ with $A_0 = 1$, we get that $\psi_{k-1} = A_k\phi_k$ and
+\begin{equation*}
+  A_{k-1} - A_{k} = A_{k-1} - A_{k-1}(1-\phi_k) = A_{k-1}\phi_k = \psi_k
+\end{equation*}
+thus
+\begin{equation*}
+  \sum_{k=1}^\infty \psi_k = \sum_{k=1}^\infty A_{k-1} - A_k = A_0 - \lim_{k \to \infty} A_k = 1
+\end{equation*}
+additionally note that we have that,
+\begin{equation*}
+  \Omega \subseteq \bigcup_{j \in \mathcal{J}} B_j
+\end{equation*}
+Then we see that if $K \subset\subset \Omega$ then we have have that there exists some subset $\{B_{j_k}\}_{k=1}^M$ such that 
+\begin{equation*}
+  K \subseteq \bigcup_{k=1}^M B_{j_k}
+\end{equation*}
+and hence there exists some finite subcover that covers $K$, such that
+\begin{equation*}
+  K \subseteq \bigcup_{k} B_{r_k/2(x_k)} \subseteq \bigcup_{j \in \mathcal{J}} B_j
+\end{equation*}
+then for $\psi_k$ where $k$ is greater than the maximum index of the finite subcover, we get that $\psi_k = 0$ and hence $\psi_k$ vanishes for all but a finitely many terms. Lastly since $\text{supp}(\psi_k) \subseteq B_{r_k}(x_k)$ we have that $\text{supp}(\psi_k) \subseteq U_{\alpha_k}$ for some $\alpha_k \in \mathcal{I}$ and hence $\{\psi_k\}_{k=1}^\infty$ is a partition of unity subordinate to $\{U_\alpha\}_{\alpha \in \mathcal{I}}$.
+\end{document}

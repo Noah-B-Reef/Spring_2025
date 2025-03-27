@@ -1,0 +1,110 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\usepackage{stackengine}
+\newcommand\dhookrightarrow{\mathrel{%
+  \ensurestackMath{\stackanchor[.1ex]{\hookrightarrow}{\hookrightarrow}}
+}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{6}   
+\lecturedate{}    
+\input{commands.tex}
+\newcommand{\supp}[]{\text{supp}}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 7.9}
+Let $\Omega \subseteq \R^d$ be bounded and suppose that $f_j \in H^2(\Omega)$ is such that $f_j \rightharpoonup f$ in $H^1(\Omega)$ and $D^{\alpha} f_j \rightharpoonup g_{\alpha}$ in $L^2(\Omega)$ for all $|\alpha| = 2$. Without loss of generality, we will assume that $\Omega$ is Lipschitz, since we can always find a bounded extension operator from $\Omega$ to a Lipschitz domain and the results will still hold. 
+
+Since $f_j \in H^2(\Omega)$, we have that $\norm{f_j}_{H^2(\Omega)} < \infty$ and 
+thus we have that there exists a subsequence $\{f_{j_k}\}_{k=1}^\infty$ such that $f_{j_k} \to f_{H^2}$ in $H^2(\Omega)$. Additionally, we have that since $f_j \rightharpoonup f$ in $H^1(\Omega)$, then we have that $\norm{f_j}_{H^1(\Omega)}$ is bounded and thus there exists a subsequence $\{f_{j_k}\}_{k=1}^\infty$ such that $f_{j_k} \rightharpoonup f$ in $H^1(\Omega)$. Since $H^2 \hookrightarrow H^1$ and we have that the weak limit is unique, we get that $f_{j_k} \rightharpoonup f$ in $H^2(\Omega)$. Thus we have that 
+\begin{align*}
+  \inner{f_{j_k}}{h}_{H^1} &= \sum_{|\alpha| \leq 2} \inner{D^{\alpha} f_{j_k}}{D^{\alpha} h}_{L^2} \to \sum_{|\alpha| \leq 2} \inner{D^{\alpha}f}{D^{\alpha} h}_{L^2} = \inner{f}{h}_{H^2}
+\end{align*}
+which implies that
+\begin{equation*}
+  \inner{D^{\alpha}f_{j_k}}{D^{\alpha}h}_{L^2} \to \inner{D^{\alpha}f}{h}_{L^2}
+\end{equation*}
+but since $D^{\alpha}f_{j_k} \rightharpoonup g_{\alpha}$ in $L^2(\Omega)$, we have that $g_{\alpha} = D^{\alpha}f$ and hence $f \in H^2(\Omega)$. Additionally since $H^2(\Omega) \hookrightarrow H^1(\Omega)$, we have that $f_{j} \rightharpoonup f$ in $H^2(\Omega)$ and thus there exists a subsequence $f_{j_k} \to f$ in $H^1(\Omega)$.
+
+
+\section*{Problem 7.10}
+Suppose that $\Omega \subset \R^d$ is bounded with a Lipschitz boundary and $f_j \rightharpoonup f$ and $g_j \rightharpoonup g$ in $H^1(\Omega)$. Note that for $\varphi \in \mathcal{D}(\Omega)$, we have that
+\begin{align*}
+  \inner{\nabla(f_jg_j)}{\varphi} &= \int_{\Omega} g_j \nabla f_j \cdot \varphi \,dx  + \int_{\Omega} f_j \nabla g_j \cdot  \varphi \, dx \\
+                                  &= \int_{\Omega} (g_j - g)\nabla f_j \cdot \varphi \, dx + \int_{\Omega} g \nabla f_j \cdot \varphi \, dx + \int_{\Omega} (f_j - f)\nabla g_j \cdot \varphi \, dx + \int_{\Omega} f \nabla g_j \cdot \varphi \, dx \\ 
+                                  &= \inner{(g_j - g)\nabla f_j  }{\varphi}_{L^2(\Omega)} + \inner{g\nabla f_j}{\varphi}_{L^2(\Omega)} + \inner{(f_j - f)\nabla g_j}{\varphi}_{L^2(\Omega)} + \inner{f \nabla g_j}{\varphi}_{L^2(\Omega)} \\
+\end{align*}
+then by Corollary 7.23, we have that there exists $f_{j_k} \to f$ and $g_{j_k} \to g$ in $L^2(\Omega)$ and thus by using the subsequences above we get that
+\begin{align*}  
+  \inner{(g_{j_k} - g)\nabla f_{j_k}  }{\varphi}_{L^2(\Omega)} + \inner{g\nabla f_{j_k}}{\varphi}_{L^2(\Omega)} + \inner{(f_{j_k} - f)\nabla g_{j_k}}{\varphi}_{L^2(\Omega)} + \inner{f \nabla g_{j_k}}{\varphi}_{L^2(\Omega)} 
+\end{align*}
+which becomes $\inner{g \nabla f_{j_k} + f \nabla g_{j_k}}{\varphi}_{L^2(\Omega)} \to \inner{\nabla(fg)}{\varphi}$ and hence we have that there is a subsequence such that $\nabla(f_{j_k}g_{j_k}) \to \nabla(fg)$ in $L^2(\Omega)$. To have the sequence weakly converge in $L^p(\Omega)$, we require that the sequence is uniformly bounded in $L^p(\Omega)$ and so we first note that by Holder's Inequality, we have that
+\begin{align*}  \norm{f_j \nabla g_j + g_j \nabla f_j}_{L^p} &\leq \norm{f_j \nabla g_j}_{L^p} + \norm{g_j \nabla f_j}_{L^p} \\
+  &\leq \norm{f_j}_{L^q} \norm{\nabla g_j}_{L^2} + \norm{g_j}_{L^q} \norm{\nabla f_j}_{L^2} 
+\end{align*}
+where $1/p = 1/q + 1/2$. Note that since $f_j,g_j \in H^1(\Omega)$ we get that the sequence $\norm{\nabla g_j}_{L^2}$ and $\norm{\nabla f_j}_{L^2}$ are bounded. 
+
+In the case of $d \geq 3$, we have that for $p^* = 2d/(d-2)$ that $H^1(\Omega) \hookrightarrow L^{p^*}(\Omega)$. Then by taking $q = p^*$ we have that
+\begin{equation*}
+  \frac{1}{p} = \frac{d-2}{2d} + \frac{1}{2} = \frac{d-2 + 2d}{2d} = \frac{d-1}{d}
+\end{equation*}
+and thus for $d \geq 3$ we have weak convergence in $L^{d/(d-1)}(\Omega)$. Next for $d = 2$, we have that $H^1(\Omega) \hookrightarrow L^{\infty}(\Omega)$ and thus we have that $q = \infty$ and thus we have that
+\begin{equation*}
+  \frac{1}{p} = 0 + \frac{1}{2} = \frac{1}{2}
+\end{equation*}
+and hence we have weak convergence in $L^2(\Omega)$.
+\section*{Problem 7.11}
+\subsection*{Part a}
+Since $\Omega \subset \R^d$ is bounded with Lipschitz boundary, and $\{u_j\} \subseteq H^{2 + \epsilon}(\Omega) = W^{2+\epsilon, 2}(\Omega)$, we have that there exists a subsequence $\{u_{j_k}\} \subseteq W^{2,q}(\Omega)$ for $q < 2 < 2d/(d - 2\epsilon)$ that converges. Thus by the Rellich-Kondrachov Theorem we have that $W^{2,q}(\Omega) \hookrightarrow W^{2,2}(\Omega) = H^2(\Omega)$ and hence we have that there exists a subsequence $\{u_{j_k}\} \subseteq H^2(\Omega)$ that converges. 
+
+\subsection*{Part b}
+To find such $q$ and $s \geq 0$ such that we have $u_{j_k} \to u$ in $W^{s,q}(\Omega)$ we need that $W^{2 + \epsilon,2}(\Omega) \dhookrightarrow W^{s,q}(\Omega)$. This means that $s + m = 2 + \epsilon$ with $q < 2d/(d-2m)$, thus we have 
+\begin{align*}
+  q < \frac{2d}{d - 2(2 + \epsilon - s)} \implies s < 2 + \epsilon + \frac{d}{q} - \frac{d}{2}
+\end{align*}
+and we have that
+\begin{equation*}
+
+\section*{Part c}
+Suppose we have a subsequence $|u_{j_k}|^r \nabla u_{j_k} \to |u|^r\nabla u$ in $L^2(\Omega)$ for some $r \geq 1$. Then we see that
+\begin{align*}
+  \norm{|u_{j_k}|^r \nabla u_{j_k} -|u|^r \nabla u}_{L^2} &= \norm{\left(|u_{j_k}|^r - |u|^r\right) \nabla u_{j_k} -|u|^r (\nabla u - \nabla u_{j_k})}_{L^2} \\
+                                                          &\leq \norm{\left(|u_{j_k}|^r - |u|^r\right) \nabla u_{j_k}}_{L^2}  + \norm{|u|^r (\nabla u - \nabla u_{j_k})}_{L^2}
+\end{align*}
+then by Holder's Inequality we have that
+\begin{align*}
+  \norm{\left(|u_{j_k}|^r - |u|^r\right) \nabla u_{j_k}}_{L^2}  + \norm{|u|^r (\nabla u - \nabla u_{j_k})}_{L^2} &\leq \norm{|u_{j_k}|^r - |u|^r}_{L^{\infty}} \norm{\nabla u_{j_k}}_{L^2} + \norm{|u|^r}_{L^\infty} \norm{\nabla u - \nabla u_{j_k}}_{L^2} 
+\end{align*}
+since $[u_{j_k}]$ is bounded in $W^{2,2}(\Omega)$, we have that $\norm{\nabla u_{j_k}}_{L^2}$ is bounded, similarly 
+\begin{equation*}
+  \norm{\nabla u - \nabla u_{j_k}}_{L^2} \to 0
+\end{equation*}
+and thus we need to check if $\norm{|u_{j_k}|^r - |u|^r}_{L^{\infty}} \to 0$, which requires that $H^{2}(\Omega) \hookrightarrow L^{\infty}(\Omega)$. Note we have the following inequality,
+\begin{equation*}
+  s < 2 + \frac{d}{q} - \frac{d}{2}
+\end{equation*}
+and thus for $d \leq 4$ choosing $s = 0$ and $q = \infty$ satisfies that above inequality and hence $\norm{|u_{j_k}|^r - |u|^r}_{L^{\infty}} \to 0$ and thus we have that $|u_{j_k}|^r \nabla u_{j_k} \to |u|^r \nabla u$ in $L^2(\Omega)$ for any $r \geq 1$. For $d > 4$ we could have instead applied Holder's as
+\begin{align*}
+  \norm{\left(|u_{j_k}|^r - |u|^r\right) \nabla u_{j_k}}_{L^2}  + \norm{|u|^r (\nabla u - \nabla u_{j_k})}_{L^2} &\leq \norm{|u_{j_k}|^r - |u|^r}_{L^{s}} \norm{\nabla u_{j_k}}_{L^t} + \norm{|u|^r}_{L^s} \norm{\nabla u - \nabla u_{j_k}}_{L^t} 
+\end{align*}
+and here we make the choice that $s = \frac{2d}{d-4}$ and $t = d/2$ to see that $H^2(\Omega) \hookrightarrow L^t(\Omega)$ and thus we have that $\nabla u_{j_k}$ converges in $L^t(\Omega)$. Then lastly
+
+\begin{equation*}
+  \norm{|u_{j_k}|^r - |u|^r}_{L^{s}} \to 0
+\end{equation*}
+which we can achieve for $r \leq \frac{2}{d-4}$
+
+  \end{document}

@@ -1,0 +1,133 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\usepackage{stackengine}
+\newcommand\dhookrightarrow{\mathrel{%
+  \ensurestackMath{\stackanchor[.1ex]{\hookrightarrow}{\hookrightarrow}}
+}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{9}   
+\lecturedate{}    
+\input{commands.tex}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 8.2}
+Let $B$ be a bilinear map that satisfies the conditions of the Generalized Lax-Milgram Theorem. Additionally let $x_{0,1},x_{0,2} \in \mathcal{X}$ be such that $X + x_{0,1} = X + x_{0,2}$, then we see that there exists unique $u_1$ and $u_2$ such that for $F \in Y^*$ we get that
+\begin{equation*}
+  B(u_1,v) = F(v) \quad \text{and} \quad B(u_2,v) = F(v) 
+\end{equation*}
+which implies that
+\begin{equation*}
+  B(u_1,v) - B(u_2,v) = B(u_1 - u_2, v) = 0
+\end{equation*}
+then we see that by setting $w = u_1 - u_2 \neq 0$ and a rescaling arguement that we have that
+\begin{equation*}
+  0 = \sup_{\norm{v} = 1} B(w,v) >  \inf_{\norm{w} = 1} \sup_{\norm{v} = 1} B(w,v) > 0
+\end{equation*}
+which is a contradiction, thus $w = 0$ and hence $u_1 = u_2$. This implies that for the Dirichlet Boundary Problem, we have that for the boundary condition that $H_0^1(\Omega) + u_{D,1} = H_0^1(\Omega) + u_{D,2}$ then the solution $u$ is the same for both problems. 
+
+\section*{Problem 8.5}
+Suppose that $\Omega \subset \R^d$ is a smooth, bounded, connected domain. Additionally let 
+\begin{equation*}
+  H := \left\{ u \in H^2(\Omega) : \int_{\Omega} u(x) \,dx = 0 \text{ and } \nabla u \cdot v = 0 \text{ on } \partial \Omega \right\}
+\end{equation*}
+Note that
+\begin{equation*}
+\norm{u}_{H^1(\Omega)}^2 = \norm{u}_{L^2}^2 + \norm{\nabla u}_{L^2}^2 \leq (1 + C_p^2) \norm{\nabla u}_{L^2}^2  
+\end{equation*}
+then by IBP we have that,
+\begin{equation*}
+  \norm{\nabla u}_{L^2(\Omega)}^2 = \int_{\Omega} |\nabla u|^2 \,dx = -\int_{\Omega} u \Delta u \, dx + \int_{\partial \Omega} u \nabla u \cdot \nu \, dx
+\end{equation*}
+then by the boundary condition we have that the boundary term goes away and we are left with
+\begin{equation*}
+  \norm{\nabla u}_{L^2(\Omega)}^2 = -\int_{\Omega} u \Delta u \, dx \leq \norm{u}_{L^2(\Omega)} \norm{\Delta u}_{L^2(\Omega)} \leq C_p \norm{\nabla u}_{L^2(\Omega)} \norm{\Delta u}_{L^2(\Omega)}
+\end{equation*}
+then we get that
+\begin{equation*}
+  \norm{u}_{H^1(\Omega)}^2 \leq (1 + C_p^2)C_p \norm{\nabla u}_{L^2(\Omega)} \norm{\Delta u}_{L^2(\Omega)}
+\end{equation*}
+which implies that
+\begin{equation*}
+  \norm{u}_{H^1(\Omega)} \leq (1 + C_p^2)C_p \norm{\Delta u}_{L^2(\Omega)} \leq (1 + C_p^2)C_p \sum_{|\alpha| = 2} \norm{D^\alpha u}_{L^2(\Omega)} 
+\end{equation*}
+\section*{Problem 8.8}
+Let $f \in L^2(\R^d)$, our goal is to show there exists a unique solution $u \in H^1(\R^d)$ for 
+\begin{equation*}
+  -\Delta u + u = f
+\end{equation*}
+To derive the variational problem, we consider $v \in \mathcal{D}(\R^d)$ and take the integral
+\begin{equation*}
+  \int_{\R^d} (-\Delta u + u)v \, dx = -\int_{\R^d} \nabla \cdot (\nabla u)v \,dx + \int_{\R^d} uv \,dx =   \int_{\R^d} fv \, dx
+\end{equation*}
+Then for the left-most integral we get the following by the Divergence Theorem
+\begin{equation*}
+  -\int_{\R^d} \nabla \cdot (\nabla u) v \,dx = \int_{\R^d} \nabla u \cdot \nabla v \, dx - \int_{\partial \R^d} \nabla u \cdot n v \, dx
+\end{equation*}
+which holds since $\mathcal{D}(\R^d)$ is dense in $H^1(\R^d)$ and hence can consider $v \in H^1(\R^d)$. Note that the boundary term goes away and hence we have that
+\begin{equation*}
+  \int_{\R^d} \nabla u \cdot \nabla v \,dx + \int_{\R^d} uv \, dx = \int_{\R^d} fv \, dx
+\end{equation*}
+thus by letting
+\begin{equation*}
+  B(u,v) =\int_{\R^d} \nabla u \cdot \nabla v \,dx + \int_{\R^d} uv \, dx  
+\end{equation*}
+and 
+\begin{equation*}
+  F(v) = \int_{\R^d} fv \, dx
+\end{equation*}
+then we see that
+\begin{equation*}
+  |B(u,v)| \leq \norm{\nabla u}_{L^2} \norm{\nabla v}_{L^2} + \norm{u}_{L^2} \norm{v}_{L^2} \leq 2 \norm{u}_{H^1} \norm{v}_{H^1}
+\end{equation*}
+and for $v \neq 0$ we have that
+\begin{equation*}
+  B(v,v) = \int_{\R^d} |\nabla v|^2 \,dx + \int_{\R^d} |v|^2 \,dx \geq \int_{\R^d} |\nabla v|^2 \, dx = \norm{\nabla v}^2_{L^2} \geq (1/C^2) \norm{v}^2_{H^1}
+\end{equation*}
+and hence by Lax-Milgram we have that there exists a unique solution $u \in H^1(\R^d)$ such that 
+\begin{equation*}
+  B(u,v) = F(v)
+\end{equation*}
+for all $v \in H^1(\R^d)$.
+
+\section*{Problem 8.9}
+Consider the following boundary value problem for $u(x,y): \R^2 \to \R$ such that
+\begin{align*}
+  -u_{xx} + e^yu = f, \quad &\text{for} (x,y) \in (0,1)^2 \\
+  u(0,y) = 0, u(1,y) = \cos(y), \quad &\text{for} y\in(0,1)
+\end{align*}
+First we will define $g \in H^1((0,1)^2)$ such that
+\begin{equation*}
+  g(x,y) = x\cos(y)
+\end{equation*}
+then we have that there exists $\Tilde{u} \in V_0 := \{u \in H^1((0,1)^2): u(0,y)= u(1,y) = 0\}$ such that $u = \Tilde{u} + g$ and hence we can rewrite the above PDE as
+\begin{equation*}
+  -(\Tilde{u}_{xx} + g_{xx}) + e^y(\Tilde{u} + g) = f
+\end{equation*}
+note that $g_{xx} = 0$ and hence we have that the above reduces to,
+\begin{equation*}
+  -\Tilde{u}_{xx} + e^y\Tilde{u} = f-e^yg
+\end{equation*}
+multiplying by $v \in \mathcal{D}((0,1)^2)$ and integrating we have that
+\begin{equation*}
+  \int_{(0,1)^2} (-\Tilde{u}_{xx} + e^y\Tilde{u})v \, dx = \int_{(0,1)^2} (f-e^yg)v \, dx
+\end{equation*}
+which we can expand as
+\begin{equation*}
+  -\int_{(0,1)^2} \Tilde{u}_{xx}v \,dx + \int_{(0,1)^2} e^y\Tilde{u}v \, dx = \int_{(0,1)^2} fv \,dx - \int_{(0,1)^2} e^ygv \, dx
+\end{equation*}
+
+\end{document}
