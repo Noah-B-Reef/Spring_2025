@@ -15,7 +15,6 @@
 \lecturedate{}    
 \input{commands.tex}
 \usepackage{xcolor}
-
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -60,6 +59,7 @@
 
 \begin{document}
 \maketitle
+
 
 \section*{Problem 4.1}
 \subsection*{Part a}
@@ -226,65 +226,81 @@ becomes
 \end{equation*}
 
 \subsection*{Part b}
-Consider the spin operator for the two electron systems defined by
+To compute $(\hat{S}_{\text{tot}}))_z$ we compute 
 \begin{equation*}
-  \hat{S}_{\text{tot}} = \hat{S} \otimes I + I \otimes \hat{S}
+(\hat{S}_{\text{tot}})_z = S_z \otimes I + I \otimes S_z = \frac{\hbar}{2} \left(\bbsigma_z \otimes I + I \otimes \bbsigma_z\right)
 \end{equation*}
-where $\hat{S} = \hbar/2 \hat{\sigma}$. Then we have that
+then we have that
+\begin{align*}
+\bbsigma_z \otimes I &= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \otimes \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix} \\
+I \otimes \bbsigma_z &= \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \otimes \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix}
+\end{align*}
+then we have that
 \begin{equation*}
-\hat{S} \otimes I = \frac{\hbar}{2} \begin{bmatrix}
-\bbsigma_x \\ \bbsigma_y \\ \bbsigma_z
-\end{bmatrix}
-\otimes \begin{bmatrix}
-1 & 0 \\ 0 & 1
-\end{bmatrix} = \frac{\hbar}{2} \begin{bmatrix} 
-0 & I \\ I & 0 \\ 0 & -i I \\iI & 0 \\ I & 0 \\ 0 & -I
-\end{bmatrix} 
+  (\hat{S}_{\text{tot}})_z = \frac{\hbar}{2} \begin{pmatrix} 2 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -2 \end{pmatrix} = \hbar \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix}
 \end{equation*}
-and
+Note that doing a similar process for $(S_{\text{tot}})_x$ and $(S_{\text{tot}})_y$ we get that
+\begin{align*}
+  (\hat{S}_{\text{tot}})_x &= \frac{\hbar}{2} \begin{pmatrix}0 & 1 & 1 & 0 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 \\ 0 & 1 & 1 & 0 \end{pmatrix} \\
+(\hat{S}_{\text{tot}})_y &= \frac{\hbar}{2} \begin{pmatrix} 0 & -i & -i & 0 \\ i & 0 & 0 & -i \\ i & 0 & 0 & -i \\ 0 & i & i & 0\end{pmatrix}
+\end{align*}
+so then we have that
 \begin{equation*}
-I \otimes \hat{S} = \begin{bmatrix}
-1 & 0 \\ 0 & 1
-\end{bmatrix} \otimes \frac{\hbar}{2} \begin{bmatrix}
-\bbsigma_x \\ \bbsigma_y \\ \bbsigma_z
-\end{bmatrix} = \frac{\hbar}{2} \begin{bmatrix}
-\bbsigma_x & 0 \\ \bbsigma_y & 0 \\ \bbsigma_z & 0 \\ 0 & \bbsigma_x \\ 0 & \bbsigma_y \\ 0 & \bbsigma_z
-\end{bmatrix}
+S_{\text{tot}}^2 = (\hat{S}_{\text{tot}})_x^2 + (\hat{S}_{\text{tot}})_y^2 + (\hat{S}_{\text{tot}})_z^2 = \begin{pmatrix}2\hbar^2 & 0 & 0 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & 0 & 0 & 2\hbar^2\end{pmatrix} 
 \end{equation*}
-thus
-\begin{equation*}
-  \hat{S}_{\text{tot}} = \frac{\hbar}{2} \begin{bmatrix} 
-    0 & I \\ I & 0 \\ 0 & -i I \\iI & 0 \\ I & 0 \\ 0 & -I
-    \end{bmatrix}  + \frac{\hbar}{2} \begin{bmatrix}
-  \bbsigma_x & 0 \\ \bbsigma_y & 0 \\ \bbsigma_z & 0 \\ 0 & \bbsigma_x \\ 0 & \bbsigma_y \\ 0 & \bbsigma_z
-\end{bmatrix} = \frac{\hbar}{2} \begin{bmatrix}
-  \bbsigma_x & I \\ \bbsigma_y + I & 0 \\ \bbsigma_z & -iI \\ iI & \bbsigma_x \\ I & \bbsigma_y \\0 & \bbsigma_z - I
-  \end{bmatrix}
-\end{equation*}
-or after expanding each the $\bbsigma_i$ terms we have that
-\begin{equation*}
-\hat{S}_{\text{tot}} = \frac{\hbar}{2} \begin{bmatrix}
- 0 & 1 &1 & 0 \\
- 1 & 0 & 0 & 1 \\
- 1 & -i & 0 & 0 \\
- i & 1 & 0 & 0 \\
- 1 & 0 & -i & 0 \\
- 0 & -1 & 0 & -i \\
- i & 0 & 0 & 1 \\
- 0 & i & 1 & 0 \\
- 1 & 0 & 0 & -i \\
- 0 & 1 & i & 0 \\
- 0 & 0 & 0 & 0 \\
- 0 & 0 & 0 & -2 
-\end{bmatrix}
-\end{equation*}
-then we get that
-\begin{equation*}
-(\hat{S}_{\text{tot}})_z = \frac{\hbar}{2} \begin{pmatrix}1 & 0 & 0 & -i \\
-  0 & -1 & i & 0 \\
-  0 & 0 & 2 & 0 \\
-  0 & 0 & 0 & -2
-\end{pmatrix} 
-\end{equation*}
-\end{document}
+\subsection*{Part c} 
+Consider
 
+\begin{align*}
+  \Psi_1 &= f(\rb_1,\rb_2) \chi_{\uparrow} \otimes \chi_{\uparrow} \\
+  \Psi_2 &= f(\rb_1,\rb_2) \chi_{\uparrow} \otimes \chi_{\downarrow} \\
+  \Psi_3 &= f(\rb_1,\rb_2) \chi_{\downarrow} \otimes \chi_{\uparrow} \\
+  \Psi_4 &= f(\rb_1,\rb_2) \chi_{\downarrow} \otimes \chi_{\downarrow} 
+\end{align*}
+
+Then we have that 
+\begin{align*}
+\bra{\Psi_1}S_{\text{tot}}^2 \ket{\Psi_1} &= \int \begin{bmatrix} f^*(\rb_1,\rb_2) & 0 & 0 & 0 \end{bmatrix} \begin{pmatrix}2\hbar^2 & 0 & 0 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & 0 & 0 & 2\hbar^2\end{pmatrix}  \begin{bmatrix} f(\rb_1,\rb_2) \\ 0 \\ 0 \\ 0 \end{bmatrix} d\rb_1 d\rb_2 \\
+                                          &=  \int 2\hbar^2 |f(\rb_1,\rb_2)|^2 d\rb_1 d\rb_2  = 2\hbar^2 
+\end{align*}
+\begin{align*}
+\bra{\Psi_2}S_{\text{tot}}^2 \ket{\Psi_2} &= \int \begin{bmatrix} 0 & f^*(\rb_1,\rb_2) & 0 & 0 \end{bmatrix} \begin{pmatrix}2\hbar^2 & 0 & 0 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & 0 & 0 & 2\hbar^2\end{pmatrix}  \begin{bmatrix} 0 \\ f(\rb_1,\rb_2)\\ 0 \\ 0 \end{bmatrix} d\rb_1 d\rb_2 \\
+                                          &=  \int \hbar^2 |f(\rb_1,\rb_2)|^2 d\rb_1 d\rb_2 = \hbar^2
+\end{align*}
+\begin{align*}
+  \bra{\Psi_3}S_{\text{tot}}^2 \ket{\Psi_3} &= \int \begin{bmatrix} 0 & 0 & f^*(\rb_1,\rb_2) & 0 \end{bmatrix} \begin{pmatrix}2\hbar^2 & 0 & 0 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & 0 & 0 & 2\hbar^2\end{pmatrix}  \begin{bmatrix} 0 \\ 0 \\ f(\rb_1,\rb_2)\\ 0 \end{bmatrix} d\rb_1 d\rb_2 \\
+                                            &=  \int \hbar^2 |f(\rb_1,\rb_2)|^2 d\rb_1 d\rb_2 = \hbar^2
+\end{align*}
+\begin{align*}
+  \bra{\Psi_4}S_{\text{tot}}^2 \ket{\Psi_4} &= \int \begin{bmatrix} 0 & 0 & 0 & f^*(\rb_1,\rb_2) \end{bmatrix} \begin{pmatrix}2\hbar^2 & 0 & 0 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & \hbar^2 & \hbar^2 & 0 \\ 0 & 0 & 0 & 2\hbar^2\end{pmatrix}  \begin{bmatrix} 0 \\ 0 \\ 0 \\ f(\rb_1,\rb_2) \end{bmatrix} d\rb_1 d\rb_2 \\
+                                            &=  \int 2\hbar^2 |f(\rb_1,\rb_2)|^2 d\rb_1 d\rb_2 = 2\hbar^2
+\end{align*}
+
+\subsection*{Part d}
+\begin{align*}
+  \bra{\Psi_1}(S_{\text{tot}})_z \ket{\Psi_1} &= \int \begin{bmatrix} f^*(\rb_1,\rb_2) & 0 & 0 & 0 \end{bmatrix} \begin{pmatrix} \hbar & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -\hbar \end{pmatrix}\begin{bmatrix} f(\rb_1,\rb_2) \\ 0 \\ 0 \\ 0 \end{bmatrix} d\rb_1 d\rb_2 \\
+                                            &=  \int \hbar |f(\rb_1,\rb_2)|^2 d\rb_1 d\rb_2  = \hbar 
+  \end{align*}
+  \begin{align*}
+  \bra{\Psi_2}(S_{\text{tot}})_z \ket{\Psi_2} &= \int \begin{bmatrix} 0 & f^*(\rb_1,\rb_2) & 0 & 0 \end{bmatrix}  \begin{pmatrix} \hbar & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -\hbar \end{pmatrix} \begin{bmatrix} 0 \\ f(\rb_1,\rb_2)\\ 0 \\ 0 \end{bmatrix} d\rb_1 d\rb_2 \\
+                                            &=  0
+  \end{align*}
+  \begin{align*}
+    \bra{\Psi_3}(S_{\text{tot}})_z \ket{\Psi_3} &= \int \begin{bmatrix} 0 & 0 & f^*(\rb_1,\rb_2) & 0 \end{bmatrix}  \begin{pmatrix} \hbar & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -\hbar \end{pmatrix}\begin{bmatrix} 0 \\ 0 \\ f(\rb_1,\rb_2)\\ 0 \end{bmatrix} d\rb_1 d\rb_2 \\
+                                              &=  0
+  \end{align*}
+  \begin{align*}
+    \bra{\Psi_4}(S_{\text{tot}})_z \ket{\Psi_4} &= \int \begin{bmatrix} 0 & 0 & 0 & f^*(\rb_1,\rb_2) \end{bmatrix}  \begin{pmatrix} \hbar & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & -\hbar \end{pmatrix}  \begin{bmatrix} 0 \\ 0 \\ 0 \\ f(\rb_1,\rb_2) \end{bmatrix} d\rb_1 d\rb_2 \\
+                                              &=  -\int \hbar |f(\rb_1,\rb_2)|^2 d\rb_1 d\rb_2 = -\hbar
+  \end{align*}
+
+\subsection*{Part e}
+For $\Psi(\rb_1,\rb_2) = f(\rb_1,\rb_2) \chi_1 \otimes \chi_2$ to be antisymmetric, we require that $\Psi(\rb_1,\rb_2) = - \Psi(\rb_2,\rb_1)$. This means that we require
+\begin{equation*}
+f(\rb_1,\rb_2) \chi_1 \otimes \chi_2 = -f(\rb_2,\rb_1) \chi_2 \otimes \chi_1
+\end{equation*}
+that is if $\chi_1 \otimes \chi_2 = \chi_2 \otimes \chi_1$ (i.e. $\chi_1 = \chi_2$) then we have that we require $f(\rb_1, \rb_2) = -f(\rb_2,\rb_1)$, that is $f$ must be antisymmetric. If however $\chi_1 \neq \chi_2$ then 
+
+\subsection*{Part f}
+
+\end{document}
