@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1743096760.18123 "/Users/nreef/Desktop/Spring_2025/CSE_386D/ps_9/main.tex" "main.pdf" "main" 1743096760.48559 0
-  "/Users/nreef/Desktop/Spring_2025/CSE_386D/ps_9/main.tex" 1743096759.99058 10319 5d31f140ea4122812aec82bb3111c626 ""
+["pdflatex"] 1743121076.96735 "/Users/nreef/Desktop/Spring_2025/CSE_386D/ps_9/main.tex" "main.pdf" "main" 1743121077.2704 0
+  "/Users/nreef/Desktop/Spring_2025/CSE_386D/ps_9/main.tex" 1743121076.80258 10385 abe6054390d341f4783908bc4d45f893 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -80,8 +80,8 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1733497330 8221424 a754dda7ad15242c69b4e04c27fbc341 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "commands.tex" 1742828960.67642 5401 e6ca3c713e68b95345b6e853a4b1b9d1 ""
-  "main.aux" 1743096760.44854 32 2d1df76398b3c48c6419a45a7331db2d "pdflatex"
-  "main.tex" 1743096759.99058 10319 5d31f140ea4122812aec82bb3111c626 ""
+  "main.aux" 1743121077.23471 32 2d1df76398b3c48c6419a45a7331db2d "pdflatex"
+  "main.tex" 1743121076.80258 10385 abe6054390d341f4783908bc4d45f893 ""
   "scribe.sty" 1742828960.67598 7350 8e4a4149a2e30e1a007b3c97b6f56560 ""
   (generated)
   "main.aux"

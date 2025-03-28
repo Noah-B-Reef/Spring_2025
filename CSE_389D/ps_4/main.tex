@@ -3,6 +3,7 @@
 \usepackage{float}
 \usepackage{siunitx}
 \usepackage{braket}
+\usepackage{mathabx}
 \usepackage{listings}
 \usepackage[bbgreekl]{mathbbol}
 \course{CSE 389D} 	
@@ -40,8 +41,17 @@
 }
 
 \lstset{style=mystyle}
-\theoremheaderfont{\itshape}
-\theorembodyfont{\upshape}
+\usepackage{amsthm}
+\newtheoremstyle{custom}
+  {\topsep} % Space above
+  {\topsep} % Space below
+  {\upshape} % Body font
+  {} % Indent amount
+  {\itshape} % Theorem head font
+  {.} % Punctuation after theorem head
+  { } % Space after theorem head
+  {} % Theorem head spec
+\theoremstyle{custom}
 \newtheorem{case}{Case}
 
 % Insert your name here!
@@ -102,13 +112,13 @@ note that for $n$ even we have that
 and remains unchanged for $n$ odd, thus we can write the above as
 \begin{equation*}
   \exp\left(i \varphi \frac{\hat{S}_z}{\hbar}\right) = \begin{pmatrix}\sum_{n=0}^\infty \frac{1}{n!}\left(\frac{i\varphi}{2}\right)^n & 0 \\
-    0 & \sum_{n=0}^\infty \frac{1}{n!}\left(-\frac{i\varphi}{2}\right)^n \end{pmatrix} = \begin{pmatrix} \exp\left(\frac{i\varphi}{2}\right) & 0 \\ 0 & \exp\left(-\frac{i\varphi}{2}\right)\right)\end{pmatrix}
+    0 & \sum_{n=0}^\infty \frac{1}{n!}\left(-\frac{i\varphi}{2}\right)^n \end{pmatrix} = \begin{pmatrix} \exp\left(\frac{i\varphi}{2}\right) & 0 \\ 0 & \exp\left(-\frac{i\varphi}{2}\right)\end{pmatrix}
 \end{equation*}
 
 \subsection*{Part d}
 Note that
 \begin{equation*}
-\Psi' =\exp\left(i \varphi \frac{\hat{S}_z}{\hbar}\right) \Psi =  \begin{pmatrix} \exp\left(\frac{i\varphi}{2}\right) & 0 \\ 0 & \exp\left(-\frac{i\varphi}{2}\right)\right)\end{pmatrix} \begin{bmatrix} u \\ d\end{bmatrix} = \begin{bmatrix} e^{i\varphi/2} u \\ e^{-i\varphi/2}d \end{bmatrix} 
+\Psi' =\exp\left(i \varphi \frac{\hat{S}_z}{\hbar}\right) \Psi =  \begin{pmatrix} \exp\left(\frac{i\varphi}{2}\right) & 0 \\ 0 & \exp\left(-\frac{i\varphi}{2}\right)\end{pmatrix} \begin{bmatrix} u \\ d\end{bmatrix} = \begin{bmatrix} e^{i\varphi/2} u \\ e^{-i\varphi/2}d \end{bmatrix} 
 \end{equation*}
 then we get that
 \begin{align*}
@@ -152,4 +162,129 @@ and clearly
 
 \subsection*{Part f}
 From the change of coordinates in Part e, we have that $ \exp\left(i \varphi \frac{\hat{S}_z}{\hbar}\right)$ is a clockwise rotation about the $z$-axis by angle $\varphi$.  
+
+\section*{Problem 4.2}
+\subsection*{Part a}
+Recall that 
+\begin{equation*}
+  \chi_\uparrow = \begin{bmatrix}
+    1 \\ 0
+  \end{bmatrix} \quad \text{and} \quad \chi_\downarrow = \begin{bmatrix}
+    0 \\ 1
+    \end{bmatrix}
+\end{equation*}
+and note that 
+\begin{align*}
+\chi_{\uparrow} \otimes \chi_{\uparrow} &= \begin{bmatrix}
+    1 \\ 0
+  \end{bmatrix} \otimes \begin{bmatrix}
+    1 \\ 0
+  \end{bmatrix} = \begin{bmatrix}
+    1 \\ 0 \\ 0 \\ 0
+  \end{bmatrix} \\
+\chi_{\uparrow} \otimes \chi_{\downarrow} &= \begin{bmatrix}
+    1 \\ 0
+  \end{bmatrix} \otimes \begin{bmatrix}
+    0 \\ 1
+  \end{bmatrix} = \begin{bmatrix}
+    0 \\ 1 \\ 0 \\ 0
+  \end{bmatrix} \\
+\chi_{\downarrow} \otimes \chi_{\uparrow} &= \begin{bmatrix}
+    0 \\ 1
+  \end{bmatrix} \otimes \begin{bmatrix}
+    1 \\ 0
+  \end{bmatrix} = \begin{bmatrix}
+    0 \\ 0 \\ 1 \\ 0
+  \end{bmatrix} \\
+  \chi_{\downarrow} \otimes \chi_{\downarrow} &= \begin{bmatrix}
+    0 \\ 1
+  \end{bmatrix} \otimes \begin{bmatrix}
+    0 \\ 1
+  \end{bmatrix} = \begin{bmatrix}
+    0 \\ 0 \\ 0 \\ 1
+  \end{bmatrix}
+\end{align*}
+and hence we see that
+\begin{align*}
+  \psi(\rb_1,\rb_2; 1) \chi_{\uparrow} \otimes \chi_{\uparrow} + \psi(\rb_1,\rb_2; 2) \chi_{\uparrow} \otimes \chi_{\downarrow} + \psi(\rb_1,\rb_2; 3) \chi_{\downarrow} \otimes \chi_{\uparrow} + \psi(\rb_1,\rb_2; 4) \chi_{\downarrow} \otimes \chi_{\downarrow} 
+\end{align*}
+becomes
+\begin{equation*}
+    \psi(\rb_1,\rb_2; 1)\begin{bmatrix}
+    1 \\ 0 \\ 0 \\ 0
+  \end{bmatrix}  + \psi(\rb_1,\rb_2; 2) \begin{bmatrix}
+  0 \\ 1 \\ 0 \\ 0
+\end{bmatrix}  + \psi(\rb_1,\rb_2; 3) \begin{bmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{bmatrix} + \psi(\rb_1,\rb_2; 4) \begin{bmatrix}
+0 \\ 0 \\ 0 \\ 1\end{bmatrix}  = \begin{bmatrix}
+  \psi(\rb_1,\rb_2; 1) \\
+  \psi(\rb_1,\rb_2; 2) \\
+  \psi(\rb_1,\rb_2; 3) \\
+  \psi(\rb_1,\rb_2; 4)
+\end{bmatrix}
+\end{equation*}
+
+\subsection*{Part b}
+Consider the spin operator for the two electron systems defined by
+\begin{equation*}
+  \hat{S}_{\text{tot}} = \hat{S} \otimes I + I \otimes \hat{S}
+\end{equation*}
+where $\hat{S} = \hbar/2 \hat{\sigma}$. Then we have that
+\begin{equation*}
+\hat{S} \otimes I = \frac{\hbar}{2} \begin{bmatrix}
+\bbsigma_x \\ \bbsigma_y \\ \bbsigma_z
+\end{bmatrix}
+\otimes \begin{bmatrix}
+1 & 0 \\ 0 & 1
+\end{bmatrix} = \frac{\hbar}{2} \begin{bmatrix} 
+0 & I \\ I & 0 \\ 0 & -i I \\iI & 0 \\ I & 0 \\ 0 & -I
+\end{bmatrix} 
+\end{equation*}
+and
+\begin{equation*}
+I \otimes \hat{S} = \begin{bmatrix}
+1 & 0 \\ 0 & 1
+\end{bmatrix} \otimes \frac{\hbar}{2} \begin{bmatrix}
+\bbsigma_x \\ \bbsigma_y \\ \bbsigma_z
+\end{bmatrix} = \frac{\hbar}{2} \begin{bmatrix}
+\bbsigma_x & 0 \\ \bbsigma_y & 0 \\ \bbsigma_z & 0 \\ 0 & \bbsigma_x \\ 0 & \bbsigma_y \\ 0 & \bbsigma_z
+\end{bmatrix}
+\end{equation*}
+thus
+\begin{equation*}
+  \hat{S}_{\text{tot}} = \frac{\hbar}{2} \begin{bmatrix} 
+    0 & I \\ I & 0 \\ 0 & -i I \\iI & 0 \\ I & 0 \\ 0 & -I
+    \end{bmatrix}  + \frac{\hbar}{2} \begin{bmatrix}
+  \bbsigma_x & 0 \\ \bbsigma_y & 0 \\ \bbsigma_z & 0 \\ 0 & \bbsigma_x \\ 0 & \bbsigma_y \\ 0 & \bbsigma_z
+\end{bmatrix} = \frac{\hbar}{2} \begin{bmatrix}
+  \bbsigma_x & I \\ \bbsigma_y + I & 0 \\ \bbsigma_z & -iI \\ iI & \bbsigma_x \\ I & \bbsigma_y \\0 & \bbsigma_z - I
+  \end{bmatrix}
+\end{equation*}
+or after expanding each the $\bbsigma_i$ terms we have that
+\begin{equation*}
+\hat{S}_{\text{tot}} = \frac{\hbar}{2} \begin{bmatrix}
+ 0 & 1 &1 & 0 \\
+ 1 & 0 & 0 & 1 \\
+ 1 & -i & 0 & 0 \\
+ i & 1 & 0 & 0 \\
+ 1 & 0 & -i & 0 \\
+ 0 & -1 & 0 & -i \\
+ i & 0 & 0 & 1 \\
+ 0 & i & 1 & 0 \\
+ 1 & 0 & 0 & -i \\
+ 0 & 1 & i & 0 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & -2 
+\end{bmatrix}
+\end{equation*}
+then we get that
+\begin{equation*}
+(\hat{S}_{\text{tot}})_z = \frac{\hbar}{2} \begin{pmatrix}1 & 0 & 0 & -i \\
+  0 & -1 & i & 0 \\
+  0 & 0 & 2 & 0 \\
+  0 & 0 & 0 & -2
+\end{pmatrix} 
+\end{equation*}
 \end{document}
+

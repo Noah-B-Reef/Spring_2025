@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.6)  27 MAR 2025 14:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.6)  27 MAR 2025 14:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -538,7 +538,8 @@ Package translations Info: No language package found. I am going to use `english
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count308
 \l__pdf_internal_box=\box67
-) (./main.aux)
+)
+No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
@@ -557,7 +558,6 @@ LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 61.
 LaTeX Font Info:    ... okay on input line 61.
 LaTeX Info: Command `\dddot' is already robust on input line 61.
 LaTeX Info: Command `\ddddot' is already robust on input line 61.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -635,22 +635,139 @@ Overfull \hbox (4.56061pt too wide) detected at line 134
 
 Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instead on input line 210.
 
-[4] [5] (./main.aux)
+[4]
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:264: Undefined control sequence.
+<recently read> \bbsimga 
+                         
+l.264 or after expanding each the $\bbsimga
+                                           _i$ terms we have that
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:279: LaTeX Error: \begin{bmatrix} on input line 266 ended by \end{equation*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.279 \end{equation*}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:279: Missing $ inserted.
+<inserted text> 
+                $
+l.279 \end{equation*}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:279: Missing } inserted.
+<inserted text> 
+                }
+l.279 \end{equation*}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:279: Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.279 \end{equation*}
+                     
+I'm guessing that you meant to end an alignment here.
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:279: Missing $ inserted.
+<inserted text> 
+                $
+l.279 \end{equation*}
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:279: Missing } inserted.
+<inserted text> 
+                }
+l.279 \end{equation*}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:279: Missing \right. inserted.
+<inserted text> 
+                \right .
+l.279 \end{equation*}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:280: Missing $ inserted.
+<inserted text> 
+                $
+l.280 \end{document}
+                    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:280: Display math should end with $$.
+<to be read again> 
+                   \tex_par:D 
+l.280 \end{document}
+                    
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+
+/Users/nreef/Desktop/Spring_2025/CSE_389D/ps_4/main.tex:280: LaTeX Error: \begin{equation*} on input line 265 ended by \end{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.280 \end{document}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[5] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
- ) 
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 265 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 10496 strings out of 474116
- 211777 string characters out of 5743682
+ 10494 strings out of 474116
+ 211745 string characters out of 5743682
  1948187 words of memory out of 5000000
  32746 multiletter control sequences out of 15000+600000
  569148 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,14n,80p,375b,537s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (5 pages, 125099 bytes).
+Output written on main.pdf (5 pages, 123635 bytes).
 PDF statistics:
  85 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream

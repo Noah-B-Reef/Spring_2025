@@ -127,33 +127,29 @@ Consider the following boundary value problem for $u(x,y): \R^2 \to \R$ such tha
   u(0,y) = 0, u(1,y) = \cos(y), \quad &\text{for } y\in(0,1)
 \end{align*}
 Let,
-
-\begin{equation*}
-V = \{u \in H^1((0,1)^2): u(0,y) = 0 \text{ and } u(1,y) = \cos(y) \text{ a.e. } y \in (0,1)\}
-\end{equation*}
-and
 \begin{equation*}
   V_o = \{v \in H^1((0,1)^2): v(0,y) = 0 \text{ and } v(1,y) = 0 \text{ a.e. } y \in (0,1)\}
 \end{equation*}
-then we have that for $v \in V_o$ we get
+if we let $u_D = x\cos(y)$ we have that $u = \Tilde{u} + u_D$, where $\Tilde{u} \in V_o$.  Then we have that for $v \in V_o$ we get
 \begin{equation*}
-  \int_{(0,1)} u_{xx}v \, dx + \int_{(0,1)}e^y uv \, dx = \int_{(0,1)} f v \, dx
+  -\int_{(0,1)} (\Tilde{u}_{xx})v \, dx + \int_{(0,1)}e^y (\Tilde{u} + u_D) v \, dx = \int_{(0,1)} f v \, dx
 \end{equation*}
 then by integration by parts we have
 \begin{equation*}
--\int_{(0,1)} u_{xx} v \, dx = \int_{(0,1)} u_x v_x \, dx
+-\int_{(0,1)} \Tilde{u}_{xx} v \, dx = \int_{(0,1)} \Tilde{u}_x v_x \, dx
 \end{equation*}
 thus we have that
 \begin{equation*}
-  \int_{(0,1)^2} u_x v_x \, dx + \int_{(0,1)^2} e^y uv \, dx = \int_{(0,1)^2} f v \, dx
+  \int_{(0,1)^2} \Tilde{u}_x v_x \, dx + \int_{(0,1)^2} e^y 
+\Tilde{u} v \, dx = \int_{(0,1)^2} f v - e^yu_Dv\, dx
 \end{equation*}
-Now setting,
+Then we have that,
 \begin{equation*}
-  B(x,y) = \int_{(0,1)^2} u_x v_x \, dx + \int_{(0,1)^2} e^y uv \, dx
+  B(x,y) = \int_{(0,1)^2} \Tilde{u}_x v_x \, dx + \int_{(0,1)^2} e^y \Tilde{u}v \, dx
 \end{equation*}
 we get that
 \begin{equation*}
-  |B(u,v)| \leq \norm{u_x}_{L^2} \norm{v_x}_{L^2} + \norm{e^y}_{L^\infty} \norm{u}_{L^2} \norm{v}_{L^2} \leq C \norm{u}_{H^1} \norm{v}_{H^1}
+  |B(u,v)| \leq \norm{\Tilde{u}_x}_{L^2} \norm{v_x}_{L^2} + \norm{e^y}_{L^\infty} \norm{\Tilde{u}}_{L^2} \norm{v}_{L^2} \leq C \norm{u}_{H^1} \norm{v}_{H^1}
 \end{equation*}
 and
 \begin{equation*}
