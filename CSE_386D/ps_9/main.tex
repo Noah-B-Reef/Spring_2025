@@ -1,0 +1,238 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\usepackage{stackengine}
+\newcommand\dhookrightarrow{\mathrel{%
+  \ensurestackMath{\stackanchor[.1ex]{\hookrightarrow}{\hookrightarrow}}
+}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{9}   
+\lecturedate{}    
+\input{commands.tex}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 8.2}
+Let $B$ be a bilinear map that satisfies the conditions of the Generalized Lax-Milgram Theorem. Additionally let $x_{0,1},x_{0,2} \in \mathcal{X}$ be such that $X + x_{0,1} = X + x_{0,2}$, then we see that there exists unique $u_1$ and $u_2$ such that for $F \in Y^*$ we get that
+\begin{equation*}
+  B(u_1,v) = F(v) \quad \text{and} \quad B(u_2,v) = F(v) 
+\end{equation*}
+which implies that
+\begin{equation*}
+  B(u_1,v) - B(u_2,v) = B(u_1 - u_2, v) = 0
+\end{equation*}
+then we see that by setting $w = u_1 - u_2 \neq 0$ and a rescaling arguement that we have that
+\begin{equation*}
+  0 = \sup_{\norm{v} = 1} B(w,v) >  \inf_{\norm{w} = 1} \sup_{\norm{v} = 1} B(w,v) > 0
+\end{equation*}
+which is a contradiction, thus $w = 0$ and hence $u_1 = u_2$. This implies that for the Dirichlet Boundary Problem, we have that for the boundary condition that $H_0^1(\Omega) + u_{D,1} = H_0^1(\Omega) + u_{D,2}$ then the solution $u$ is the same for both problems. 
+
+\section*{Problem 8.5}
+Suppose that $\Omega \subset \R^d$ is a smooth, bounded, connected domain. Additionally let 
+\begin{equation*}
+  H := \left\{ u \in H^2(\Omega) : \int_{\Omega} u(x) \,dx = 0 \text{ and } \nabla u \cdot v = 0 \text{ on } \partial \Omega \right\}
+\end{equation*}
+Here we can see that see that $H$ is a closed linear subspace of $H^2(\Omega)$ since for $u,v \in H$ and $\alpha \in \R$ we have that
+\begin{equation*}
+  \int_{\Omega} (u + \alpha v) \,dx = \int_{\Omega} u \,dx + \alpha \int_{\Omega} v \,dx = 0
+\end{equation*}
+and
+\begin{equation*}
+  \nabla (u + \alpha v) \cdot v = \nabla u \cdot v + \alpha \nabla v \cdot v = 0
+\end{equation*}
+additionally for any converging sequence $u_n \to u$ for $u_n \in H$ we have that
+\begin{equation*}
+  0 = \int_{\Omega} u_n(x) \,dx \to \int_{\Omega} u(x) \,dx
+\end{equation*}
+and
+\begin{equation*}
+  0 = \nabla u_n \cdot v \to \nabla u \cdot v
+\end{equation*}
+thus $H$ is closed in $H^2(\Omega)$ and hence a hilbert space with inner product $\inner{\cdot}{\cdot}_{H^2(\Omega)}$. 
+Note that
+\begin{equation*}
+\norm{u}_{H^1(\Omega)}^2 = \norm{u}_{L^2}^2 + \norm{\nabla u}_{L^2}^2 \leq (1 + C_p^2) \norm{\nabla u}_{L^2}^2  
+\end{equation*}
+then by IBP we have that,
+\begin{equation*}
+  \norm{\nabla u}_{L^2(\Omega)}^2 = \int_{\Omega} |\nabla u|^2 \,dx = -\int_{\Omega} u \Delta u \, dx + \int_{\partial \Omega} u \nabla u \cdot \nu \, dx
+\end{equation*}
+then by the boundary condition we have that the boundary term goes away and we are left with
+\begin{equation*}
+  \norm{\nabla u}_{L^2(\Omega)}^2 = -\int_{\Omega} u \Delta u \, dx \leq \norm{u}_{L^2(\Omega)} \norm{\Delta u}_{L^2(\Omega)} \leq C_p \norm{\nabla u}_{L^2(\Omega)} \norm{\Delta u}_{L^2(\Omega)}
+\end{equation*}
+then we get that
+\begin{equation*}
+  \norm{u}_{H^1(\Omega)}^2 \leq (1 + C_p^2)C_p \norm{\nabla u}_{L^2(\Omega)} \norm{\Delta u}_{L^2(\Omega)}
+\end{equation*}
+which implies that
+\begin{equation*}
+  \norm{u}_{H^1(\Omega)} \leq (1 + C_p^2)C_p \norm{\Delta u}_{L^2(\Omega)} \leq (1 + C_p^2)C_p \sum_{|\alpha| = 2} \norm{D^\alpha u}_{L^2(\Omega)} 
+\end{equation*}
+\section*{Problem 8.8}
+Let $f \in L^2(\R^d)$, our goal is to show there exists a unique solution $u \in H^1(\R^d)$ for 
+\begin{equation*}
+  -\Delta u + u = f
+\end{equation*}
+To derive the variational problem, we consider $v \in \mathcal{D}(\R^d)$ and take the integral
+\begin{equation*}
+  \int_{\R^d} (-\Delta u + u)v \, dx = -\int_{\R^d} \nabla \cdot (\nabla u)v \,dx + \int_{\R^d} uv \,dx =   \int_{\R^d} fv \, dx
+\end{equation*}
+Then for the left-most integral we get the following by the Divergence Theorem
+\begin{equation*}
+  -\int_{\R^d} \nabla \cdot (\nabla u) v \,dx = \int_{\R^d} \nabla u \cdot \nabla v \, dx - \int_{\partial \R^d} \nabla u \cdot n v \, dx
+\end{equation*}
+which holds since $\mathcal{D}(\R^d)$ is dense in $H^1(\R^d)$ and hence can consider $v \in H^1(\R^d)$. Note that the boundary term goes away and hence we have that
+\begin{equation*}
+  \int_{\R^d} \nabla u \cdot \nabla v \,dx + \int_{\R^d} uv \, dx = \int_{\R^d} fv \, dx
+\end{equation*}
+thus by letting
+\begin{equation*}
+  B(u,v) =\int_{\R^d} \nabla u \cdot \nabla v \,dx + \int_{\R^d} uv \, dx  
+\end{equation*}
+and 
+\begin{equation*}
+  F(v) = \int_{\R^d} fv \, dx
+\end{equation*}
+then we see that
+\begin{equation*}
+  |B(u,v)| \leq \norm{\nabla u}_{L^2} \norm{\nabla v}_{L^2} + \norm{u}_{L^2} \norm{v}_{L^2} \leq 2 \norm{u}_{H^1} \norm{v}_{H^1}
+\end{equation*}
+and for $v \neq 0$ we have that
+\begin{equation*}
+  B(v,v) = \int_{\R^d} |\nabla v|^2 \,dx + \int_{\R^d} |v|^2 \,dx \geq \int_{\R^d} |\nabla v|^2 \, dx = \norm{\nabla v}^2_{L^2} \geq (1/C^2) \norm{v}^2_{H^1}
+\end{equation*}
+and hence by Lax-Milgram we have that there exists a unique solution $u \in H^1(\R^d)$ such that 
+\begin{equation*}
+  B(u,v) = F(v)
+\end{equation*}
+for all $v \in H^1(\R^d)$.
+
+\section*{Problem 8.9}
+Consider the following boundary value problem for $u(x,y): \R^2 \to \R$ such that
+\begin{align*}
+  -u_{xx} + e^yu = f, \quad &\text{for } (x,y) \in (0,1)^2 \\
+  u(0,y) = 0, u(1,y) = \cos(y), \quad &\text{for } y\in(0,1)
+\end{align*}
+Let,
+\begin{equation*}
+  V_o = \{v \in H^1((0,1)^2): v(0,y) = 0 \text{ and } v(1,y) = 0 \text{ a.e. } y \in (0,1)\}
+\end{equation*}
+if we let $u_D = x\cos(y)$ we have that $u = \Tilde{u} + u_D$, where $\Tilde{u} \in V_o$.  Then we have that for $v \in V_o$ we get
+\begin{equation*}
+  -\int_{(0,1)} (\Tilde{u}_{xx})v \, dx + \int_{(0,1)}e^y (\Tilde{u} + u_D) v \, dx = \int_{(0,1)} f v \, dx
+\end{equation*}
+then by integration by parts we have
+\begin{equation*}
+-\int_{(0,1)} \Tilde{u}_{xx} v \, dx = \int_{(0,1)} \Tilde{u}_x v_x \, dx
+\end{equation*}
+thus we have that
+\begin{equation*}
+  \int_{(0,1)^2} \Tilde{u}_x v_x \, dx + \int_{(0,1)^2} e^y 
+\Tilde{u} v \, dx = \int_{(0,1)^2} f v - e^yu_Dv\, dx
+\end{equation*}
+Then we have that,
+\begin{equation*}
+  B(x,y) = \int_{(0,1)^2} \Tilde{u}_x v_x \, dx + \int_{(0,1)^2} e^y \Tilde{u}v \, dx
+\end{equation*}
+we get that
+\begin{equation*}
+  |B(u,v)| \leq \norm{\Tilde{u}_x}_{L^2} \norm{v_x}_{L^2} + \norm{e^y}_{L^\infty} \norm{\Tilde{u}}_{L^2} \norm{v}_{L^2} \leq C \norm{u}_{H^1} \norm{v}_{H^1}
+\end{equation*}
+and
+\begin{equation*}
+  B(u,u) = \int_{(0,1)^2} |u_x|^2 \, dx + \int_{(0,1)^2} e^y |u|^2 \, dx \geq \int_{(0,1)^2} |u_x|^2 \, dx = \norm{u_x}_{L^2}^2 \geq (1/C^2) \norm{u}_{H^1}^2
+\end{equation*}
+then by the Lax-Milgram Theorem we have that there exists a unique solution $u \in H^1((0,1)^2)$ such that
+\begin{equation*}
+  B(u,v) = \int_{(0,1)^2} f v \, dx
+\end{equation*}
+for all $v \in V_o$.
+
+\section*{Problem 8.11}
+Let $\Omega = [0,1]^d$ and define
+\begin{equation*}
+H_{\#}^1(\Omega) = \{ u \in H^1_{\text{loc}}(\R^d) : \text{$u$ is periodic of period $1$ in each direction and $\int_{\Omega} u \, dx = 0$} \}
+\end{equation*}
+and consider the problem of finding a periodic solution $u \in H^1_{\#}(\Omega)$ such that
+\begin{equation*}
+  -\Delta u = f \quad \text{for } x \in \Omega
+\end{equation*}
+where $f \in L^2(\Omega)$.
+
+\subsection*{Part a}
+If $v \in H^1(\R^d)$ is periodic with period $1$ in each direction, we then expect that
+\begin{equation*}
+v(x + ke_i) = v(x) \quad \text{for } k \in \Z, i = 1,\ldots,d
+\end{equation*}
+where $e_i$ is the $i^{th}$ standard basis vector in $\R^d$. 
+
+\subsection*{Part b}
+We can show that $H_{\#}^1(\Omega)$ is a closed subspace of $H^1(\Omega)$ by showing that it is closed under addition and scalar multiplication. Let $u,v \in H_{\#}^1(\Omega)$ and $\alpha \in \R$, then we have that 
+\begin{equation*}
+  \int_{\Omega} (u + \alpha v) \, dx = \int_{\Omega} u \, dx + \alpha \int_{\Omega} v \, dx = 0
+\end{equation*}
+and
+\begin{equation*}
+  u(x + ke_i) = u(x) \quad \text{and} \quad v(x + ke_i) = v(x) \quad \text{for } k \in \Z, i = 1,\ldots,d
+\end{equation*}
+lastly if we consider a converging sequence $u_n \to u$ for $u_n \in H_{\#}^1(\Omega)$ then we have that
+\begin{equation*}
+  0 = \int_{\Omega} u_n(x) \, dx \to \int_{\Omega} u(x) \, dx
+\end{equation*}
+and
+\begin{equation*}
+  u_n(x + ke_i) = u_n(x) \to u(x + ke_i) \quad \text{for } k \in \Z, i = 1,\ldots,d
+\end{equation*}
+thus we have that $H_{\#}^1(\Omega)$ is a closed subspace of $H^1(\Omega)$, and hence a Hilbert space under the same inner product.
+\subsection*{Part c}
+Let $v \in H^1_{\#}(\Omega)$, then we have that
+\begin{equation*}
+  \int_{\Omega} -\Delta u v \, dx = \int_{\Omega} fv \, dx
+\end{equation*}
+then by IBP we have that
+\begin{equation*}
+-\int_{\Omega} (\Delta u)v \, dx =\int_{\Omega} \nabla u \cdot \nabla v \, dx - \int_{\partial \Omega} v (\nabla u \cdot \nu) \, dx
+\end{equation*}
+note that for the boundary term we have that
+\begin{equation*}
+  \int_{\partial \Omega} v (\nabla u \cdot \nu) \, dx = \sum_{i=1}^d \int_{\partial \Omega^+} v(\nabla u \cdot e_i) \, dx + \int_{\partial \Omega^{-}} v(\nabla u \cdot -e_i) \, dx 
+\end{equation*}
+which cancel out since $v$ is periodic with period $1$ in each direction, thus we have that
+\begin{equation*}
+  -\int_{\Omega} (\Delta u)v \, dx = \int_{\Omega} \nabla u \cdot \nabla v \, dx
+\end{equation*}
+and hence 
+\begin{equation*}
+  \int_{\Omega} \nabla u \cdot \nabla v \, dx  = \int_{\Omega} fv \, dx
+\end{equation*}
+then by setting
+\begin{equation*}
+  B(u,v) = \int_{\Omega} \nabla u \cdot \nabla v \, dx
+\end{equation*}
+we get that
+\begin{equation*}
+  |B(u,v)| \leq \norm{\nabla u}_{L^2} \norm{\nabla v}_{L^2} \leq C \norm{u}_{H^1} \norm{v}_{H^1}
+\end{equation*}
+and
+\begin{equation*}
+  B(u,u) = \int_{\Omega} |\nabla u|^2 \, dx \geq (1/C^2) \norm{u}_{H^1}^2
+\end{equation*}
+then by the Lax-Milgram Theorem we have that there exists a unique solution $u \in H_{\#}^1(\Omega)$ such that
+\begin{equation*}
+  B(u,v) = \int_{\Omega} fv \, dx
+\end{equation*}
+for all $v \in H_{\#}^1(\Omega)$.
+\end{document}

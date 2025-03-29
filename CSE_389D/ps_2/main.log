@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.6)  27 JAN 2025 17:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.6)  19 FEB 2025 20:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -136,27 +136,34 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen158
 \Gin@req@width=\dimen159
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count279
+\float@exts=\toks24
+\float@box=\box53
+\@float@everytoks=\toks25
+\@floatcapt=\box54
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2024-02-15 v3.3.12 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count279
-\l__siunitx_number_exponent_fixed_int=\count280
-\l__siunitx_number_min_decimal_int=\count281
-\l__siunitx_number_min_integer_int=\count282
-\l__siunitx_number_round_precision_int=\count283
-\l__siunitx_number_lower_threshold_int=\count284
-\l__siunitx_number_upper_threshold_int=\count285
-\l__siunitx_number_group_first_int=\count286
-\l__siunitx_number_group_size_int=\count287
-\l__siunitx_number_group_minimum_int=\count288
+\l__siunitx_number_uncert_offset_int=\count280
+\l__siunitx_number_exponent_fixed_int=\count281
+\l__siunitx_number_min_decimal_int=\count282
+\l__siunitx_number_min_integer_int=\count283
+\l__siunitx_number_round_precision_int=\count284
+\l__siunitx_number_lower_threshold_int=\count285
+\l__siunitx_number_upper_threshold_int=\count286
+\l__siunitx_number_group_first_int=\count287
+\l__siunitx_number_group_size_int=\count288
+\l__siunitx_number_group_minimum_int=\count289
 \l__siunitx_angle_tmp_dim=\dimen160
-\l__siunitx_angle_marker_box=\box53
-\l__siunitx_angle_unit_box=\box54
-\l__siunitx_compound_count_int=\count289
+\l__siunitx_angle_marker_box=\box55
+\l__siunitx_angle_unit_box=\box56
+\l__siunitx_compound_count_int=\count290
  (/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count290
+\etb@tempcnta=\count291
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty
@@ -168,60 +175,130 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 ))
-\l__siunitx_table_tmp_box=\box55
+\l__siunitx_table_tmp_box=\box57
 \l__siunitx_table_tmp_dim=\dimen161
 \l__siunitx_table_column_width_dim=\dimen162
-\l__siunitx_table_integer_box=\box56
-\l__siunitx_table_decimal_box=\box57
-\l__siunitx_table_uncert_box=\box58
-\l__siunitx_table_before_box=\box59
-\l__siunitx_table_after_box=\box60
+\l__siunitx_table_integer_box=\box58
+\l__siunitx_table_decimal_box=\box59
+\l__siunitx_table_uncert_box=\box60
+\l__siunitx_table_before_box=\box61
+\l__siunitx_table_after_box=\box62
 \l__siunitx_table_before_dim=\dimen163
 \l__siunitx_table_carry_dim=\dimen164
-\l__siunitx_unit_tmp_int=\count291
-\l__siunitx_unit_position_int=\count292
-\l__siunitx_unit_total_int=\count293
+\l__siunitx_unit_tmp_int=\count292
+\l__siunitx_unit_position_int=\count293
+\l__siunitx_unit_total_int=\count294
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \col@sep=\dimen165
-\ar@mcellbox=\box61
+\ar@mcellbox=\box63
 \extrarowheight=\dimen166
-\NC@list=\toks24
+\NC@list=\toks26
 \extratabsurround=\skip53
 \backup@length=\skip54
-\ar@cellbox=\box62
-)) (./commands.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/enumerate.sty
-Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
-\@enLab=\toks25
+\ar@cellbox=\box64
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/braket/braket.sty) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count295
+\lst@gtempboxa=\box65
+\lst@token=\toks27
+\lst@length=\count296
+\lst@currlwidth=\dimen167
+\lst@column=\count297
+\lst@pos=\count298
+\lst@lostspace=\dimen168
+\lst@width=\dimen169
+\lst@newlines=\count299
+\lst@lineno=\count300
+\lst@maxwidth=\dimen170
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2024/02/21 1.10 (Carsten Heinz)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/02/21 1.10 (Carsten Heinz)
+\c@lstnumber=\count301
+\lst@skipnumbers=\count302
+\lst@framebox=\box66
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2024/02/21 1.10 listings configuration
 ))
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 18.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+Package: listings 2024/02/21 1.10 (Carsten Heinz)
+ (./commands.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
+\@enLab=\toks28
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: pdftex.def on input line 149.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+./main.tex:42: Undefined control sequence.
+l.42 \theoremheaderfont
+                       {\itshape}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./main.tex:43: Undefined control sequence.
+l.43 \theorembodyfont
+                     {\upshape}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+\c@case=\count303
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 50.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count294
-\l__pdf_internal_box=\box63
-) (./main.aux)
+\l__color_backend_stack_int=\count304
+\l__pdf_internal_box=\box67
+) (./main.aux
+
+LaTeX Warning: Label `fig:enter-label' multiply defined.
+
+
+LaTeX Warning: Label `fig:enter-label' multiply defined.
+
+
+LaTeX Warning: Label `fig:enter-label' multiply defined.
+
+
+LaTeX Warning: Label `fig:enter-label' multiply defined.
+
+
+LaTeX Warning: Label `fig:enter-label' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -259,17 +336,17 @@ LaTeX Font Info:    ... okay on input line 18.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count295
-\scratchdimen=\dimen167
-\scratchbox=\box64
-\nofMPsegments=\count296
-\nofMParguments=\count297
-\everyMPshowfont=\toks26
-\MPscratchCnt=\count298
-\MPscratchDim=\dimen168
-\MPnumerator=\count299
-\makeMPintoPDFobject=\count300
-\everyMPtoPDFconversion=\toks27
+\scratchcounter=\count305
+\scratchdimen=\dimen171
+\scratchbox=\box68
+\nofMPsegments=\count306
+\nofMParguments=\count307
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count308
+\MPscratchDim=\dimen172
+\MPnumerator=\count309
+\makeMPintoPDFobject=\count310
+\everyMPtoPDFconversion=\toks30
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -278,40 +355,98 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 18.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 50.
+\c@lstlisting=\count311
+<Figure_1.png, id=1, 462.528pt x 346.896pt>
+File: Figure_1.png Graphic file (type png)
+<use Figure_1.png>
+Package pdftex.def Info: Figure_1.png  used on input line 56.
+(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (37.97078pt too wide) detected at line 84
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Figure_1.png>] [2]
+<Secular_1.png, id=26, 868.24374pt x 712.6625pt>
+File: Secular_1.png Graphic file (type png)
+<use Secular_1.png>
+Package pdftex.def Info: Secular_1.png  used on input line 156.
+(pdftex.def)             Requested size: 347.29134pt x 285.05995pt.
+ [3]
+<even.png, id=30, 722.7pt x 433.62pt>
+File: even.png Graphic file (type png)
+<use even.png>
+Package pdftex.def Info: even.png  used on input line 164.
+(pdftex.def)             Requested size: 433.62334pt x 260.17401pt.
+ [4 <./Secular_1.png>] [5 <./even.png>]
+<Secular_2.png, id=39, 868.24374pt x 712.6625pt>
+File: Secular_2.png Graphic file (type png)
+<use Secular_2.png>
+Package pdftex.def Info: Secular_2.png  used on input line 211.
+(pdftex.def)             Requested size: 347.29134pt x 285.05995pt.
+<odd.png, id=40, 722.7pt x 433.62pt>
+File: odd.png Graphic file (type png)
+<use odd.png>
+Package pdftex.def Info: odd.png  used on input line 221.
+(pdftex.def)             Requested size: 433.62334pt x 260.17401pt.
+ [6 <./Secular_2.png>] [7 <./odd.png>] [8]
+<qual.png, id=54, 671.50874pt x 262.9825pt>
+File: qual.png Graphic file (type png)
+<use qual.png>
+Package pdftex.def Info: qual.png  used on input line 294.
+(pdftex.def)             Requested size: 402.90836pt x 157.7907pt.
+
+
+Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instead on input line 316.
+
+[9 <./qual.png>] [10] [11]
+./main.tex:450: Extra }, or forgotten $.
+l.450 .../2}\left(\frac{r}{a_0}\right)e^{-r/2a_0}}
+                                                  \sin(\theta)\cos(\phi)
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+[12]
+Overfull \hbox (43.8605pt too wide) detected at line 468
+[] [] \OT1/cmr/m/n/12 = 0  =[]\OMS/cmsy/m/n/12 )  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 h[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 h[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ j\OML/cmm/m/it/12 h[]\OMS/cmsy/m/n/12 j[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 E[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 h[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 h[]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 h[]h[] \OMS/cmsy/m/n/12 ^^@ j\OML/cmm/m/it/12 h[]\OMS/cmsy/m/n/12 j[] \OT1/cmr/m/n/12 = 0
+ []
+
+[13]
+Overfull \hbox (4.73367pt too wide) detected at line 518
 []
  []
 
-[2] [3] (./main.aux)
+[14] [15] [16] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 7747 strings out of 474116
- 174560 string characters out of 5743682
- 1941187 words of memory out of 5000000
- 30051 multiletter control sequences out of 15000+600000
- 564835 words of font info for 61 fonts, out of 8000000 for 9000
+ 9722 strings out of 474116
+ 203020 string characters out of 5743682
+ 1943187 words of memory out of 5000000
+ 32000 multiletter control sequences out of 15000+600000
+ 567659 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,12n,80p,283b,537s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (3 pages, 111980 bytes).
+ 73i,12n,80p,256b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (16 pages, 699644 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 154 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

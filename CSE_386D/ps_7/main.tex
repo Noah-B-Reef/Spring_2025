@@ -1,0 +1,82 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\usepackage{stackengine}
+\newcommand\dhookrightarrow{\mathrel{%
+  \ensurestackMath{\stackanchor[.1ex]{\hookrightarrow}{\hookrightarrow}}
+}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{7}   
+\lecturedate{}    
+\input{commands.tex}
+\newcommand{\supp}[]{\text{supp}}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 7.12}
+\subsection*{Part a}
+Consider the integral,
+\begin{align*}
+  \int_{\R^d}(1 + |\xi|^2)^{-s} \, d\xi &= \int_{S_1(0)}\int_0^\infty (1 + r^2)^{-s}r^{d-1} \, dr \, d\omega. \\
+                                        &\leq \omega_d \int_0^\infty r^(-2s) r^{d-1} \, dr \\ 
+                                        &= \omega_d \int_0^\infty r^{d-2s-1} \, dr
+\end{align*}
+and since $s > d/2$, we have that $d - 2s -1 < d-d - 1 < - 1$. Thus, the integral converges. 
+
+\subsection*{Part b}
+Let $\phi \in \mathcal{S}$, then we see for $x \in \R^d$ that
+\begin{align*}
+  \phi(x) = (2\pi)^{-d/2} \int_{\R^d} e^{ix \cdot \xi} \hat{\phi}(\xi) \, d\xi = (2\pi)^{-d/2} \int_{\R^d} e^{ix \cdot \xi} (1 + |\xi|^2)^{-s/2}(1+ |\xi|^2)^{s/2} \hat{\phi}(\xi) \, d\xi.
+\end{align*}
+and get that
+\begin{align*}
+  |\phi(x)|^2 \leq (2\pi)^{-d} \int_{\R^d} (1+|\xi|^2)^{s} |\hat{\phi}(\xi)|^2 \, d\xi \int_{\R^d} (1 + |\xi|^2)^{-s} \, d\xi = C \norm{u}_{H^s}^2.
+\end{align*}
+where 
+\begin{equation*}
+  C = (2\pi)^{-d} \int_{\R^d} (1+|\xi|^2)^{-s} \, d\xi.
+\end{equation*}
+
+\subsection*{Part c}
+Note that $\mathcal{S}$ is dense in $H^s(\R^d)$, and hence for any $\phi \in H^s(\R^d)$, there exists a sequence of $\phi_n \in \mathcal{S}$ such that $\phi_n \to \phi$ in $H^s(\R^d)$. Additionally for each $\phi_n \in \mathcal{S}$ we have the result above that
+\begin{equation*}
+  \norm{\phi_n}_{L^\infty(\R^d)} \leq C \norm{\phi_n}_{H^s(\R^d)}.
+\end{equation*}
+and hence we have that
+\begin{equation*}
+  \phi_{L^\infty(\R^d)} \leq C \norm{\phi}_{H^s(\R^d)}.
+\end{equation*}
+for $\phi \in H^s(\R^d)$. This proves the goal result that $H^s(\R^d) \hookrightarrow C_B^0(\R^d)$.
+
+\section*{Problem 7.13}
+\subsection*{Part a}
+Let $f \in H^1(\R^d)$, then we see for $0 \leq s \leq 1$ we get that
+\begin{align*}
+  \norm{f}^2_{H^s(\R^d)} = \int_{\R^d} (1 + |\xi|^2)^2 |\hat{f}(\xi)|^2 \, d\xi &= \int_{\R^d} \left((1 + |\xi|^2) |\hat{f}(\xi)|^2\right)^s \left(|\hat{f}(\xi)|^2\right)^{1-s} \, d\xi \\
+                                                                                &\leq \left(\int_{\R^d} (1 + |\xi|^2) |\hat{f}(\xi)|^2 \, d\xi\right)^s \left(\int_{\R^d} |\hat{f}(\xi)|^2 \, d\xi\right)^{1-s} \\
+                                                                                &= \norm{f}^{2s}_{H^1(\R^d)} \norm{f}^{2(1-s)}_{L^2(\R^d)}
+\end{align*}
+In general, we have that if $f \in H^r(\R^d)$ and $0 \leq s \leq 1$, we get that 
+\begin{align*}
+  \norm{f}^2_{H^{rs}(\R^d)} = \int_{\R^d} (1 + |\xi|^2)^{rs} |\hat{f}(\xi)|^2 \, d\xi &= \int_{\R^d} \left((1 + |\xi|^2)^r |\hat{f}(\xi)|^2\right)^{s} \left(|\hat{f}(\xi)|^2\right)^{1-s} \, d\xi \\
+                                                                                      &\leq \left(\int_{\R^d} (1 + |\xi|^2)^r |\hat{f}(\xi)|^2 \, d\xi\right)^s \left(\int_{\R^d} |\hat{f}(\xi)|^2 \, d\xi\right)^{1-s} \\
+                                                                                      &= \norm{f}^{2s}_{H^r(\R^d)} \norm{f}^{2(1-s)}_{L^2(\R^d)}
+\end{align*}
+\subsection*{Part b}
+Let $\Omega \subset \R^d$ be a bounded domain with smooth boundary $\partial \Omega$. We can show this by using the trace theorem and showing that
+\begin{equation*}
+  \norm{f}_{L^2(\partial \Omega)} = \norm{\gamma_0 f}_{H^{0}(\partial \Omega)} \leq C \norm{f}_{H^{1/2}(\Omega)} \leq \norm{f}^{1/2}_{H^1(\Omega)} \norm{f}^{1/2}_{L^2(\Omega)}
+\end{equation*}
+\end{document}
