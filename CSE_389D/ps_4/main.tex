@@ -299,8 +299,277 @@ For $\Psi(\rb_1,\rb_2) = f(\rb_1,\rb_2) \chi_1 \otimes \chi_2$ to be antisymmetr
 \begin{equation*}
 f(\rb_1,\rb_2) \chi_1 \otimes \chi_2 = -f(\rb_2,\rb_1) \chi_2 \otimes \chi_1
 \end{equation*}
-that is if $\chi_1 \otimes \chi_2 = \chi_2 \otimes \chi_1$ (i.e. $\chi_1 = \chi_2$) then we have that we require $f(\rb_1, \rb_2) = -f(\rb_2,\rb_1)$, that is $f$ must be antisymmetric. If however $\chi_1 \neq \chi_2$ then 
+that is if $\chi_1 \otimes \chi_2 = \chi_2 \otimes \chi_1$ (i.e. $\chi_1 = \chi_2$) then we have that we require $f(\rb_1, \rb_2) = -f(\rb_2,\rb_1)$, that is $f$ must be antisymmetric.  
 
 \subsection*{Part f}
 
+We wish to show that the two–electron spinors
+\[
+\Psi_a(\mathbf{r}_1,\mathbf{r}_2) = f_a(\mathbf{r}_1,\mathbf{r}_2) \Bigl(\chi_\uparrow\otimes\chi_\downarrow + \chi_\downarrow\otimes\chi_\uparrow\Bigr),
+\]
+\[
+\Psi_s(\mathbf{r}_1,\mathbf{r}_2) = f_s(\mathbf{r}_1,\mathbf{r}_2) \Bigl(\chi_\uparrow\otimes\chi_\downarrow - \chi_\downarrow\otimes\chi_\uparrow\Bigr),
+\]
+fulfill Pauli's principle, swapping $\rb_1$ with $\rb_2$ yields
+\[
+\Psi_a(\mathbf{r}_2,\mathbf{r}_1) = f_a(\mathbf{r}_2,\mathbf{r}_1)Bigl(\chi_\uparrow\otimes\chi_\downarrow + \chi_\downarrow\otimes\chi_\uparrow\Bigr) = -f(\rb_1,\rb_2)\Bigl(\chi_\uparrow\otimes\chi_\downarrow + \chi_\downarrow\otimes\chi_\uparrow\Bigr).
+\]
+Thus, \(\Psi_a\) is antisymmetric under electron exchange.
+Similarly, under exchange we have
+\[
+\Psi_s(\mathbf{r}_2,\mathbf{r}_1) = f_s(\mathbf{r}_2,\mathbf{r}_1) \Bigl(\chi_\uparrow\otimes\chi_\downarrow - \chi_\downarrow\otimes\chi_\uparrow\Bigr).
+\]
+Since \( f_s \) is symmetric, and recalling that the spin singlet is antisymmetric, we obtain
+\[
+\Psi_s(\mathbf{r}_2,\mathbf{r}_1) = f_s(\mathbf{r}_1,\mathbf{r}_2) \Bigl[-\bigl(\chi_\uparrow\otimes\chi_\downarrow - \chi_\downarrow\otimes\chi_\uparrow\bigr)\Bigr]
+= - f_s(\mathbf{r}_1,\mathbf{r}_2) \Bigl(\chi_\uparrow\otimes\chi_\downarrow - \chi_\downarrow\otimes\chi_\uparrow\bigr)
+= - \Psi_s(\mathbf{r}_1,\mathbf{r}_2).
+\]
+Thus, \(\Psi_s\) is also antisymmetric. Thus the wavefunction satisfy
+\[
+\Psi(\mathbf{r}_2,\mathbf{r}_1) = -\Psi(\mathbf{r}_1,\mathbf{r}_2),
+\]
+
+
+
+\subsection*{Part g}
+\begin{align*}
+    \Psi_1 &= f(\rb_1,\rb_2) \chi_{\uparrow} \otimes \chi_{\uparrow} \\
+    \Psi_2 &= f(\rb_1,\rb_2) \frac{1}{\sqrt{2}}(\chi_{\uparrow} \otimes \chi_{\downarrow} + \chi_{\downarrow} \otimes \chi_{\uparrow}) \\
+    \Psi_3 &= f(\rb_1,\rb_2) \chi_{\downarrow} \otimes \chi_{\downarrow} \\
+    \Psi_4 &= f(\rb_1,\rb_2) (\chi_{\uparrow} \otimes \chi_{\downarrow} - \chi_{\downarrow} \otimes \chi_{\uparrow}) \\
+\end{align*}
+then we see that
+\begin{align*}
+    \bra{\Psi_1}(S_{tot})_z\ket{\Psi_1} &= \hbar \\
+    \bra{\Psi_1}S_{tot}^2\ket{\Psi_1} &= 2\hbar^2
+\end{align*}
+and
+\begin{align*}
+    \bra{\Psi_2}(S_{tot})_z\ket{\Psi_2} &= 0 + 0 = 0 \\
+    \bra{\Psi_2}S_{tot}^2\ket{\Psi_2} &= \frac{2\hbar^2}{2} + \frac{2\hbar^2}{2} = 2\hbar^2
+\end{align*}
+and
+\begin{align*}
+    \bra{\Psi_3}(S_{tot})_z\ket{\Psi_3} &= -\hbar \\
+    \bra{\Psi_3}S_{tot}^2\ket{\Psi_3} &= \frac{2\hbar^2}{2} + \frac{2\hbar^2}{2} = 2\hbar^2
+\end{align*}
+and lastly,
+\begin{align*}
+    \bra{\Psi_4}(S_{tot})_z\ket{\Psi_4} &= 0 - 0 = 0 \\
+    \bra{\Psi_4}S_{tot}^2\ket{\Psi_4} &= \frac{2\hbar^2}{2} - \frac{2\hbar^2}{2} = 0
+\end{align*}
+\section*{Problem 4.3}
+\subsection*{Part a}
+Consider the singlet spinor Slater determinant given by
+\begin{equation*}
+    \psi(1,2) = \phi(1)\phi(2) \frac{1}{\sqrt{2}} \left(\chi_{\uparrow} \otimes \chi_{\downarrow} - \chi_{\downarrow} \otimes \chi_{\uparrow}\right)
+\end{equation*}
+recall that
+\begin{equation*}
+\chi_{\uparrow} \otimes \chi_{\downarrow}  = \begin{bmatrix}
+    0 \\ 1 \\ 0 \\ 0
+  \end{bmatrix} \quad \text{and} \quad 
+\chi_{\downarrow} \otimes \chi_{\uparrow} = \begin{bmatrix}
+    0 \\ 0 \\ 1 \\ 0
+  \end{bmatrix} 
+\end{equation*}
+thus
+\begin{equation*}
+ \psi(1,2) = \phi(1)\phi(2) \frac{1}{\sqrt{2}} \left(\begin{bmatrix}
+    0 \\ 1 \\ 0 \\ 0
+  \end{bmatrix} -  \begin{bmatrix}
+    0 \\ 0 \\ 1 \\ 0
+  \end{bmatrix} \right) = \phi(1)\phi(2) \frac{1}{\sqrt{2}} \begin{bmatrix}
+    \phantom{-}0 \\ \phantom{-}1 \\ -1 \\ \phantom{-}0
+  \end{bmatrix}
+\end{equation*}
+similarly we find that
+\begin{equation*}
+\psi(2,1) = \phi(1)\phi(2) \frac{1}{\sqrt{2}}\left(\chi_{\downarrow} \otimes \chi_{\uparrow} - \chi_{\uparrow} \otimes \chi_{\downarrow}\right) = \phi(1)\phi(2) \frac{1}{\sqrt{2}} \begin{bmatrix}
+    \phantom{-}0 \\ -1 \\ \phantom{-}1 \\ \phantom{-}0
+  \end{bmatrix} = -\psi(1,2)
+\end{equation*}
+hence $\psi$ is anti-symmetric.
+
+\subsection*{Part b}
+For $\psi$ to be normalized we require that,
+\begin{align*}
+\braket{\psi|\psi} = \int \,d1 d2 \psi^*\psi = \int \, d1 d2 |\phi(1)|^2 |\phi(2)|^2 = \left(\int \, dr |\phi(r)|^2\right)^2 = 1
+\end{align*}
+which implies that
+\begin{equation*}
+\int \, dr |\phi(r)|^2 = 1
+\end{equation*}
+hence for $\psi$ to be normalized, $\phi$ must also be normalized.
+
+\subsection*{Part c}
+Suppose we have the following Hamiltonian,
+\begin{equation*}
+\hat{H} = \hat{H}_0(r) + \hat{H}_0(r') + \frac{\beta}{|r - r'|}
+\end{equation*}
+where
+\begin{equation*}
+    \hat{H}_0(r) = -\frac{\hbar^2 \nabla^2}{2m} - \frac{2\beta}{|r|} \quad \text{and} \quad \beta = \frac{e^2}{4\pi \epsilon_0} 
+\end{equation*}
+then we see that 
+\begin{equation*}
+    \bra{\psi}\hat{H}\ket{\psi} = \bra{\psi}\hat{H}_0(r) \ket{\psi} + \bra{\psi}\hat{H}_0(r') \ket{\psi} + \beta \bra{\psi} \frac{1}{r-r'} \ket{\psi}
+\end{equation*}
+additionally we see that
+\begin{align*}
+    \bra{\psi} \hat{H}_0(r) \ket{\psi} &= \frac{1}{2}\int \, dr dr'\begin{bmatrix}
+    \phantom{-}0 & \phantom{-}1 & -1 & \phantom{-}0
+  \end{bmatrix}\begin{bmatrix}
+    \phantom{-}0 \\ \phantom{-}1 \\ -1 \\ \phantom{-}0
+  \end{bmatrix} |\phi(r')|^2 \phi^*(r) \hat{H}_0(r) \phi(r) \\
+  &= \int \, dr dr' |\phi(r')|^2 \phi^*(r) \hat{H}_0(r) \phi(r) = \int \, dr' |\phi(r')|^2 \int \, dr \phi^*(r) \hat{H}_0(r) \phi(r)\\
+  &= \int \, dr \phi^*(r) \hat{H}_0(r) \phi(r)
+\end{align*}
+we can do a similar process for $\bra{\psi} \hat{H}_0(r') \ket{\psi}$ and we get that
+\begin{equation*}
+\bra{\psi} \hat{H}_0(r) \ket{\psi} + \bra{\psi} \hat{H}_0(r') \ket{\psi} = 2\int \, dr \phi^*(r) \hat{H}_0(r) \phi(r)
+\end{equation*}
+lastly for the last term we get that
+\begin{align*}
+    \beta \bra{\psi} \frac{1}{r-r'} \ket{\psi} &= \frac{\beta}{2} \int \, dr dr' \frac{\phi^*(r)\phi(r)\phi^*(r')\phi(r')}{|r - r'|} \begin{bmatrix}
+    \phantom{-}0 & \phantom{-}1 & -1 & \phantom{-}0
+  \end{bmatrix}\begin{bmatrix}
+    \phantom{-}0 \\ \phantom{-}1 \\ -1 \\ \phantom{-}0
+  \end{bmatrix} \\
+  &= \beta \int\int \, dr dr' \frac{\phi^*(r)\phi(r)\phi^*(r')\phi(r')}{|r - r'|}
+\end{align*}
+hence we have that 
+\begin{equation*}
+    E = \bra{\psi} \hat{H} \ket{\psi} =  2\int \, dr \phi^*(r) \hat{H}_0(r) \phi(r) + \beta \int\int \, dr dr' \frac{\phi^*(r)\phi(r)\phi^*(r')\phi(r')}{|r - r'|}
+\end{equation*}
+\subsection*{Part d}
+Recall that we can write the minimization of $E$ with respect to $\phi^*(r)$ subject to the normalization constraint via the Lagrangian as,
+\begin{equation*}
+L = E - \lambda \left(\int \, dr |\phi(r)|^2 - 1\right)
+\end{equation*}
+and we wish to find $\phi(r)$ such that 
+\begin{equation*}
+\frac{\delta L}{\delta \phi^*(r)} = \frac{\delta E}{\delta \phi^*(r)} - \frac{\delta}{\delta \phi^*(r)} \lambda \left(\int \, dr \phi^*(r)\phi(r) - 1\right) = 0
+\end{equation*}
+Note that for the first term, we have that 
+\begin{align*}
+&\frac{d}{d\epsilon}|_{\epsilon = 0} \left(2\int \, dr [\phi(r) + \epsilon \delta(r' - r)]^* \hat{H}_0(r) \phi(r) \right) =   2 \hat{H}_0(r) \phi(r)\\
+&\frac{d}{d\epsilon}|_{\epsilon = 0} \left(\beta \int \, dr dr' \frac{[\phi(r) + \epsilon \delta(r - r')]^*\phi(r)[\phi(r') + \epsilon \delta(r' - r)]^*\phi(r')}{|r - r'|}\right) \\ &=
+ \beta \int \int \, drdr' \frac{\delta(r -r')\phi(r)\phi^*(r')\phi(r')}{|r-r'|} + \beta \int \int \, drdr' \frac{\phi^*(r)\phi(r)\delta(r'-r)\phi(r')}{|r-r'|} \\ 
+ &= \beta \int \int \, drdr' \frac{\delta(r-r')\phi(r)\phi^*(r')\phi(r')}{|r-r'|} + \beta \int \int \, drdr' \frac{\phi^*(r)\phi(r)\delta(r'-r)\phi(r')}{|r-r'|} \\ 
+ &= 2\beta \phi(r) \int \, dr' \frac{|\phi(r')|^2}{|r-r'|}
+\end{align*}
+lastly we get that
+\begin{equation*}
+\frac{\delta}{\delta \phi^*(r)} \lambda \left(\int \, dr \phi^*(r)\phi(r) - 1\right) = \lambda \frac{d}{d\epsilon}|_{\epsilon = 0} \int \, dr [\phi(r) + \epsilon\delta(r-r')]^*\phi(r) = \lambda \phi(r)
+\end{equation*}
+so then by re-arranging terms we get that
+\begin{equation*}
+      \hat{H}_0(r) \phi(r) + \beta \phi(r) \int \, dr' \frac{|\phi(r')|^2}{|r-r'|} = \frac{\lambda}{2} \phi(r) = \epsilon \phi(r)
+\end{equation*}
+or
+\begin{equation*}
+    -\frac{\hbar^2}{2m}\nabla^2\phi(r) + \left[-\frac{2e^2}{4\pi \epsilon_0 |r|} + \int \, dr' \frac{e^2 |\phi(r')|^2}{4\pi \epsilon_0 |r-r'|}\right] \phi(r) = \epsilon \phi(r)
+\end{equation*}
+
+\subsection*{Part e}
+Consider the effective potential,
+\begin{equation*}
+    V_{\text{eff}}(r) = -\frac{2e^2}{4\pi \epsilon_0 |r|} + \int \, dr' \frac{e^2 |\phi(r')|^2}{4\pi \epsilon_0 |r-r'|}
+\end{equation*}
+Now if we consider the case where $|r| \to 0$, we see that 
+\begin{equation*}
+    \frac{2e^2}{4\pi \epsilon_0 |r|} \to \infty \quad \text{and} \quad \int \, dr' \frac{e^2 |\phi(r')|^2}{4\pi \epsilon_0 |r-r'|} \to \int \, dr' \frac{e^2 |\phi(r')|^2}{4\pi \epsilon_0 |r'|} < \infty
+\end{equation*}
+hence for sufficiently small $r$ we have that the right-hand term dominates and hence the potential behaves as
+\begin{equation*}
+V_{\text{eff}}(r) \sim -\frac{Ze^2}{4\pi \epsilon_0 |r|}  
+\end{equation*}
+where $Z = 2$. Now if $|r| \to \infty$ we have that for sufficiently large $r$, $|r-r'| \sim |r|$ and hence
+\begin{equation*}
+    V_{\text{eff}}(r) \sim -\frac{2e^2}{4\pi \epsilon_0 |r|} + \int \, dr' \frac{e^2 |\phi(r')|^2}{4\pi \epsilon_0 |r|} = -\frac{e^2}{4\pi \epsilon_0 |r|} \left(2 - \int \, dr' |\phi(r')|^2\right) \sim -\frac{e^2}{4\pi \epsilon_0 |r|}
+\end{equation*}
+and hence
+\begin{equation*}
+     V_{\text{eff}}(r) \sim -\frac{Ze^2}{4\pi \epsilon_0 |r|}
+\end{equation*}
+with $Z = 1$.
+
+\subsection*{Part f}
+Suppose we have the normalized wavefunction:
+\begin{equation*}
+\phi(r;Z) = \frac{a_0^{-3/2}}{\sqrt{\pi}} Z^{3/2} \exp\left(-Z \frac{|r|}{a_0}\right)
+\end{equation*}
+in order to compute the total energy $E$ as function of $Z$, first recall that
+\begin{equation*}
+     E =  2\int \, dr \phi^*(r) \hat{H}_0(r) \phi(r) + \beta \int\int \, dr dr' \frac{\phi^*(r)\phi(r)\phi^*(r')\phi(r')}{|r - r'|}
+\end{equation*}
+for the first term we have that
+\begin{align*}
+    \hat{H}_0(r)\phi(r) &= \hat{H}_0(r) = -\frac{\hbar^2 \nabla^2\phi(r)}{2m} - \frac{2\beta}{|r|}\phi(r) = -\frac{\hbar^2}{2m} \frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 \frac{\partial}{\partial r}\right)\phi(r) - \frac{2\beta}{|r|}\phi(r) \\
+\end{align*}
+Note that
+\begin{align*}
+     -\frac{\hbar^2}{2m} \frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 \frac{\partial}{\partial r}\right)\frac{a_0^{-3/2}}{\sqrt{\pi}} Z^{3/2} \exp\left(-Z \frac{|r|}{a_0}\right) &= -\frac{a_0^{-3/2}Z^{3/2}\hbar^2}{2m\sqrt{\pi}}\frac{1}{r^2}\frac{\partial}{\partial r} \left(-r^2\frac{Z}{a_0} \exp(-Zr/a_0)\right) \\
+     &= -\frac{a_0^{-5/2}Z^{5/2}\hbar^2}{2m\sqrt{\pi}} \left(-\frac{2}{r} \exp(-Zr/a_0) + \frac{Z}{a_0} \exp(-Zr/a_0)\right) \\
+     &= -\frac{a_0^{-5/2}Z^{5/2}\hbar^2}{2m\sqrt{\pi}}\exp(-Zr/a_0) \left(-\frac{2}{r}  + \frac{Z}{a_0}\right) \\
+\end{align*}
+then we see that
+\begin{align*}
+    2\int \, dr \phi^*(r) \left[-\frac{h^2}{2m}\nabla^2\right] \phi(r) &= 8\pi \left(-\frac{a_0^{-5/2}Z^{5/2}\hbar^2}{2m\sqrt{\pi}}\right)\frac{a^{-3/2}Z^{3/2}}{\sqrt{\pi}} \int \, dr r^2 e^{-2Zr/z_0} \left(-\frac{2}{r}  + \frac{Z}{a_0}\right) \\
+    &= -\frac{4a_0^{-4}Z^{4}\hbar^2}{m} \left(-\frac{a_0^2}{2Z^2} + \frac{a_0^2}{4Z^2}\right) \\
+    &= Z^2 E_{Ha}
+\end{align*}
+and,
+\begin{align*}
+    2\int \, dr\phi^*(r) \left[\frac{2\beta}{|r|}\right] \phi(r) &=16 \beta \pi \left(\frac{a_0^{-3}Z^{3}}{\pi}\right)\int \, dr r e^{-2Zr/a_0} \\
+    &= 16 \beta a_0^{-3}Z^3 \frac{a_0^2}{4Z^2} \\
+    &= 4 \beta a_0^{-1} Z  \\
+    &= 4Z E_{Ha}
+\end{align*}
+For the second term, we have that by setting $u = \frac{2Z}{a_0} r$ and similarly for $r'$, we get that
+\begin{align*}
+    \beta \int\int \, dr dr' \frac{\phi^*(r)\phi(r)\phi^*(r')\phi(r')}{|r - r'|} &= \beta \left(\frac{Z^6a_0^{-6}}{\pi^2}\right)\left(\frac{a_0}{2Z}\right)^6 \frac{2Z}{a_0} \frac{a_0}{2Z} \int \, du \int du' \frac{\exp(-|u| - |u'|)}{|u-u'|} \\
+    &= \beta \frac{5}{8}Z = \frac{5}{8}Z E_{Ha}
+\end{align*}
+Therefore 
+\begin{equation*}
+    E = Z^2E_{Ha} - 4ZE_{Ha} +Z\frac{5}{8}E_{Ha} = Z\left(Z - \frac{27}{8}\right)E_{Ha}
+\end{equation*}
+\subsection*{Part g}
+To find the minimum energy we compute
+\begin{equation*}
+    \frac{dE}{dZ} = 0  \implies \left(Z - \frac{27}{8}\right)E_{Ha} + ZE_{Ha} = 0 \implies Z = \frac{27}{16}
+\end{equation*}
+so the minimum energy is
+\begin{equation*}
+    E_{\text{min}} \approx -2.84765625 E_{Ha}
+\end{equation*}
+
+\subsection*{Part h}
+$Z$ represents the effective charge felt by an electron.
+
+\subsection*{Part i}
+Since the two electrons are indistinguishable, we get that
+\begin{align*}
+    n(r) &= 2\int |\psi(r,r_2)|^2 \, dr_2 =2 \int \, dr_2 |\phi(r)|^2 |\phi(r_2)|^2 \\
+    &=  2|\phi(r)|^2 =  2 \frac{\left(\frac{27}{16}\right)^3}{\pi a_0^3} \exp\left(\frac{-52r}{16a_0}\right)
+\end{align*}
+\subsection*{Part j}
+for $Z = 2$, we get
+\begin{align*}
+    n(r) &= 2\int |\psi(r,r_2)|^2 \, dr_2 =2 \int \, dr_2 |\phi(r)|^2 |\phi(r_2)|^2 \\
+    &=  2|\phi(r)|^2 =  2 \frac{8}{\pi a_0^3} \exp\left(\frac{-4r}{a_0}\right)
+\end{align*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8
+    ]{CSE_389D/ps_4/density(1).png}
+    \caption{$4\pi r^2n(r)$ vs $r$
+}
+    \label{fig:enter-label}
+\end{figure}
+
+\lstinputlisting[language=python]{"untitled33.py"}
 \end{document}
