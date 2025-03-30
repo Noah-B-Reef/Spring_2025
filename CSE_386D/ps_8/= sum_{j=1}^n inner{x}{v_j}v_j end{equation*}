@@ -1,0 +1,89 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\usepackage{stackengine}
+\newcommand\dhookrightarrow{\mathrel{%
+  \ensurestackMath{\stackanchor[.1ex]{\hookrightarrow}{\hookrightarrow}}
+}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{8}   
+\lecturedate{}    
+\input{commands.tex}
+\newcommand{\supp}[]{\text{supp}}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 8.1}
+Suppose that $A$ is a positive definite matrix, then we have that $x^TAx \geq  0$ for all $x \in \R^d$ and has equality only when $x = 0$. Then we see that if $v$ is a normalized eigenvector of $A$ with corresponding eigenvalue $\lambda$ then we have that
+\begin{equation*}
+  v^TAv = v^T \lambda v = \lambda \norm{v}_2^2 = \lambda \geq 0
+\end{equation*}
+and thus the eigenvalues of $A$ are positive. Now suppose $A$ is symmetric matrix and has positive eigenvalues, then we have that $A$ is full rank and thus for all $x$ we have that
+\begin{equation*}
+ x = \sum_{j=1}^n \inner{x}{v_j}v_j 
+\end{equation*}
+where $v_j$ are the eigenvectors of $A$. Then we have that
+\begin{equation*}
+  x^TAx = \sum_{j=1}^n \inner{x}{v_j}v_j^TA\sum_{k=1}^n \inner{x}{v_k}v_k = \sum_{j=1}^n \inner{x}{v_j}^2\lambda_j \geq 0
+\end{equation*}
+and thus $A$ is positive definite.
+
+\section*{Problem 8.3}
+Suppose that $u \in H^2(\Omega)$, for a bounded lipschitz boundary $\Omega \subseteq \R^d$. Then we have the Sobolev Embedding Theorem that for $j \geq 0$ and $m \geq 1$ that
+\begin{equation*}
+  W^{m + j, 2}(\Omega) \hookrightarrow W^{j,q}(\Omega)
+\end{equation*}
+for finitely many $q \leq 2d/(d-2m)$. Note that we can rewrite the bound as
+\begin{equation*}
+\frac{2d}{d-2m} = \frac{2d}{d - 2(2-j)} = \frac{2d}{d - 4 + 2j} 
+\end{equation*}
+then in order to have the largest possible bound for $q$, we choose $j = 0$ and have
+\begin{equation*}
+  q \leq \frac{2d}{d - 4}
+\end{equation*}
+and thus we have that
+\begin{equation*}
+  q^* = \begin{cases}
+    \infty & d < 4 \\
+    \frac{2d}{d - 4} & d \geq 4
+  \end{cases}
+\end{equation*}
+Now note that by Holder's inequality we have that
+\begin{equation*}
+  \norm{cu^2}_{L^2} \leq \norm{c}_{L^p} \norm{u^2}_{L^q'}
+\end{equation*}
+for $1/p + 1/q' = 1/2$. Note that $\norm{u}_{L^q} < \infty$ for $q' = q/2$ and hence we have
+\begin{equation*}
+  \frac{1}{p} + \frac{1}{q'} = \frac{1}{p} + \frac{2}{q} =  \frac{1}{p} + \frac{2(d-4)}{2d} = \frac{1}{2}
+\end{equation*}
+and then we have $p = 2d/(8-d)$. Thus we have that
+\begin{equation*}
+  p^* = \begin{cases}
+    2 & d \leq 4 \\
+    \frac{2d}{8-d} & 4 < d < 8 \\
+    \infty & d \geq 8
+  \end{cases}
+\end{equation*}
+are the smallest possible values for $p$ such that $c \in L^{p^*}(\Omega)$.
+
+\section*{Problem 8.4}
+\subsection*{Part a}
+\subsection*{Part b}
+To show that the Poincare inequality, we will assume that contrary, that is, suppose for $n \in \N$ there exists a function $u_n \in H^1(\Omega)$ such that
+\begin{equation*}
+  \norm{u_n}_{L^2(\Omega)} > n \norm{\nabla u_n}_{L^2(\Omega)}
+\end{equation*}
+
+\end{document}
