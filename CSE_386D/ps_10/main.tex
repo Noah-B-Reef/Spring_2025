@@ -1,0 +1,82 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\usepackage{stackengine}
+\newcommand\dhookrightarrow{\mathrel{%
+  \ensurestackMath{\stackanchor[.1ex]{\hookrightarrow}{\hookrightarrow}}
+}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{10}   
+\lecturedate{}    
+\input{commands.tex}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 8.14}
+\subsection*{Part a}
+Let $\mathcal{H} = H_0^1(\Omega)$ and $H = V_n$ for some $n$, and define
+\begin{align*}
+  B(u_n,v_n) &= \inner{\nabla u_n}{\nabla v_n}_{L^2(\Omega)} + \inner{u_n}{v_n}_{L^2(\Omega)}\\
+  F(v_n) &= \inner{f}{v_n}_{L^2(\Omega)}
+\end{align*}
+Note that,
+\begin{equation*}
+  |F(v_n)| = \left|\inner{f}{v_n}_{L^2(\Omega)}\right| \leq \norm{f}_{L^2(\Omega)} \norm{v_n}_{L^2(\Omega)} \leq C_p \norm{f}_{H^1(\Omega)} \norm{v_n}_{H^1(\Omega)}
+\end{equation*}
+thus $F$ is continuous. Then we see that,
+\begin{align*}
+|B(u_n,v_n)| &= \left|\inner{\nabla u_n}{\nabla v_n}_{L^2(\Omega)} + \inner{u_n}{v_n}_{L^2(\Omega)}\right| \\
+             &\leq \left|\inner{\nabla u_n}{\nabla v_n}_{L^2(\Omega)}\right| + \left|\inner{u_n}{v_n}_{L^2(\Omega)}\right| \\
+             &\leq \norm{\nabla u_n}_{L^2(\Omega)} \norm{\nabla v_n}_{L^2(\Omega)} + \norm{u_n}_{L^2(\Omega)} \norm{v_n}_{L^2(\Omega)}\\
+             &\leq (C_p + 1) \norm{u_n}_{H^1(\Omega)} \norm{v_n}_{H^1(\Omega)}\\
+\end{align*}
+thus $B$ is continous. Similarly, we have that 
+\begin{align*}
+  B(u_n,u_n) &= \inner{\nabla u_n}{\nabla u_n}_{L^2(\Omega)} + \inner{u_n}{u_n}_{L^2(\Omega)}\\
+  &\geq \norm{\nabla u_n}_{L^2(\Omega)}^2 + \norm{u_n}_{L^2(\Omega)}^2\\
+  &\geq  \norm{u_n}_{H^1(\Omega)}^2
+\end{align*}
+and hence $B$ si coercive. Thus by the Lax-Milgram theorem, we have that there exists a unique solution $u_n \in V_n$ such that
+\begin{align*}
+  B(u_n,v_n) &= F(v_n) \quad \forall v_n \in V_n
+\end{align*}
+and we see that
+\begin{equation*}
+|B(u_n,u_n)| = \norm{u_n}_{H^1(\Omega)}^2 = |\inner{f}{u_n}_{L^2(\Omega)}| \leq \norm{f}_{L^2(\Omega)} \norm{u_n}_{L^2(\Omega)} 
+\end{equation*}
+dividing by $\norm{u_n}_{L^2(\Omega)}$ gives us
+\begin{equation*}
+  \norm{u_n}_{H^1(\Omega)} \leq \norm{f}_{L^2(\Omega)} 
+\end{equation*}
+
+\subsection*{Part b}
+From part a, we have that $u_n$ is uniformly bounded in $H^1(\Omega)$, thus by the Banach-Alaoglu theorem we have that there exists a subsequence $u_n \rightharpoonup u$ in $H^1(\Omega)$.
+Note that $V = \bigcup_{n=1}^\infty V_n$ is dense in $H^1(\Omega)$, and hence $\bar{V} = H^1(\Omega)$. Since the variational problem, for each $n$, of finding $u_n \in V_n$ such that 
+\begin{equation*}
+  B(u_n, v_n) = F(v_n) \quad \forall v_n \in V_n
+\end{equation*}
+has a unique solution. We have that the same problem posed on $H^1(\Omega)$, also has a unique solution, that is
+\begin{equation*}
+  B(u,v) = F(v) \quad \forall v \in H^1(\Omega)
+\end{equation*}
+has a unique solution $u^* \in H^1(\Omega)$. For each $v \in H^1(\Omega)$, there exists a sequence $v_n \to v$ where $v_n \in V_n$, and hence we have that since $u_n \rightharpoonup u$ we get that
+\begin{equation*}
+B(u_n, v_n) = F(v_n) \to B(u,v) = F(v) \quad \forall v \in H^1(\Omega)
+\end{equation*}
+which implies that $u$ is a solution to the variational problem posed on $H^1(\Omega)$, and hence $u = u^*$.
+
+\subsection*{Part c}
+
+\end{document}
