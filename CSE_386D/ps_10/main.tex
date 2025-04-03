@@ -78,5 +78,48 @@ B(u_n, v_n) = F(v_n) \to B(u,v) = F(v) \quad \forall v \in H^1(\Omega)
 which implies that $u$ is a solution to the variational problem posed on $H^1(\Omega)$, and hence $u = u^*$.
 
 \subsection*{Part c}
+Note that 
+\begin{equation*}
+  \norm{u - u_n}_{H^1(\Omega)} \leq \frac{M}{\gamma} \inf_{v_n \in V_n} \norm{u - v_n}_{H^1(\Omega)}
+\end{equation*}
+where $M$ and $\gamma$ are the continuity and coercivity constants of $B$ respectively. Note that since $V_1 \subseteq V_2 \subseteq \dots$, we get that
+\begin{equation*}
+  \inf_{v_n \in V_n} \norm{u - v_n}_{H^1(\Omega)} \geq \inf_{v_n \in V_{n+1}} \norm{u-v_n}_{H^1(\Omega)}
+\end{equation*}
+for all $n$. Additionally since $V_n \to V$ as $n \to \infty$, which as stated above is dense in $H^1(\Omega)$, we get that
+\begin{equation*}
+  \inf_{v_n \in V_n} \norm{u - v_n}_{H^1(\Omega)} \to 0 \quad \text{as } n \to \infty
+\end{equation*}
+Thus we have that
+\begin{equation*}
+  \norm{u - u_n}_{H^1(\Omega)} \leq \frac{M}{\gamma} \inf_{v_n \in V_n} \norm{u - v_n}_{H^1(\Omega)} \to 0
+\end{equation*}
+monotically as $n \to \infty$.
 
+\subsection*{Part d}
+Recall that the variational formulation of the problem is given by
+\begin{equation*}
+  \inner{\nabla u_n}{\nabla v_n}_{L^2(\Omega)} + \inner{u_n}{v_n}_{L^2(\Omega)} = \inner{f}{v_n}_{L^2(\Omega)} \quad \forall v_n \in V_n
+\end{equation*}
+and then for the $\inner{\nabla u_n}{\nabla v_n}_{L^2(\Omega)}$ term, we have that 
+\begin{equation*}
+  \int_{\Omega} \nabla u \cdot \nabla v \, dx = - \int_{\Omega} (\nabla^2 u)v \, \dx + \int_{\partial \Omega}(\nabla u \cdot \nu)v \, d\sigma(x)
+\end{equation*}
+which implies that $u \in H^2(\Omega)$ and we get that
+\begin{equation*}
+  - \int_{\Omega} (\nabla^2 u)v \, \dx + \int_{\partial \Omega}(\nabla u \cdot \nu)v \, d\sigma(x) + \int_{\Omega} uv \, dx = \int_{\Omega} fv \, dx 
+\end{equation*}
+which holds for all $v \in H^1(\Omega)$, and hence we have that $\nabla u \cdot \nu = 0$ on $\partial \Omega$.
+
+\section*{Problem 8.17}
+Notice that $I_h$ is well-defined since for any $\{v(x_j)\}_{j=1}^{n-1}$ there exists only one line that passes through the points $(x_k, v(x_k))$ and $(x_{k+1},v(x_{k+1}))$jjk'. We can see that $I_h$ is linear since
+Since $\Omega = (0,1)$ is bounded then we have by the Sobolev Embedding theorem that $H_0^1(0,1) \hookrightarrow C_B^0(0,1)$, that means that there exists $C > 0$ such that for all $u \in H_0^1(0,1)$
+\begin{equation*}
+  \norm{u}_{C_B^0(0,1)} \leq C \norm{u}_{H_0^1(0,1)}
+\end{equation*}
+so then for $v \in H_0^1(0,1)$ we have that 
+\begin{equation*}
+  \norm{\mathcal{I}_h v}_{C_B^0(0,1)} = \norm{v}\leq C \norm{\mathcal{I}_h v}_{H_0^1(0,1)} \leq C \norm{v}_{H_0^1(0,1)}
+\end{equation*}
+and hence we have that $\mathcal{I}_h$ is continuous.
 \end{document}
