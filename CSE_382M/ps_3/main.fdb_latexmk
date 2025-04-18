@@ -1,5 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1741635851.18166 "main.tex" "main.pdf" "main" 1741635851.86219 2
+["pdflatex"] 1744049221.94374 "/Users/nreef/Desktop/Spring_2025/CSE_382M/ps_3/main.tex" "main.pdf" "main" 1744049222.30915 2
+  "/Users/nreef/Desktop/Spring_2025/CSE_382M/ps_3/main.tex" 1744049221.28796 10699 b439134fb93f16a9c23027d03346b13f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -82,9 +83,9 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1733497330 8221424 a754dda7ad15242c69b4e04c27fbc341 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "commands.tex" 1741294025.90423 5401 e6ca3c713e68b95345b6e853a4b1b9d1 ""
-  "hw3q2.py" 1741634113.73819 1250 8c35d36bfe28f32c30ec3fd0bc47d155 ""
-  "main.aux" 1741635851.75521 394 a3176dc491cc07fbf999e7b25edccecc "pdflatex"
-  "main.tex" 1741635849.76718 10699 b439134fb93f16a9c23027d03346b13f ""
+  "hw3q2.py" 1741635966.0048 1250 8c35d36bfe28f32c30ec3fd0bc47d155 ""
+  "main.aux" 1744049222.26331 394 a3176dc491cc07fbf999e7b25edccecc "pdflatex"
+  "main.tex" 1744049221.28796 10699 b439134fb93f16a9c23027d03346b13f ""
   "ouput.png" 1741633265.7005 23758 c3d655f1ac58434abc2d13f2c49d7d60 ""
   "scribe.sty" 1741294025.90385 7350 8e4a4149a2e30e1a007b3c97b6f56560 ""
   (generated)

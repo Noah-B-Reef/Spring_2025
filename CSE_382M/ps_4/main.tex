@@ -1,0 +1,184 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{proba}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{listings}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\DeclareMathOperator*{\Tr}{Tr}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\course{CSE 382M} 	
+\coursetitle{Found. Data Science \& ML}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{4}   
+\lecturedate{}    
+\input{commands.tex}
+
+% Insert your name here!
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+Let $\mathcal{H}$ be the set of linear hypothesis defined as
+\begin{equation*}
+\mathcal{H} = \{h_a(x):= a^Tx : \norm{a}_2 \leq B\}
+\end{equation*}
+and suppose that for all $(x,y) \in \mathcal{D}$ we have that 
+\begin{align*}
+  \norm{x}_2 \leq X \quad \text{and} \quad \norm{y}_2 \leq Y
+\end{align*}
+Then we can define the class of linear least square hypothesis as
+\begin{equation*}
+  \mathcal{L} = \{f(x) = \ell(h_a(x),y) := \frac{1}{2} (h_a(x) - y)^2 : h_a \in \mathcal{H}\}
+\end{equation*}
+Then we get that for the Radamacher complexity that
+\begin{align*}
+\mathcal{R}_{S}(\mathcal{H}) &= \mathbb{E}_{\sigma} \left[ \sup_{h_a \in \mathcal{H}} \frac{1}{n} \sum_{i=1}^{m} \sigma_i h_a(x_i) \right] = \frac{1}{n} \mathbb{E}_{\sigma} \left[ \sup_{\norm{a}_2 \leq B} \sum_{i=1}^{m} \sigma_i a^Tx_i \right] \\
+&\leq \frac{1}{n} \mathbb{E}_{\sigma} \left[\sup_{\norm{a}_2 \leq B} \left|a^T \sum_{i=1}^n \sigma_i x_i\right|\right] \\
+&\leq \frac{1}{n}\mathbb{E}_{\sigma} \left[\sup_{\norm{a}_2 \leq B}\norm{a}_2 \norm{\sum_{i=1}^n \sigma_i x_i}_2\right] \\
+&\leq \frac{B}{n} \mathbb{E}_{\sigma} \left[\norm{\sum_{i=1}^n \sigma_i x_i}_2\right] \\
+&\leq \frac{B}{n} \sqrt{n} X
+\end{align*}
+and hence we have that
+\begin{equation*}
+  \mathcal{R}_{S}(\mathcal{H}) \leq \frac{BX}{\sqrt{n}}
+\end{equation*}
+lastly we can define the loss function as
+\begin{equation*}
+  \phi_y(z) = \ell(z,y) =  \frac{1}{2} (z-y)^2
+\end{equation*}
+with $z = h_a(x)$, and compute the derivative as
+\begin{equation*}
+  \phi'_y(z) = (z-y) 
+\end{equation*}
+and get that
+\begin{equation*}
+  |\phi'_y(z)| \leq |z| + |y| = |h_a(x)| + |y| \leq BX + Y
+\end{equation*}
+and hence we have that 
+\begin{equation*}
+  \mathcal{R}_{S}(\mathcal{L}) \leq \frac{BX}{\sqrt{n}}(BX + Y)
+\end{equation*}
+
+\section*{Problem 2}
+\lstinputlisting[language=python]{ps_4 code/hw4_q2.py}
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+  \toprule
+  d & n & r & Nystrom Error & Fourier Error \\
+  \midrule
+  2 & 1024 & 128 & 0.0033 & 0.1743 \\
+  2 & 1024 & 512 & 0.0013 & 0.0774 \\
+  2 & 1024 & 1024 & 0.0006 & 0.0639 \\
+  2 & 4096 & 128 & 0.0025 & 0.1860 \\
+  2 & 4096 & 512 & 0.0013 & 0.0716 \\
+  2 & 4096 & 1024 & 0.0009 & 0.0812 \\
+  2 & 16384 & 128 & 0.0023 & 0.1383 \\
+  2 & 16384 & 512 & 0.0012 & 0.0857 \\
+  2 & 16384 & 1024 & 0.0008 & 0.0693 \\
+  4 & 1024 & 128 & 0.0698 & 0.3975 \\
+  4 & 1024 & 512 & 0.0141 & 0.2148 \\
+  4 & 1024 & 1024 & 0.0000 & 0.1406 \\
+  4 & 4096 & 128 & 0.0785 & 0.3973 \\
+  4 & 4096 & 512 & 0.0130 & 0.1987 \\
+  4 & 4096 & 1024 & 0.0054 & 0.1463 \\
+  4 & 16384 & 128 & 0.0684 & 0.4436 \\
+  4 & 16384 & 512 & 0.0121 & 0.2051 \\
+  4 & 16384 & 1024 & 0.0046 & 0.1589 \\
+  8 & 1024 & 128 & 0.6445 & 1.6959 \\
+  8 & 1024 & 512 & 0.3354 & 0.8601 \\
+  8 & 1024 & 1024 & 0.0000 & 0.6053 \\
+  8 & 4096 & 128 & 0.6695 & 2.0762 \\
+  8 & 4096 & 512 & 0.3766 & 1.0520 \\
+  8 & 4096 & 1024 & 0.2622 & 0.7291 \\
+  8 & 16384 & 128 & 0.6157 & 2.1504 \\
+  8 & 16384 & 512 & 0.3460 & 1.0789 \\
+  8 & 16384 & 1024 & 0.2422 & 0.7586 \\
+  16 & 1024 & 128 & 0.9349 & 2.8316 \\
+  16 & 1024 & 512 & 0.7059 & 1.4132 \\
+  16 & 1024 & 1024 & 0.0000 & 0.9979 \\
+  16 & 4096 & 128 & 0.9839 & 5.6222 \\
+  16 & 4096 & 512 & 0.9333 & 2.8146 \\
+  16 & 4096 & 1024 & 0.8624 & 1.9895 \\
+  16 & 16384 & 128 & 0.9953 & 11.0760 \\
+  16 & 16384 & 512 & 0.9805 & 5.5400 \\
+  16 & 16384 & 1024 & 0.9619 & 3.9167 \\
+  \bottomrule
+  \end{tabular}
+\end{figure}
+
+\section*{Problem 3}
+Suppose we have the following Kernel regression problem $Kw = y + \eta$ where $\eta$ is some noise. 
+If $K$ is a full-rank kernel matrix we have that
+\begin{equation*}
+  K = U \Sigma V^T \quad \text{with} \quad \sigma_1 \geq \sigma_2 \geq \ldots \geq \sigma_n > 0
+\end{equation*}
+and hence the solution the above regression problem is given by,
+\begin{equation*}
+w = K^{-1}(y + \eta) = \sum_{i=1}^n \frac{1}{\sigma_i} u_i^T(y + \eta) v_i
+\end{equation*}
+then for a low-rank approximation of our kernel matrix we have that $K_r = U_r \Sigma_r V_r^T$ and our solution vector is given by
+\begin{equation*}
+  w_r = \sum_{i=1}^r \frac{1}{\sigma_i} u_i^T(y + \eta) v_i = \sum_{i=1}^r \frac{1}{\sigma_i}u_i^Tyv_i + \sum_{i=1}^r \frac{1}{\sigma_i}u_i^T\eta v_i = w_r^* + \delta w_r
+\end{equation*}
+then we get that 
+\begin{equation*}
+  \norm{\delta w_r} \leq \frac{\norm{\eta}}{\sigma_r}
+\end{equation*}
+and so
+\begin{equation*}
+\frac{\norm{\delta w_r}}{\norm{w_r^*}} \leq \kappa_r \frac{\norm{\eta}}{\norm{y}}
+\end{equation*}
+Lastly to the error is not too large we require that 
+\begin{equation*}
+  \kappa_r \frac{\norm{\eta}}{\norm{y}} \leq 1 \implies \sigma_r \geq \sigma_1 \frac{\norm{\eta}}{\norm{y}} \implies \sigma_r \geq \sigma_1\frac{\norm{\eta}}{\norm{y}}
+\end{equation*}
+\section*{Problem 4}
+\subsection*{Part a}
+\lstinputlisting[language=python]{ps_4 code/hw4_q4.py}
+\subsection*{Part b}
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{lrr}
+    \toprule
+    Dataset & Best Theta & Test Error \\
+    \midrule
+    1 & 1.000E-03 & 9.973E-09 \\
+    2 & 1.000E+00 & 1.226E-09 \\
+    \bottomrule
+    \end{tabular}
+\end{figure}
+\end{document}

@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1740016830.1654 "main.tex" "main.pdf" "main" 1740016831.40257 2
+["pdflatex"] 1743568517.79706 "main.tex" "main.pdf" "main" 1743568518.99431 2
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -96,8 +96,8 @@
   "Secular_2.png" 1740012990.40264 339361 4e306ee664c93e1aa62cc320aa4032a1 ""
   "commands.tex" 1738874165.86014 5401 e6ca3c713e68b95345b6e853a4b1b9d1 ""
   "even.png" 1740014527.73459 51835 76807b191d2086de5b39c52e505a09b2 ""
-  "main.aux" 1740016831.29626 1042 18afa846e13ecbdf3884231c79f27764 "pdflatex"
-  "main.tex" 1740016828.35443 23005 afc368e3e2f1bd28e13090e52e36a330 ""
+  "main.aux" 1743568518.8847 1042 18afa846e13ecbdf3884231c79f27764 "pdflatex"
+  "main.tex" 1743568517.196 23005 afc368e3e2f1bd28e13090e52e36a330 ""
   "odd.png" 1740014527.78615 47712 5da9584daa60afce3d1ee69e8a6d73c5 ""
   "qual.png" 1740016120.02015 173972 89f110500a5bb3770a38909bc599eaee ""
   "scribe.sty" 1738874165.85962 7350 8e4a4149a2e30e1a007b3c97b6f56560 ""
