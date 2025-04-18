@@ -1,0 +1,110 @@
+\documentclass[12pt]{report}
+\usepackage{scribe,graphicx,graphics}
+\usepackage{bbm}
+\usepackage{yhmath}
+\usepackage{stackengine}
+\newcommand\dhookrightarrow{\mathrel{%
+  \ensurestackMath{\stackanchor[.1ex]{\hookrightarrow}{\hookrightarrow}}
+}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\inner}[2]{\left\langle#1,#2\right\rangle}
+
+\course{CSE 386D} 	
+\coursetitle{Methods of Applied Mathematics II}	
+\semester{Spring 2025}
+\lecturer{} % Due Date: {\bf Mon, Oct 3 2016}}
+\lecturetitle{Problem Set}
+\lecturenumber{11}   
+\lecturedate{}    
+\input{commands.tex}
+
+% Insert yousupp}
+\scribe{Student Name: Noah Reef}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 9.8}
+\subsection*{Part a}
+Let $X = C^0([0,T])$ and define the operator $G: X \to X$ by
+\begin{equation*}
+G(u) = u_0 + \int_0^t \cos(u(s)) - u(s) \, ds
+\end{equation*}
+Then we see that,
+\begin{align*}
+  \norm{G(u) - G(v)}_{L^\infty} &= \sup_{0 \leq t \leq T} \left|\int_0^t [\cos(u(s)) - \cos(v(s))] + [u(s) - v(s)] \, ds\right| \\
+  &\leq \sup_{0 \leq t \leq T} \left| \int_0^t [\cos(u(s)) - \cos(v(s))] \, ds \right| + \sup_{0 \leq t \leq T} \left| \int_0^t [u(s) - v(s)] \, ds \right| \\
+  &\leq \sup_{0 \leq t \leq T} \int_0^t \left| \cos(u(s)) - \cos(v(s)) \right| \, ds + \sup_{0 \leq t \leq T} \int_0^t |u(s) - v(s)| \, ds \\ 
+  &\leq \sup_{0 \leq t \leq T} \int_0^t |u(s) - v(s)| \, ds + \sup_{0 \leq t \leq T} \int_0^t |u(s) - v(s)| \, ds \\
+  &\leq 2T \norm{u - v}_{L^\infty}
+\end{align*}
+so then by taking $T < 1/2$ we have that by the Contraction Mapping Theorem that $G$ has a unique fixed point $u$. We can iterate this process to extend the solution uniquely to any $T > 0$.
+\subsection*{Part b}
+
+\subsection*{Problem 9.9}
+Suppose we have the following differential equation
+\begin{equation*}
+  \begin{cases}
+    -u_{xx} + u - \epsilon u^2 = f(x) \quad \text{for $x \in (0, +\infty)$} \\
+    u(0) = u(+\infty) = 0  
+  \end{cases}
+\end{equation*}
+Let $\mathcal{L}: C^2((0,\infty)) \to C^2((0,\infty))$ be the operator defined by
+\begin{equation*}
+  \mathcal{L}(u) = -u_{xx} + u
+\end{equation*}
+Then we have that there exists a Green's Function $g$ such that
+\begin{equation*}
+  G(u) = u(x) = \int_0^\infty g(x,y) \left[f(y) + \epsilon u(y)^2\right] \, dy
+\end{equation*}
+Then we have that 
+\begin{align*}
+  \norm{G(u) - G(v)}_{L^\infty} &= \sup_{0 \leq x < \infty} \left| \int_0^\infty g(x,y) \left[ f(y) + \epsilon u(y)^2 - f(y) - \epsilon v(y)^2 \right] \, dy \right| \\
+  &\leq \sup_{0 \leq x < \infty} \int_0^\infty |g(x,y)| \left| u(y)^2 - v(y)^2 \right| \, dy \\
+  &\leq \sup_{0 \leq x < \infty} \int_0^\infty |g(x,y)| \left| u(y) - v(y) \right| \left| u(y) + v(y) \right| \, dy \\
+  &\leq \epsilon \norm{u + v}_{L^\infty} \norm{u-v}_{L^\infty} \sup_{0 \leq x < \infty} \int_0^\infty |g(x,y)| \, dy \\
+  &\leq \epsilon 2RM \norm{u-v}_{L^\infty}
+\end{align*} 
+Then we see that for $\epsilon < \frac{1}{2RM}$ we have that by the Contraction Mapping Theorem that $G$ has a unique fixed point $u$.
+
+\section*{Problem 9.10}
+Suppose we have the following differential equation
+\begin{equation*}
+  \begin{cases}
+    \frac{\partial u}{\partial t} - \frac{\partial^3 u}{\partial t \partial x^2} - \epsilon u^3 = f, \quad -\infty < x < \infty, t > 0\\
+    u(x,0) = g(x)
+  \end{cases}
+\end{equation*}
+Note that we can rewrite the above as
+\begin{equation*}
+(1 - \partial_{x}^2)u_t = f + \epsilon u^3 = h
+\end{equation*}
+then by taking the Fourier Transform we have that
+\begin{equation*}
+  (1 + \xi^2) \hat{u}_t = \hat{h} 
+\end{equation*}
+and then we see that it can be formally deduced that  
+\begin{equation*}
+  u_t = \Tilde{\kappa} * h = \Tilde{\kappa} * (f + \epsilon u^3)
+\end{equation*}
+where 
+\begin{equation*}
+  \Tilde{\kappa} = \sqrt{2\pi} \mathcal{F}^{-1}\left(\frac{1}{1+\xi^2}\right) = \frac{1}{2}e^{-|x|}
+\end{equation*}
+Now by letting $k = -\Tilde{k}_x \in L^1(\R)$ we have that 
+\begin{equation*}
+  u_t(x,t) = \kappa * (f + \epsilon u^3)  
+\end{equation*}
+Now by using the Fundemental Theorem of Calculus we get that
+\begin{equation*}
+  G(u) = u(x,t) = g(x) + \int_0^t \kappa * (f + \epsilon u^3) \, dt
+\end{equation*}
+To show that $G$ is a contraction map we see that
+\begin{align*}
+  \norm{G(u) - G(v)}_{L^\infty} &= \sup_{(x,t) \in \R \times [0,T]} \left|\int_0^t \int \kappa * (\epsilon u^3 + \epsilon v^3) \, d\right| 
+\end{align*}
+\section*{Problem 9.12}
+\subsection*{Part a}
+We see that $H: X \times \R \to Y$ defined by $H(x,\epsilon) = F(x) + \epsilon G(x)$ is $C^1$ in a neighborhood around $(x_0,0)$ since $DH(x_0,0) = DF(x_0) = 0$. Then we have by the Implicit Function Theorem that there exists a 
+unique mapping $g \in C^1$ such that $\epsilon = g(x,y)$. This means the we have that $H(x_0, g(x_0,0)) = 0$ 
+\end{document}
